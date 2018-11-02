@@ -1,0 +1,8 @@
+.#*
+*.log
+/target/
+
+/.sttings/
+/bin/
+.classpath
+.project
