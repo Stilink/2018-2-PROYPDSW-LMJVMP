@@ -41,6 +41,7 @@ public class Iniciativa implements Serializable{
 		this.fechaDeCreacion=fechaDeCreacion;
 	}
 	
+	
 	public String getArea() {
 		return area;
 	}
@@ -95,6 +96,38 @@ public class Iniciativa implements Serializable{
 	
 	public void setEstado(String estado) {
 		this.estado=estado;
+	}
+	
+	public Perfil getCreador() {
+		return creador;
+	}
+	
+	public void setCreador(Perfil creador) {
+		this.creador=creador;
+	}
+	
+	public int getNo_votos() {
+		return no_votos;
+	}
+	
+	public void setNo_votos(int no_votos) {
+		this.no_votos=no_votos;
+	}
+	
+	public String getDescripcion() {
+		return descripcion;
+	}
+	
+	public void setDescripcion(String descripcion) {
+		this.descripcion=descripcion;
+	}
+	
+	public Date getFechaDeCreacion() {
+		return fechaDeCreacion;
+	}
+	
+	public void setFechaDeCreacion(Date fechaDeCreacion) {
+		this.fechaDeCreacion=fechaDeCreacion;
 	}
 
 }
