@@ -12,7 +12,7 @@ CREATE TABLE area (
 -- Table: comentarios
 CREATE TABLE comentarios (
     iniciativa int  NOT NULL,
-    perfil int  NOT NULL,
+    perfil varchar(75)  NOT NULL,
     descripcion varchar(100)  NOT NULL,
     id int  NOT NULL,
     fecha date  NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE iniciativa (
     id int  NOT NULL,
     nombre varchar(50)  NOT NULL,
     estado varchar(25)  CHECK(estado in('En revision','En espera de revision','Proyecto','Solucionado')),
-    creador int  NOT NULL,
+    creador varchar(75)  NOT NULL,
     no_votos int  NOT NULL,
     descripcion varchar(255)  NOT NULL,
     fechaDeCreacion date  NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE iniciativa (
 
 -- Table: interes
 CREATE TABLE interes (
-    perfil int  NOT NULL,
+    perfil varchar(75)  NOT NULL,
     iniciativa int  NOT NULL,
     CONSTRAINT interes_pk PRIMARY KEY (perfil,iniciativa)
 );
@@ -47,12 +47,12 @@ CREATE TABLE palabra_clave (
 
 -- Table: perfil
 CREATE TABLE perfil (
-    carne int  NOT NULL,
+    carne int  NOT NULL UNIQUE,
     rol varchar(25)  NOT NULL,
     nombre varchar(75)  NOT NULL,
     email varchar(75)  NOT NULL,
     area int NOT NULL,
-    CONSTRAINT perfil_pk PRIMARY KEY (carne)
+    CONSTRAINT perfil_pk PRIMARY KEY (email)
 );
 
 -- Table: rol
@@ -64,7 +64,7 @@ CREATE TABLE rol (
 
 -- Table: voluntad
 CREATE TABLE voluntad (
-    perfil int  NOT NULL,
+    perfil varchar(75) NOT NULL,
     iniciativa int  NOT NULL,
     CONSTRAINT voluntad_pk PRIMARY KEY (perfil,iniciativa)
 );
@@ -97,7 +97,7 @@ ALTER TABLE voluntad ADD CONSTRAINT intencion_iniciativa
 -- Reference: intencion_perfil (table: voluntad)
 ALTER TABLE voluntad ADD CONSTRAINT intencion_perfil
     FOREIGN KEY (perfil)
-    REFERENCES perfil (carne)  
+    REFERENCES perfil (email)  
 ;
 
 -- Reference: interes_iniciativa (table: interes)
@@ -109,19 +109,19 @@ ALTER TABLE interes ADD CONSTRAINT interes_iniciativa
 -- Reference: interes_perfil (table: interes)
 ALTER TABLE interes ADD CONSTRAINT interes_perfil
     FOREIGN KEY (perfil)
-    REFERENCES perfil (carne)  
+    REFERENCES perfil (email)  
 ;
 
 -- Reference: perfil_comentarios (table: comentarios)
 ALTER TABLE comentarios ADD CONSTRAINT perfil_comentarios
     FOREIGN KEY (perfil)
-    REFERENCES perfil (carne)  
+    REFERENCES perfil (email)  
 ;
 
 -- Reference: perfil_iniciativa (table: iniciativa)
 ALTER TABLE iniciativa ADD CONSTRAINT perfil_iniciativa
     FOREIGN KEY (creador)
-    REFERENCES perfil (carne)  
+    REFERENCES perfil (email)  
 ;
 
 -- Reference: rol_perfil (table: perfil)
