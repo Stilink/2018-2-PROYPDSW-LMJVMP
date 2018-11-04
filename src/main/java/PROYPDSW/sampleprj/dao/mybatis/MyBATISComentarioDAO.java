@@ -1,5 +1,7 @@
 package PROYPDSW.sampleprj.dao.mybatis;
 
-public class MyBATISComentarioDAO {
+import PROYPDSW.sampleprj.dao.ComentarioDAO;
 
+public class MyBATISComentarioDAO implements ComentarioDAO {
+	
 }
