@@ -27,7 +27,6 @@ CREATE TABLE iniciativa (
     creador int  NOT NULL,
     no_votos int  NOT NULL,
     descripcion varchar(255)  NOT NULL,
-    area int  NOT NULL,
     fechaDeCreacion date  NOT NULL,
     CONSTRAINT iniciativa_pk PRIMARY KEY (id)
 );
@@ -52,6 +51,7 @@ CREATE TABLE perfil (
     rol varchar(25)  NOT NULL,
     nombre varchar(75)  NOT NULL,
     email varchar(75)  NOT NULL,
+    area int NOT NULL,
     CONSTRAINT perfil_pk PRIMARY KEY (carne)
 );
 
@@ -76,8 +76,8 @@ ALTER TABLE comentarios ADD CONSTRAINT comentarios_iniciativa
     REFERENCES iniciativa (id)  
 ;
 
--- Reference: iniciativa_area (table: iniciativa)
-ALTER TABLE iniciativa ADD CONSTRAINT iniciativa_area
+-- Reference: perfil_area (table: perfil)
+ALTER TABLE perfil ADD CONSTRAINT perfil_area
     FOREIGN KEY (area)
     REFERENCES area (id)  
 ;

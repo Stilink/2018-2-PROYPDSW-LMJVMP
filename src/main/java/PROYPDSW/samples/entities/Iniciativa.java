@@ -8,7 +8,6 @@ import java.util.List;
 
 public class Iniciativa implements Serializable{
 	
-	private String area;
 	private List<String> palabrasClave;
 	private List<Comentario> comentarios;
 	private List<Perfil> voluntarios;
@@ -24,11 +23,10 @@ public class Iniciativa implements Serializable{
 		
 	}
 	
-	public Iniciativa(String area, List<String> palabrasClave, 
+	public Iniciativa(List<String> palabrasClave, 
 			List<Comentario> comentarios, List<Perfil> voluntarios, 
 			List<Perfil> interesados, String nombre, String estado, Perfil creador, 
 			int no_votos, String descripcion, Date fechaDeCreacion) {
-		this.area=area;
 		this.palabrasClave=palabrasClave;
 		this.comentarios=comentarios;
 		this.voluntarios=voluntarios;
@@ -41,14 +39,6 @@ public class Iniciativa implements Serializable{
 		this.fechaDeCreacion=fechaDeCreacion;
 	}
 	
-	
-	public String getArea() {
-		return area;
-	}
-	
-	public void setArea(String area) {
-		this.area=area;
-	}
 	
 	public List<String> getPalabrasClave(){
 		return palabrasClave;
@@ -128,6 +118,10 @@ public class Iniciativa implements Serializable{
 	
 	public void setFechaDeCreacion(Date fechaDeCreacion) {
 		this.fechaDeCreacion=fechaDeCreacion;
+	}
+	
+	public String toString() {
+		return "Nombre: "+nombre+" Descripcion: "+descripcion+" Creador: {"+creador.toString()+"} Fecha de creación: "+fechaDeCreacion.toString();
 	}
 
 }

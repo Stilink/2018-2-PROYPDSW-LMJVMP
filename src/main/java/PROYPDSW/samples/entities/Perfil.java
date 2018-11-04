@@ -13,18 +13,23 @@ public class Perfil implements Serializable{
 	private String nombre;
 	private List<Iniciativa> interes;
 	private List<Iniciativa> voluntad;
+	private String area;
 	
 	public Perfil() {
 		
 	}
 	
-	public Perfil(int carne, Rol rol, String email, String nombre, List<Iniciativa> interes, List<Iniciativa> voluntad) {
+	public Perfil(int carne, Rol rol, 
+			String email, String nombre, 
+			List<Iniciativa> interes, List<Iniciativa> voluntad,
+			String area) {
 		this.carne=carne;
 		this.rol=rol;
 		this.email=email;
 		this.nombre=nombre;
 		this.interes=interes;
 		this.voluntad=voluntad;
+		this.area=area;
 	}
 	
 	public int getCarne() {
@@ -75,9 +80,17 @@ public class Perfil implements Serializable{
 		this.voluntad=voluntad;
 	}
 	
+	public String getArea() {
+		return area;
+	}
+	
+	public void setArea(String area) {
+		this.area=area;
+	}
+	
 	@Override
 	public String toString() {
-		return "Care: "+carne+" Nombre: "+nombre+" Email: "+email+" Rol: {"+rol.toString()+"}";
+		return "Care: "+carne+" Nombre: "+nombre+" Email: "+email+" Rol: {"+rol.toString()+"} Area: "+area;
 	}
 
 }
