@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper">
+		<resultMap type="Perfil" id="PerfilResult">
+			<id property="email" column="pEmail"/>
+			<result property="carne" column="pCarne"/>
+			<result property="nombre" column="pNombre"/>
+			<result property="area" column="pArea"/>
+			<association property="rol" javaType="Rol" resultMap="RolResult"></association>
+			<collection property="interes" ofType="Iniciativa" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.IniciativaMapper.IniciativaResult"></collection>
+			<collection property="voluntad" ofType="Iniciativa" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.IniciativaMapper.IniciativaResult"></collection>
+			
+	</mapper>
