@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--<settings>
+        <setting name="logImpl" value="LOG4J"/>        
+    </settings>-->
+    <properties resource="config.properties">
+    </properties>
+    <typeAliases>
+        <typeAlias type="PROYPDSW.samples.entities.Rol" 
+alias="Rol"/>
+        <typeAlias type="PROYPDSW.samples.entities.Comentario" 
+alias="Comentario"/>
+        <typeAlias type="edu.eci.pdsw.samples.entities.Perfil" 
+alias="Perfil"/>
+        <typeAlias type="edu.eci.pdsw.samples.entities.Iniciativa" 
+alias="Iniciativa"/>
+    </typeAliases>	
+
+    <environments default="development">
+    <environment id="development">
+        <transactionManager type="JDBC" />
+        <dataSource type="POOLED">
+            <property name="driver" value="org.postgresql.Driver" />
+            <property name="url" value="jdbc:postgresql://ec2-23-23-101-25.compute-1.amazonaws.com:5432/d2q9aftrus23qd?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory"/> 
+            <property name="username" value="azkkiupvidnkbk" />
+            <property name="password" value="cb2e2eb73193a5679bea115409b4362382218a29eb808ca2fe6f94507bdf098e" />
+        </dataSource>
+    </environment>
+</environments>
+        
+    <mappers>
+        <mapper resource="mappers/IniciativaMapper.xml"></mapper>
+        <mapper resource="mappers/ComentarioMapper.xml"></mapper>
+        <mapper resource="mappers/PerfilMapper.xml"></mapper> 
+    </mappers> 
+        
+        
+</configuration>
