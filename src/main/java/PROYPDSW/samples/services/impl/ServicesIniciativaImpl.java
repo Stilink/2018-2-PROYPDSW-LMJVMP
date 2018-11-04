@@ -2,7 +2,10 @@ package PROYPDSW.samples.services.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.exceptions.PersistenceException;
+
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 import PROYPDSW.sampleprj.dao.ComentarioDAO;
 import PROYPDSW.sampleprj.dao.IniciativaDAO;
@@ -12,6 +15,7 @@ import PROYPDSW.samples.entities.Perfil;
 import PROYPDSW.samples.services.ExcepcionServicesIniciativa;
 import PROYPDSW.samples.services.ServicesIniciativa;
 
+@Singleton
 public class ServicesIniciativaImpl implements ServicesIniciativa{
 	@Inject
 	private IniciativaDAO idao;
@@ -21,37 +25,69 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 	private PerfilDAO pdao;
 	
 	public List<Iniciativa> consultarIniciativas() throws ExcepcionServicesIniciativa {
-		return idao.consultarIniciativas();
+		try{
+			return idao.consultarIniciativas();
+		}catch(PersistenceException e){
+			throw new ExcepcionServicesIniciativa("consultarIniciativas",e);
+		}
 	}
 
 	public List<Iniciativa> consultarIniciativasPorEstado(String estado) throws ExcepcionServicesIniciativa {
-		return idao.consultarIniciativasPorEstado(estado);
+		try{
+			return idao.consultarIniciativasPorEstado(estado);
+		}catch(PersistenceException e){
+			throw new ExcepcionServicesIniciativa("consultarIniciativasPorEstado",e);
+		}
 	}
 
 	public List<Iniciativa> consultarIniciativasPorPalabrasClave(List<String> palabrasClave)
 			throws ExcepcionServicesIniciativa {
-		return idao.consultarIniciativasPorPalabrasClave(palabrasClave);
+		try{
+			return idao.consultarIniciativasPorPalabrasClave(palabrasClave);
+		}catch(PersistenceException e){
+			throw new ExcepcionServicesIniciativa("consultarIniciativasPorPalabrasClave",e);
+		}
 	}
 
 	public void agregarIniciativa(Iniciativa ini) throws ExcepcionServicesIniciativa {
-		idao.agregarIniciativa(ini);
+		try{
+			idao.agregarIniciativa(ini);
+		}catch(PersistenceException e){
+			throw new ExcepcionServicesIniciativa("agregarIniciativa",e);
+		}
 		
 	}
 
 	public Perfil consultarPerfil(String email) throws ExcepcionServicesIniciativa {
-		return pdao.consultarPerfil(email);
+		try{
+			return pdao.consultarPerfil(email);
+		}catch(PersistenceException e){
+			throw new ExcepcionServicesIniciativa("consultarPerfil",e);
+		}
 	}
 
 	public List<Perfil> consultarUsuarios() throws ExcepcionServicesIniciativa {
-		return pdao.consultarUsuarios();
+		try{
+			return pdao.consultarUsuarios();
+		}catch(PersistenceException e){
+			throw new ExcepcionServicesIniciativa("consultarUsuarios",e);
+		}
 	}
 
 	public List<Perfil> consultarPerfilPorRol(String rol) throws ExcepcionServicesIniciativa {
-		return pdao.consultarPerfilPorRol(rol);
+		try{
+			return pdao.consultarPerfilPorRol(rol);
+		}catch(PersistenceException e){
+			throw new ExcepcionServicesIniciativa("consultarPerfilPorRol",e);
+		}
 	}
 
 	public List<Perfil> consultarPerfilPorArea(String area) throws ExcepcionServicesIniciativa {
-		return pdao.consultarPerfilPorArea(area);
+		try{
+			return pdao.consultarPerfilPorArea(area);
+		}catch(PersistenceException e){
+			throw new ExcepcionServicesIniciativa("consultarPerfilPorArea",e);
+		}
 	}
 
 }
