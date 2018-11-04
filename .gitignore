@@ -2,7 +2,7 @@
 *.log
 /target/
 
-/.sttings/
+/.settings/
 /bin/
 .classpath
 .project
