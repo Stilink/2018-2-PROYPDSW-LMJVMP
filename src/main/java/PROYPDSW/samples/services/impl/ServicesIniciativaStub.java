@@ -120,15 +120,15 @@ public class ServicesIniciativaStub implements ServicesIniciativa{
 		palabrasClave.add("campus");
 		palabrasClave.add("Kioscos");
 		
-		Iniciativa i1 = new Iniciativa(palabrasClave.subList(0, 2) , null, null, 
+		Iniciativa i1 = new Iniciativa(1,palabrasClave.subList(0, 2) , null, null, 
 				null , "idea 1", "En espera de revision", p2, 
-				0, "Descripción",  java.sql.Date.valueOf("2018-01-01"));
-		Iniciativa i2 = new Iniciativa(palabrasClave.subList(1, 3) , null, null, 
+				0, "Descripciï¿½n",  java.sql.Date.valueOf("2018-01-01"));
+		Iniciativa i2 = new Iniciativa(2,palabrasClave.subList(1, 3) , null, null, 
 						null , "idea 1", "En espera de revision", p2, 
-						0, "Descripción",  java.sql.Date.valueOf("2018-01-01"));
-		Iniciativa i3 = new Iniciativa(palabrasClave.subList(2,4) , null, null, 
+						0, "Descripciï¿½n",  java.sql.Date.valueOf("2018-01-01"));
+		Iniciativa i3 = new Iniciativa(3,palabrasClave.subList(2,4) , null, null, 
 						null , "idea 1", "En espera de revision", p2, 
-						0, "Descripción",  java.sql.Date.valueOf("2018-01-01"));
+						0, "Descripciï¿½n",  java.sql.Date.valueOf("2018-01-01"));
 		
 		iniciativas.add(i1);
 		iniciativas.add(i2);
