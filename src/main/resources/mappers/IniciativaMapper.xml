@@ -101,6 +101,13 @@
 		<select id="consultarVoluntariosDeIniciativa" parameterType="map" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult">
 			SELECT perfil.email as pEmail, perfil.carne as pCarne, perfil.nombre as pNombre, area.descripcion as pArea FROM interes JOIN perfil ON (interes.perfil=perfil.email and interes.iniciativa=#{id}) JOIN area ON (perfil.area = area.id);
 		</select>
+
+		
+		<insert id="agregarIniciativa" parameterType="map">
+			INSERT INTO iniciativa (id, nombre, estado, creador, no_votos, descripcion, fechaDeCreacion) VALUES (#{ini.id},#{ini.nombre},#{ini.estado},#{ini.creador.email},#{ini.no_votos},#{ini.descripcion},#{ini.fechaDeCreacion});
+		</insert>
+
+
 		
 	</mapper>
 			

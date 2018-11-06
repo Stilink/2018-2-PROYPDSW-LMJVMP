@@ -52,10 +52,47 @@
 		from Perfil as p join Rol as r on(p.rol=r.nombre) join Area as a on(p.area=a.id) where a.nombre=#{area} ;
 	</select>
 	<select id="consultarInteresDePerfil" parameterType="map" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.IniciativaMapper.IniciativaResult">
-		
+		SELECT 
+			iniciativa.id as iId, 
+			iniciativa.nombre as iNombre, 
+			iniciativa.estado as iEstado, 
+			iniciativa.no_votos as iNo_votos, 
+			iniciativa.descripcion as iDescripcion, 
+			iniciativa.fechaDeCreacion as iFechaDeCreacion, 
+			perfil.carne as pCarne, 
+			perfil.nombre as pNombre, 
+			perfil.email as pEmail, 
+			area.descripcion as pArea, 
+			rol.nombre as rNombre, 
+			rol.prioridad as rPrioridad,
+			palabra_clave.palabra as pcPalabra
+		FROM iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) 
+			JOIN rol ON (perfil.rol=rol.nombre) 
+			JOIN area ON (perfil.area=area.id) 
+			JOIN palabra_clave ON (iniciativa.id=palabra_clave.iniciativa)
+			JOIN interes ON (iniciativa.id=interes.iniciativa) where perfil.email=#{perfil};
+			
 	</select>
 	<select id="consultarVoluntadDePerfil" parameterType="map" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.IniciativaMapper.IniciativaResult">
-		
+		SELECT 
+			iniciativa.id as iId, 
+			iniciativa.nombre as iNombre, 
+			iniciativa.estado as iEstado, 
+			iniciativa.no_votos as iNo_votos, 
+			iniciativa.descripcion as iDescripcion, 
+			iniciativa.fechaDeCreacion as iFechaDeCreacion, 
+			perfil.carne as pCarne, 
+			perfil.nombre as pNombre, 
+			perfil.email as pEmail, 
+			area.descripcion as pArea, 
+			rol.nombre as rNombre, 
+			rol.prioridad as rPrioridad,
+			palabra_clave.palabra as pcPalabra
+		FROM iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) 
+			JOIN rol ON (perfil.rol=rol.nombre) 
+			JOIN area ON (perfil.area=area.id) 
+			JOIN palabra_clave ON (iniciativa.id=palabra_clave.iniciativa)
+			JOIN voluntad ON (iniciativa.id=voluntad.iniciativa) where perfil.email=#{perfil};
 	</select>
 	
 </mapper>
