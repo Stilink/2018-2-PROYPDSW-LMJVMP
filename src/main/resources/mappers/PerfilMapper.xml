@@ -2,15 +2,64 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	<mapper namespace="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper">
-		<resultMap type="Perfil" id="PerfilResult">
-			<id property="email" column="pEmail"/>
-			<result property="carne" column="pCarne"/>
-			<result property="nombre" column="pNombre"/>
-			<result property="area" column="pArea"/>
-			<association property="rol" javaType="Rol" resultMap="RolResult"></association>
-		</resultMap>
 
+<mapper namespace="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper">
+	<resultMap type="Perfil" id="PerfilResult">
+		<id property="email" column="pEmail"/>
+		<result property="carne" column="pCarne"/>
+		<result property="nombre" column="pNombre"/>
+		<result property="area" column="pArea"/>
+		<association property="rol" javaType="Rol" resultMap="RolResult"></association>
+	</resultMap>
+	<resultMap type="Rol" id="RolResult">
+		<id property="nombre" column="rNombre"/>
+		<result property="prioridad" column="rPrioridad"/>
+	</resultMap>
+	<select id="consultarPerfil" parameterType="map" resultMap="PerfilResult">
+		select  p.email as pEmail,
+				p.carne as pCarne,
+				p.nombre as pNombre,
+				a.nombre as pArea,
+				r.nombre as rNombre,
+				r.prioridad as rPrioridad
+		from Perfil as p join Rol as r on(p.rol=r.nombre) join Area as a on(p.area=a.id) where p.email=#{email};
+	</select>
+	<select id="consultarUsuarios" parameterType="map" resultMap="PerfilResult">
+		select  p.email as pEmail,
+				p.carne as pCarne,
+				p.nombre as pNombre,
+				a.nombre as pArea,
+				r.nombre as rNombre,
+				r.prioridad as rPrioridad
+		from Perfil as p join Rol as r on(p.rol=r.nombre) join Area as a on(p.area=a.id);
+	</select>
+	<select id="consultarPerfilPorRol" parameterType="map" resultMap="PerfilResult">
+		select  p.email as pEmail,
+				p.carne as pCarne,
+				p.nombre as pNombre,
+				a.nombre as pArea,
+				r.nombre as rNombre,
+				r.prioridad as rPrioridad
+		from Perfil as p join Rol as r on(p.rol=r.nombre) join Area as a on(p.area=a.id) where r.nombre=#{rol} ;
+	</select>
+	<select id="consultarPerfilPorArea" parameterType="map" resultMap="PerfilResult">
+		select  p.email as pEmail,
+				p.carne as pCarne,
+				p.nombre as pNombre,
+				a.nombre as pArea,
+				r.nombre as rNombre,
+				r.prioridad as rPrioridad
+		from Perfil as p join Rol as r on(p.rol=r.nombre) join Area as a on(p.area=a.id) where a.nombre=#{area} ;
+	</select>
+	<select id="consultarInteresDePerfil" parameterType="map" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.IniciativaMapper.IniciativaResult">
+		
+	</select>
+	<select id="consultarVoluntadDePerfil" parameterType="map" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.IniciativaMapper.IniciativaResult">
+		
+	</select>
+	List<Iniciativa> consultarInteresDePerfil(String email);
 
-			
-	</mapper>
+	List<Iniciativa> consultarVoluntadDePerfil(String email);
+	
+</mapper>
+

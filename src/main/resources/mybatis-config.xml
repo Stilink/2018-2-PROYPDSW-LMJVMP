@@ -13,9 +13,9 @@
 alias="Rol"/>
         <typeAlias type="PROYPDSW.samples.entities.Comentario" 
 alias="Comentario"/>
-        <typeAlias type="edu.eci.pdsw.samples.entities.Perfil" 
+        <typeAlias type="PROYPDSW.samples.entities.Perfil" 
 alias="Perfil"/>
-        <typeAlias type="edu.eci.pdsw.samples.entities.Iniciativa" 
+        <typeAlias type="PROYPDSW.samples.entities.Iniciativa" 
 alias="Iniciativa"/>
     </typeAliases>	
 

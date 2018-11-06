@@ -14,7 +14,10 @@ public class MyBATISPerfilDAO implements PerfilDAO{
 	@Inject
 	private PerfilMapper pm;
 	public Perfil consultarPerfil(String email) throws PersistenceException{
-		return pm.consultarPerfil(email);
+		Perfil p=pm.consultarPerfil(email);
+		p.setInteres(pm.consultarInteresDePerfil(email));
+		p.setVoluntad(pm.consultarVoluntadDePerfil(email));
+		return p;
 	}
 
 	public List<Perfil> consultarUsuarios()throws PersistenceException {

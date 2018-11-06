@@ -9,6 +9,7 @@ import org.mybatis.guice.datasource.helper.JdbcHelper;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import PROYPDSW.samples.services.impl.ServicesIniciativaImpl;
+import PROYPDSW.samples.services.impl.ServicesIniciativaStub;
 import PROYPDSW.sampleprj.dao.ComentarioDAO;
 import PROYPDSW.sampleprj.dao.IniciativaDAO;
 import PROYPDSW.sampleprj.dao.PerfilDAO;
@@ -35,11 +36,12 @@ public class GuiceContextListener implements ServletContextListener {
                 setClassPathResource("mybatis-config.xml");
 
                 // TODO Add service class associated to Stub implementation
-                bind(ServicesIniciativa.class).to(ServicesIniciativaImpl.class);
+                bind(ServicesIniciativa.class).to(ServicesIniciativaStub.class);
+                /*
                 bind(ComentarioDAO.class).to(MyBATISComentarioDAO.class);
                 bind(IniciativaDAO.class).to(MyBATISIniciativaDAO.class);
                 bind(PerfilDAO.class).to(MyBATISPerfilDAO.class);
-                
+                */
             }
         });
 
