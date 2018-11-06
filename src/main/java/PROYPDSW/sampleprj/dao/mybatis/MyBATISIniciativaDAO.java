@@ -35,6 +35,7 @@ public class MyBATISIniciativaDAO implements IniciativaDAO{
 	@Override
 	public Iniciativa consultarIniciativa(int id) throws PersistenceException {
 		Iniciativa ini=im.consultarIniciativa(id);
+		System.out.println(ini.toString());
 		ini.setInteresados(im.consultarInteresadosDeIniciativa(id));
 		ini.setVoluntarios(im.consultarVoluntariosDeIniciativa(id));
 		return ini;

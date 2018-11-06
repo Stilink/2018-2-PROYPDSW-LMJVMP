@@ -19,7 +19,10 @@ public class MyBatisExecution{
 		Perfil michael = sa.consultarPerfil("michael.preciado@mail.escuelaing.edu.co");
 		System.out.println(michael.toString());
 		System.out.println("Crear iniciativa: ");
-		Iniciativa ini1 = new Iniciativa(1,"Iniciativa 1, los origenes", "En espera de revisión", michael,"Hola, buenas tardes.", new Date(System.currentTimeMillis()) ); 
+		Iniciativa ini1 = new Iniciativa(1,"Iniciativa 1, los origenes", "En espera de revision", michael,"Hola, buenas tardes.", new Date(System.currentTimeMillis()) );
+		//sa.agregarIniciativa(ini1);
+		Iniciativa consulta1 = sa.consultarIniciativa(ini1.getId());
+		System.out.println("Iniciativa agregada: "+consulta1.toString());
 
 	}
 
