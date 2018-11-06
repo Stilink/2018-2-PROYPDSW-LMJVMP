@@ -119,7 +119,6 @@ public class ServicesIniciativaStub implements ServicesIniciativa{
 		palabrasClave.add("Aulas");
 		palabrasClave.add("campus");
 		palabrasClave.add("Kioscos");
-<<<<<<< HEAD
 		
 		Iniciativa i1 = new Iniciativa(1,palabrasClave.subList(0, 2) , null, null, 
 				null , "idea 1", "En espera de revision", p2, 
@@ -134,26 +133,11 @@ public class ServicesIniciativaStub implements ServicesIniciativa{
 		iniciativas.add(i1);
 		iniciativas.add(i2);
 		iniciativas.add(i3);
-=======
-		/*
-		Iniciativa i1 = new Iniciativa(palabrasClave.subList(0, 2) , null, null, 
-				null , "idea 1", "En espera de revision", p2, 
-				0, "Descripci�n",  java.sql.Date.valueOf("2018-01-01"));
-		Iniciativa i2 = new Iniciativa(palabrasClave.subList(1, 3) , null, null, 
-						null , "idea 1", "En espera de revision", p2, 
-						0, "Descripci�n",  java.sql.Date.valueOf("2018-01-01"));
-		Iniciativa i3 = new Iniciativa(palabrasClave.subList(2,4) , null, null, 
-						null , "idea 1", "En espera de revision", p2, 
-						0, "Descripci�n",  java.sql.Date.valueOf("2018-01-01"));
-		*/
-		//iniciativas.add(i1);
-		//iniciativas.add(i2);
 	}
-
+	
 	@Override
 	public Iniciativa consultarIniciativa(int id) throws ExcepcionServicesIniciativa {
 		// TODO Auto-generated method stub
 		return null;
->>>>>>> f75b8d377597e25ec5c50815a6aaf6be11722874
 	}
 }
