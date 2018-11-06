@@ -9,11 +9,9 @@
 			<result property="estado" column="iEstado"/>
 			<result property="no_votos" column="iNo_votos"/>
 			<result property="fechaDeCreacion" column="iFechaDeCreacion"/>
-			<collection property="interesados" ofType="Perfil" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult"></collection>
-			<collection property="voluntarios" ofType="Perfil" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult2"></collection>
+			<association property="creador" javaType="Perfil" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult"></association>
 			<collection property="comentarios" ofType="Comentario" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.ComentarioMapper.ComentarioResult"></collection>
 			<collection property="palabrasClave" ofType="java.lang.String" javaType="java.lang.String"></collection>
 		</resultMap>
-	
-		<resultMap type="java.lang.String" id="palabrasClaveResult">
+	</mapper>
 			

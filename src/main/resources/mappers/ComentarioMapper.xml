@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="PROYPDSW.sampleprj.dao.mybatis.mappers.ComentarioMapper">
+		<resultMap type="Comentario" id="ComentarioResutl">
+			<id property="id" column="cId"/>
+			<result property="descripcion" column="cDescripcion"/>
+			<result property="fecha" column="cFecha"/>
+			<association property="perfil" javaType="Perfil" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult"></association>
+			<association property="iniciativa" javaType="Iniciativa" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.IniciativaMapper.IniciativaResult"></association>
+		</resultMap>
+	</mapper>
+			
