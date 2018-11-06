@@ -2,6 +2,14 @@ package PROYPDSW.samples.services;
 
 import org.mybatis.guice.datasource.helper.JdbcHelper;
 import com.google.inject.Injector;
+
+import PROYPDSW.sampleprj.dao.ComentarioDAO;
+import PROYPDSW.sampleprj.dao.IniciativaDAO;
+import PROYPDSW.sampleprj.dao.PerfilDAO;
+import PROYPDSW.sampleprj.dao.mybatis.MyBATISIniciativaDAO;
+import PROYPDSW.sampleprj.dao.mybatis.*;
+import PROYPDSW.samples.services.impl.ServicesIniciativaImpl;
+
 import org.mybatis.guice.XMLMyBatisModule;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
@@ -15,8 +23,13 @@ public class ServicesIniciativaFactory {
 		injector = createInjector(new XMLMyBatisModule(){
 			@Override
 			protected void initialize() {
+				setEnvironmentId("development");
 				install(JdbcHelper.PostgreSQL);
 				setClassPathResource("mybatis-config.xml");
+				bind(ServicesIniciativa.class).to(ServicesIniciativaImpl.class);
+				bind(IniciativaDAO.class).to(MyBATISIniciativaDAO.class);
+				bind(PerfilDAO.class).to(MyBATISPerfilDAO.class);
+				bind(ComentarioDAO.class).to(MyBATISComentarioDAO.class);
 			}
 		}	
 		);
@@ -28,6 +41,8 @@ public class ServicesIniciativaFactory {
 			}
 		}	
 		);
+		
+        
 	}
 	public ServicesIniciativa getServicesIniciativa() {
 		return injector.getInstance(ServicesIniciativa.class);
