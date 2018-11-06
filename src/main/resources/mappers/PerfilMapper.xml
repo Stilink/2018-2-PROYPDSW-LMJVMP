@@ -57,9 +57,6 @@
 	<select id="consultarVoluntadDePerfil" parameterType="map" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.IniciativaMapper.IniciativaResult">
 		
 	</select>
-	List<Iniciativa> consultarInteresDePerfil(String email);
-
-	List<Iniciativa> consultarVoluntadDePerfil(String email);
 	
 </mapper>
 

@@ -32,7 +32,7 @@
 				palabra_clave.palabra as pcPalabra
 				FROM 
 				iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id) JOIN palabra_clave ON (iniciativa.id=palabra_clave.iniciativa) WHERE iniciativa.id=#{iniciativaId};
-
+		</select>
 
 		<select id="consultarIniciativas" parameterType="map" resultMap="IniciativaResult">
 			SELECT 
