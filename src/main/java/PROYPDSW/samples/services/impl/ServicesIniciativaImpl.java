@@ -90,4 +90,13 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 		}
 	}
 
+	@Override
+	public Iniciativa consultarIniciativa(int id) throws ExcepcionServicesIniciativa {
+		try {
+			return idao.consultarIniciativa(id);
+		}catch(PersistenceException e){
+			throw new ExcepcionServicesIniciativa("consultarIniciativa",e);
+		}
+	}
+
 }

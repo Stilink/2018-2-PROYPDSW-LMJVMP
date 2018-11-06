@@ -14,4 +14,5 @@ public interface ServicesIniciativa {
 	public List<Perfil> consultarUsuarios() throws ExcepcionServicesIniciativa;
 	public List<Perfil> consultarPerfilPorRol(String rol) throws ExcepcionServicesIniciativa;
 	public List<Perfil> consultarPerfilPorArea(String area) throws ExcepcionServicesIniciativa;
+	public Iniciativa consultarIniciativa(int id) throws ExcepcionServicesIniciativa;
 }

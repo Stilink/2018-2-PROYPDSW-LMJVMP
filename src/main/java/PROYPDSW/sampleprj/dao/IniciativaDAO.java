@@ -15,6 +15,8 @@ public interface IniciativaDAO {
 	List<Iniciativa> consultarIniciativasPorPalabrasClave(List<String> palabrasClave)throws PersistenceException;
 
 	void agregarIniciativa(Iniciativa ini)throws PersistenceException;
+
+	Iniciativa consultarIniciativa(int id)throws PersistenceException;
 	
 
 }
