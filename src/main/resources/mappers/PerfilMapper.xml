@@ -9,7 +9,6 @@
 			<result property="nombre" column="pNombre"/>
 			<result property="area" column="pArea"/>
 			<association property="rol" javaType="Rol" resultMap="RolResult"></association>
-			<collection property="interes" ofType="Iniciativa" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.IniciativaMapper.IniciativaResult"></collection>
-			<collection property="voluntad" ofType="Iniciativa" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.IniciativaMapper.IniciativaResult"></collection>
+		</resultMap>
 			
 	</mapper>
