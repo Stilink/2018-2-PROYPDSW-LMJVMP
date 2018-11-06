@@ -20,6 +20,15 @@ public class Iniciativa implements Serializable{
 	private String descripcion;
 	private Date fechaDeCreacion;
 	
+	public Iniciativa(int id,String nombre,String estado,Perfil creador,String descripcion,Date fechaDeCreacion) {
+		this.id=id;
+		this.nombre=nombre;
+		this.estado=estado;
+		this.creador=creador;
+		this.descripcion=descripcion;
+		this.fechaDeCreacion=fechaDeCreacion;
+	}
+	
 	public Iniciativa() {
 		
 	}
