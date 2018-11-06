@@ -11,7 +11,96 @@
 			<result property="fechaDeCreacion" column="iFechaDeCreacion"/>
 			<association property="creador" javaType="Perfil" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult"></association>
 			<collection property="comentarios" ofType="Comentario" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.ComentarioMapper.ComentarioResult"></collection>
-			<collection property="palabrasClave" ofType="java.lang.String" javaType="java.lang.String"></collection>
+			<collection property="palabrasClave" ofType="java.lang.String" column="pcPalabra"></collection>
 		</resultMap>
+
+
+		<select id="consultarIniciativa" parameterType="map" resultMap="IniciativaResult">
+			SELECT 
+				iniciativa.id as iId, 
+				iniciativa.nombre as iNombre, 
+				iniciativa.estado as iEstado, 
+				iniciativa.no_votos as iNo_votos, 
+				iniciativa.descripcion as iDescripcion, 
+				iniciativa.fechaDeCreacion as iFechaDeCreacion, 
+				perfil.carne as pCarne, 
+				perfil.nombre as pNombre, 
+				perfil.email as pEmail, 
+				area.descripcion as pArea, 
+				rol.nombre as rNombre, 
+				rol.prioridad as rPrioridad,
+				palabra_clave.palabra as pcPalabra
+				FROM 
+				iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id) JOIN palabra_clave ON (iniciativa.id=palabra_clave.iniciativa) WHERE iniciativa.id=#{iniciativaId};
+
+
+		<select id="consultarIniciativas" parameterType="map" resultMap="IniciativaResult">
+			SELECT 
+				iniciativa.id as iId, 
+				iniciativa.nombre as iNombre, 
+				iniciativa.estado as iEstado, 
+				iniciativa.no_votos as iNo_votos, 
+				iniciativa.descripcion as iDescripcion, 
+				iniciativa.fechaDeCreacion as iFechaDeCreacion, 
+				perfil.carne as pCarne, 
+				perfil.nombre as pNombre, 
+				perfil.email as pEmail, 
+				area.descripcion as pArea, 
+				rol.nombre as rNombre, 
+				rol.prioridad as rPrioridad,
+				palabra_clave.palabra as pcPalabra
+				FROM 
+				iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id) JOIN palabra_clave ON (iniciativa.id=palabra_clave.iniciativa);
+		</select>
+
+
+		<select id="consultarIniciativasPorEstado" parameterType="map" resultMap="IniciativaResult">
+			SELECT 
+				iniciativa.id as iId, 
+				iniciativa.nombre as iNombre, 
+				iniciativa.estado as iEstado, 
+				iniciativa.no_votos as iNo_votos, 
+				iniciativa.descripcion as iDescripcion, 
+				iniciativa.fechaDeCreacion as iFechaDeCreacion, 
+				perfil.carne as pCarne, 
+				perfil.nombre as pNombre, 
+				perfil.email as pEmail, 
+				area.descripcion as pArea, 
+				rol.nombre as rNombre, 
+				rol.prioridad as rPrioridad,
+				palabra_clave.palabra as pcPalabra
+				FROM 
+				iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id) JOIN palabra_clave ON (iniciativa.id=palabra_clave.iniciativa) WHERE iniciativa.estado=#{estado};
+		</select>
+
+
+		<select id="consultarIniciativaPorPalabraClave" parameterType="map" resultMap="IniciativaResult">
+		SELECT 
+				iniciativa.id as iId, 
+				iniciativa.nombre as iNombre, 
+				iniciativa.estado as iEstado, 
+				iniciativa.no_votos as iNo_votos, 
+				iniciativa.descripcion as iDescripcion, 
+				iniciativa.fechaDeCreacion as iFechaDeCreacion, 
+				perfil.carne as pCarne, 
+				perfil.nombre as pNombre, 
+				perfil.email as pEmail, 
+				area.descripcion as pArea, 
+				rol.nombre as rNombre, 
+				rol.prioridad as rPrioridad,
+				palabra_clave.palabra as pcPalabra
+				FROM 
+				iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id) JOIN palabra_clave ON (iniciativa.id=palabra_clave.iniciativa) WHERE palabra_clave.palabra=#{palabra};
+			</select>
+
+		<select id="consultarInteresadosDeIniciativa" parameterType="map" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult">
+			SELECT perfil.email as pEmail, perfil.carne as pCarne, perfil.nombre as pNombre, area.descripcion as pArea FROM interes JOIN perfil ON (interes.perfil=perfil.email and interes.iniciativa=#{id}) JOIN area ON (perfil.area = area.id);
+		</select>
+	
+		
+		<select id="consultarVoluntariosDeIniciativa" parameterType="map" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult">
+			SELECT perfil.email as pEmail, perfil.carne as pCarne, perfil.nombre as pNombre, area.descripcion as pArea FROM interes JOIN perfil ON (interes.perfil=perfil.email and interes.iniciativa=#{id}) JOIN area ON (perfil.area = area.id);
+		</select>
+		
 	</mapper>
 			

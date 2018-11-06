@@ -10,5 +10,7 @@
 			<result property="area" column="pArea"/>
 			<association property="rol" javaType="Rol" resultMap="RolResult"></association>
 		</resultMap>
+
+
 			
 	</mapper>
