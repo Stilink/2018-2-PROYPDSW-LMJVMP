@@ -6,6 +6,7 @@ import PROYPDSW.samples.entities.Iniciativa;
 import PROYPDSW.samples.entities.Perfil;
 
 public interface ServicesIniciativa {
+	public Iniciativa consultarIniciativa(int id) throws ExcepcionServicesIniciativa;
 	public List<Iniciativa> consultarIniciativas()throws ExcepcionServicesIniciativa;
 	public List<Iniciativa> consultarIniciativasPorEstado(String estado)throws ExcepcionServicesIniciativa;
 	public List<Iniciativa> consultarIniciativasPorPalabrasClave(List<String> palabrasClave)throws ExcepcionServicesIniciativa;
@@ -14,5 +15,4 @@ public interface ServicesIniciativa {
 	public List<Perfil> consultarUsuarios() throws ExcepcionServicesIniciativa;
 	public List<Perfil> consultarPerfilPorRol(String rol) throws ExcepcionServicesIniciativa;
 	public List<Perfil> consultarPerfilPorArea(String area) throws ExcepcionServicesIniciativa;
-	public Iniciativa consultarIniciativa(int id) throws ExcepcionServicesIniciativa;
 }

@@ -23,7 +23,14 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 	private ComentarioDAO cdao;
 	@Inject
 	private PerfilDAO pdao;
-	
+	@Override
+	public Iniciativa consultarIniciativa(int id) throws ExcepcionServicesIniciativa {
+		try {
+			return idao.consultarIniciativa(id);
+		}catch(PersistenceException e){
+			throw new ExcepcionServicesIniciativa("consultarIniciativa",e);
+		}
+	}
 	public List<Iniciativa> consultarIniciativas() throws ExcepcionServicesIniciativa {
 		try{
 			return idao.consultarIniciativas();
@@ -90,13 +97,6 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 		}
 	}
 
-	@Override
-	public Iniciativa consultarIniciativa(int id) throws ExcepcionServicesIniciativa {
-		try {
-			return idao.consultarIniciativa(id);
-		}catch(PersistenceException e){
-			throw new ExcepcionServicesIniciativa("consultarIniciativa",e);
-		}
-	}
+	
 
 }
