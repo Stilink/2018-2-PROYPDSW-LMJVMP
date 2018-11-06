@@ -17,7 +17,6 @@ public class MyBATISIniciativaDAO implements IniciativaDAO{
 	public List<Iniciativa> consultarIniciativas()throws PersistenceException {
 		return im.consultarIniciativas();
 	}
-
 	public List<Iniciativa> consultarIniciativasPorEstado(String estado) throws PersistenceException{
 		return im.consultarIniciativasPorEstado(estado);
 	}
@@ -32,6 +31,13 @@ public class MyBATISIniciativaDAO implements IniciativaDAO{
 
 	public void agregarIniciativa(Iniciativa ini)throws PersistenceException {
 		im.agregarIniciativa(ini);
+	}
+	@Override
+	public Iniciativa consultarIniciativa(int id) throws PersistenceException {
+		Iniciativa ini=im.consultarIniciativa(id);
+		ini.setInteresados(im.consultarInteresadosDeIniciativa(id));
+		ini.setVoluntarios(im.consultarVoluntariosDeIniciativa(id));
+		return ini;
 	}
 
 }
