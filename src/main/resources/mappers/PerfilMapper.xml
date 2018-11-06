@@ -62,7 +62,7 @@
 			perfil.carne as pCarne, 
 			perfil.nombre as pNombre, 
 			perfil.email as pEmail, 
-			area.descripcion as pArea, 
+			area.nombre as pArea, 
 			rol.nombre as rNombre, 
 			rol.prioridad as rPrioridad,
 			palabra_clave.palabra as pcPalabra
@@ -84,7 +84,7 @@
 			perfil.carne as pCarne, 
 			perfil.nombre as pNombre, 
 			perfil.email as pEmail, 
-			area.descripcion as pArea, 
+			area.nombre as pArea, 
 			rol.nombre as rNombre, 
 			rol.prioridad as rPrioridad,
 			palabra_clave.palabra as pcPalabra
