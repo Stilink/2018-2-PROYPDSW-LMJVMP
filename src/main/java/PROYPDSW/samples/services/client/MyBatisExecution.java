@@ -2,6 +2,7 @@ package PROYPDSW.samples.services.client;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import PROYPDSW.samples.entities.Comentario;
@@ -25,6 +26,7 @@ public class MyBatisExecution{
 		//sa.agregarIniciativa(ini1);
 		Iniciativa consulta1 = sa.consultarIniciativa(ini1.getId());
 		System.out.println("Iniciativa agregada: "+consulta1.toString());
+		System.out.println("Palabras claves de la iniciativa: "+consulta1.getPalabrasClave().toString());
 
 	}
 

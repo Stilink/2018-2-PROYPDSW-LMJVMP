@@ -3,6 +3,8 @@ package PROYPDSW.sampleprj.dao.mybatis.mappers;
 import java.util.Collection;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import PROYPDSW.samples.entities.Comentario;
 import PROYPDSW.samples.entities.Iniciativa;
 import PROYPDSW.samples.entities.Perfil;
 
@@ -17,6 +19,8 @@ public interface IniciativaMapper {
 	void agregarIniciativa(@Param("ini") Iniciativa ini);
 
 	Iniciativa consultarIniciativa(@Param("iniciativaId") int id);
+	
+	List<Comentario> consultarComentariosDeIniciativa(@Param("iniciativa") int id);
 
 	List<Perfil> consultarInteresadosDeIniciativa(@Param("id") int id);
 

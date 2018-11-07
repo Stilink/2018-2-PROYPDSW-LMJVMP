@@ -90,7 +90,7 @@ public class Perfil implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Care: "+carne+" Nombre: "+nombre+" Email: "+email+" Rol: {"+rol.toString()+"} Area: "+area;
+		return "Carne: "+carne+" Nombre: "+nombre+" Email: "+email+" Rol: {"+rol.toString()+"} Area: "+area;
 	}
 
 }
