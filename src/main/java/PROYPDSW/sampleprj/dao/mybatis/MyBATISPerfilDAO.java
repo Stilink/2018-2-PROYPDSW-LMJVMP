@@ -32,4 +32,9 @@ public class MyBATISPerfilDAO implements PerfilDAO{
 		return pm.consultarPerfilPorArea(area);
 	}
 
+	@Override
+	public boolean validarLogin(String email, String password) throws PersistenceException {
+		return pm.validarLogin(email,password);
+	}
+
 }

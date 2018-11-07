@@ -21,4 +21,6 @@ public interface PerfilMapper {
 
 	List<Iniciativa> consultarVoluntadDePerfil(@Param("perfil") String email);
 
+	boolean validarLogin(@Param("email") String email, @Param("password") String password);
+
 }

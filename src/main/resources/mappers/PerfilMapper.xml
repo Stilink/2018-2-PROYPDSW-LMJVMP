@@ -24,6 +24,9 @@
 				r.prioridad as rPrioridad
 		from Perfil as p join Rol as r on(p.rol=r.nombre) join Area as a on(p.area=a.id) where p.email=#{email};
 	</select>
+	<select id="validarLogin" parameterType="map" resultType="boolean">
+		select password=#{password} from usuario where email=#{email};
+	</select>
 	<select id="consultarUsuarios" parameterType="map" resultMap="PerfilResult">
 		select  p.email as pEmail,
 				p.carne as pCarne,

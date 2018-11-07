@@ -140,4 +140,10 @@ public class ServicesIniciativaStub implements ServicesIniciativa{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean validarLogin(String email, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
