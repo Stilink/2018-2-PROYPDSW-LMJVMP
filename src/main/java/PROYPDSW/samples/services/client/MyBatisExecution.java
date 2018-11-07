@@ -15,6 +15,8 @@ public class MyBatisExecution{
 	public static void main(String[] args) throws Exception{
 		System.out.println("Solicitud de servicios:");
 		ServicesIniciativa sa = ServicesIniciativaFactory.getInstance().getServicesIniciativa();
+		System.out.println("validar login");
+		System.out.println(sa.validarLogin("michael.preciado@mail.escuelaing.edu.co", "144"));
 		System.out.println("Agregamos perfiles: ");
 		Perfil michael = sa.consultarPerfil("michael.preciado@mail.escuelaing.edu.co");
 		System.out.println(michael.toString());

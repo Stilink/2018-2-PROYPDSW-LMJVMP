@@ -96,7 +96,12 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 			throw new ExcepcionServicesIniciativa("consultarPerfilPorArea",e);
 		}
 	}
-
-	
-
+	@Override
+	public boolean validarLogin(String email, String password) throws ExcepcionServicesIniciativa{
+		try {
+			return pdao.validarLogin(email,password);
+		} catch (Exception e) {
+			throw new ExcepcionServicesIniciativa("validarLogin",e);
+		}
+	}
 }

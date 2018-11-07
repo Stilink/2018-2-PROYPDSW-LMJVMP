@@ -16,4 +16,6 @@ public interface PerfilDAO {
 
 	List<Perfil> consultarPerfilPorArea(String area)throws PersistenceException;
 
+	boolean validarLogin(String email, String password)throws PersistenceException;
+
 }

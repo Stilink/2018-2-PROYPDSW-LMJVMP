@@ -68,8 +68,20 @@ CREATE TABLE voluntad (
     iniciativa int  NOT NULL,
     CONSTRAINT voluntad_pk PRIMARY KEY (perfil,iniciativa)
 );
+-- Table: usuario
+CREATE TABLE usuario(
+    email varchar(75)  NOT NULL,
+    password varchar(50)  NOT NULL,
+    CONSTRAINT usuario_pk PRIMARY KEY (email)
+);
 
 -- foreign keys
+-- Reference: usuario_perfil (table: usuario)
+ALTER TABLE usuario ADD CONSTRAINT usuario_perfil
+    FOREIGN KEY (email)
+    REFERENCES perfil (email)  
+;
+
 -- Reference: comentarios_iniciativa (table: comentarios)
 ALTER TABLE comentarios ADD CONSTRAINT comentarios_iniciativa
     FOREIGN KEY (iniciativa)
