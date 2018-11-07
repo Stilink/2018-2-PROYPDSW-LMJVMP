@@ -15,20 +15,20 @@
 	<section id="registro">
 		<h:form>
 			<p:panel header="Entrar">
-			<h:panelGrid class="grid" cellpadding="5" columns="2" style="margin-bottom:10px">
+			<h:panelGrid class="grid" cellpadding="5" columns="3" style="margin-bottom:10px">
 					<f:facet name="header">
 							<p:messages id="msgs" />
 					</f:facet>
 
 					<p:outputLabel for="nombreIniciativa" value="nombre:" />
 					<p:inputText id="nombreIniciativa" value="#{operacionIBean.nameI}" required="true" requiredMessage="Nombre de iniciativa resquerido." />
-
+					<br/>
 					<p:outputLabel for="description" value="Descripción:" />
 					<p:inputTextarea id="description" rows="6" cols="33" value="#{operacionIBean.description}" required="true" requiredMessage="Usuario resquerido."/>
-
+					<br/>
 					<p:outputLabel for="keyWord" value="palabra clave:" />
-					<p:inputText id="keyWord" value="#{operacionIBean.userName}" required="true" requiredMessage="Usuario resquerido." />
-
+					<p:inputText id="keyWord" value="#{operacionIBean.addKeyWord()}" required="true" requiredMessage="Usuario resquerido." />
+					<p:commandButton icon="fas fa-plus-circle"  styleClass="white-button"/>
 			</h:panelGrid>
 			<p:commandButton id="registerBtn" value="Registrar" actionListener="#{operacionIBean.registrarIniciativa()}" />
 			</p:panel>
@@ -43,7 +43,7 @@
 							<p:messages id="msgs" />
 					</f:facet>
 					<p:outputLabel for="userName" value="Usuario:" />
-					<p:inputText id="userName" value="#{loginBean.userName}" required="true" requiredMessage="Usuario resquerido." />
+					<p:inputText id="userName" value="#{operacionIBean.addKeyWord()}" required="true" requiredMessage="Usuario resquerido." />
 			</h:panelGrid>
 			<h:panelGrid columns="2">
 				<p:commandButton id="btnArea" value="Area" actionListener="#{loginBean.ingresar}" />

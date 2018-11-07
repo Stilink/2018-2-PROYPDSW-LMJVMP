@@ -36,12 +36,10 @@ public class GuiceContextListener implements ServletContextListener {
                 setClassPathResource("mybatis-config.xml");
 
                 // TODO Add service class associated to Stub implementation
-                bind(ServicesIniciativa.class).to(ServicesIniciativaStub.class);
-                /*
+                bind(ServicesIniciativa.class).to(ServicesIniciativaImpl.class);
                 bind(ComentarioDAO.class).to(MyBATISComentarioDAO.class);
                 bind(IniciativaDAO.class).to(MyBATISIniciativaDAO.class);
                 bind(PerfilDAO.class).to(MyBATISPerfilDAO.class);
-                */
             }
         });
 
