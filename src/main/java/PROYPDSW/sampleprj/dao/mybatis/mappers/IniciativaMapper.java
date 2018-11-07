@@ -20,6 +20,8 @@ public interface IniciativaMapper {
 
 	Iniciativa consultarIniciativa(@Param("iniciativaId") int id);
 	
+	List<String> palabrasClaveDeIniciativa(@Param("iniciativa") int id);
+	
 	List<Comentario> consultarComentariosDeIniciativa(@Param("iniciativa") int id);
 
 	List<Perfil> consultarInteresadosDeIniciativa(@Param("id") int id);

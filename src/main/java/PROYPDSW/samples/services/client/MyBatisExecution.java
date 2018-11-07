@@ -17,7 +17,7 @@ public class MyBatisExecution{
 		System.out.println("Solicitud de servicios:");
 		ServicesIniciativa sa = ServicesIniciativaFactory.getInstance().getServicesIniciativa();
 		System.out.println("validar login");
-		System.out.println(sa.validarLogin("michael.preciado@mail.escuelaing.edu.co", "144"));
+		System.out.println(sa.validarLogin("michael.preciado@mail.escuelaing.edu.co", "123"));
 		System.out.println("Agregamos perfiles: ");
 		Perfil michael = sa.consultarPerfil("michael.preciado@mail.escuelaing.edu.co");
 		System.out.println(michael.toString());
@@ -27,6 +27,26 @@ public class MyBatisExecution{
 		Iniciativa consulta1 = sa.consultarIniciativa(ini1.getId());
 		System.out.println("Iniciativa agregada: "+consulta1.toString());
 		System.out.println("Palabras claves de la iniciativa: "+consulta1.getPalabrasClave().toString());
+		System.out.println("Consultar todas las iniciativas: ");
+		List<Iniciativa> consultas = sa.consultarIniciativas();
+		for(Iniciativa i: consultas) {
+			System.out.println(i.toString());
+		}
+		System.out.println("Consultar todas las iniciativas en estado 'Proyecto': ");
+		List<Iniciativa> consultasPorEstado = sa.consultarIniciativasPorEstado("Proyecto");
+		for(Iniciativa i: consultasPorEstado) {
+			System.out.println(i.toString());
+		}
+		System.out.println("Consultar todas las inciativas con palabras clave: 'Entretenimiento','mvp','go go power rangers'");
+		ArrayList<String> palabrasClaveAConsultar = new ArrayList<String>();
+		palabrasClaveAConsultar.add("Entretenimiento");
+		palabrasClaveAConsultar.add("mvp");
+		palabrasClaveAConsultar.add("go go power rangers");
+		List<Iniciativa> consultasPorPalabrasClave = sa.consultarIniciativasPorPalabrasClave(palabrasClaveAConsultar);
+		for(Iniciativa i: consultasPorPalabrasClave) {
+			System.out.println(i.toString());
+		}
+		
 
 	}
 

@@ -11,7 +11,6 @@
 			<result property="descripcion" column="iDescripcion"/>
 			<result property="fechaDeCreacion" column="iFechaDeCreacion"/>
 			<association property="creador" javaType="Perfil" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult"></association>
-			<collection property="palabrasClave" javaType="java.lang.String" column="pcPalabra"></collection>
 		</resultMap>
 
 
@@ -28,12 +27,17 @@
 				perfil.email as pEmail, 
 				area.nombre as pArea, 
 				rol.nombre as rNombre, 
-				rol.prioridad as rPrioridad,
-				palabra_clave.palabra as pcPalabra
+				rol.prioridad as rPrioridad
 				FROM 
-				iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id) JOIN palabra_clave ON (iniciativa.id=palabra_clave.iniciativa) WHERE iniciativa.id=#{iniciativaId};
+				iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id) WHERE iniciativa.id=#{iniciativaId};
 		</select>
-
+		
+		<select id="palabrasClaveDeIniciativa" parameterType="map" resultType="java.lang.String">
+			SELECT
+				palabra_clave.palabra as palabra
+			FROM palabra_clave WHERE palabra_clave.iniciativa=#{iniciativa};
+		</select>
+		
 		<select id="consultarIniciativas" parameterType="map" resultMap="IniciativaResult">
 			SELECT 
 				iniciativa.id as iId, 
@@ -47,10 +51,9 @@
 				perfil.email as pEmail, 
 				area.nombre as pArea, 
 				rol.nombre as rNombre, 
-				rol.prioridad as rPrioridad,
-				palabra_clave.palabra as pcPalabra
+				rol.prioridad as rPrioridad
 				FROM 
-				iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id) JOIN palabra_clave ON (iniciativa.id=palabra_clave.iniciativa);
+				iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id);
 		</select>
 
 
@@ -67,10 +70,9 @@
 				perfil.email as pEmail, 
 				area.nombre as pArea, 
 				rol.nombre as rNombre, 
-				rol.prioridad as rPrioridad,
-				palabra_clave.palabra as pcPalabra
+				rol.prioridad as rPrioridad
 				FROM 
-				iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id) JOIN palabra_clave ON (iniciativa.id=palabra_clave.iniciativa) WHERE iniciativa.estado=#{estado};
+				iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id) WHERE iniciativa.estado=#{estado};
 		</select>
 
 
@@ -87,10 +89,9 @@
 				perfil.email as pEmail, 
 				area.nombre as pArea, 
 				rol.nombre as rNombre, 
-				rol.prioridad as rPrioridad,
-				palabra_clave.palabra as pcPalabra
+				rol.prioridad as rPrioridad
 				FROM 
-				iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id) JOIN palabra_clave ON (iniciativa.id=palabra_clave.iniciativa) WHERE palabra_clave.palabra=#{palabra};
+				iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id) JOIN palabra_clave ON (iniciativa.id=palabra_clave.iniciativa)WHERE palabra_clave.palabra=#{palabraClave};
 			</select>
 			
 		<select id="consultarComentariosDeIniciativa" parameterType="map" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.ComentarioMapper.ComentarioResult">
