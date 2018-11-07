@@ -9,7 +9,9 @@ import com.google.inject.Inject;
 
 import PROYPDSW.sampleprj.dao.IniciativaDAO;
 import PROYPDSW.sampleprj.dao.mybatis.mappers.IniciativaMapper;
+import PROYPDSW.samples.entities.Comentario;
 import PROYPDSW.samples.entities.Iniciativa;
+import PROYPDSW.samples.entities.Perfil;
 
 public class MyBATISIniciativaDAO implements IniciativaDAO{
 	@Inject
@@ -35,9 +37,21 @@ public class MyBATISIniciativaDAO implements IniciativaDAO{
 	@Override
 	public Iniciativa consultarIniciativa(int id) throws PersistenceException {
 		Iniciativa ini=im.consultarIniciativa(id);
-		System.out.println(ini.toString());
-		ini.setInteresados(im.consultarInteresadosDeIniciativa(id));
-		ini.setVoluntarios(im.consultarVoluntariosDeIniciativa(id));
+		try {
+			ini.setComentarios(im.consultarComentariosDeIniciativa(id));
+		}catch(NullPointerException ex) {
+			ini.setComentarios(new ArrayList<Comentario>());
+		}
+		try {
+			ini.setInteresados(im.consultarInteresadosDeIniciativa(id));
+		}catch(NullPointerException ex) {
+			ini.setInteresados(new ArrayList<Perfil>());
+		}
+		try {
+			ini.setVoluntarios(im.consultarInteresadosDeIniciativa(id));
+		}catch(NullPointerException ex) {
+			ini.setVoluntarios(new ArrayList<Perfil>());
+		}
 		return ini;
 	}
 

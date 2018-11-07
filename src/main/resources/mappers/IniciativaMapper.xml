@@ -8,10 +8,10 @@
 			<result property="nombre" column="iNombre"/>
 			<result property="estado" column="iEstado"/>
 			<result property="no_votos" column="iNo_votos"/>
+			<result property="descripcion" column="iDescripcion"/>
 			<result property="fechaDeCreacion" column="iFechaDeCreacion"/>
 			<association property="creador" javaType="Perfil" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult"></association>
-			<collection property="comentarios" ofType="Comentario" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.ComentarioMapper.ComentarioResult"></collection>
-			<collection property="palabrasClave" ofType="java.lang.String" column="pcPalabra"></collection>
+			<collection property="palabrasClave" javaType="java.lang.String" column="pcPalabra"></collection>
 		</resultMap>
 
 
@@ -92,7 +92,25 @@
 				FROM 
 				iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id) JOIN palabra_clave ON (iniciativa.id=palabra_clave.iniciativa) WHERE palabra_clave.palabra=#{palabra};
 			</select>
-
+			
+		<select id="consultarComentariosDeIniciativa" parameterType="map" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.ComentarioMapper.ComentarioResult">
+			SELECT
+				comentarios.iniciativa as cIniciativa,
+				comentarios.descripcion as cDescripcion,
+				comentarios.id as cId,
+				comentarios.fecha as cFecha,
+				perfil.carne as pCarne,
+				perfil.nombre as pNombre,
+				perfil.email as pEmail,
+				area.nombre as aNombre,
+				rol.nombre as rNombre,
+				rol.prioridad as rPrioridad
+			FROM comentarios JOIN perfil ON (comentarios.perfil=perfil.email) JOIN area ON (perfil.area=area.id) JOIN rol ON (perfil.rol=rol.nombre) WHERE comentarios.iniciativa=#{iniciativa};
+			
+		</select>
+		
+		
+		
 		<select id="consultarInteresadosDeIniciativa" parameterType="map" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult">
 			SELECT perfil.email as pEmail, perfil.carne as pCarne, perfil.nombre as pNombre, area.nombre as pArea FROM interes JOIN perfil ON (interes.perfil=perfil.email and interes.iniciativa=#{id}) JOIN area ON (perfil.area = area.id);
 		</select>
