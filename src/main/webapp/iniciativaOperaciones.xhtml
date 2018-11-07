@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title> Login </title>
+	<title> Operaciones </title>
 </h:head>
 <h:body>
 	<div id="header">
@@ -21,16 +21,16 @@
 					</f:facet>
 
 					<p:outputLabel for="nombreIniciativa" value="nombre:" />
-					<p:inputText id="nombreIniciativa" value="#{loginBean.userName}" required="true" requiredMessage="Nombre de iniciativa resquerido." />
+					<p:inputText id="nombreIniciativa" value="#{operacionIBean.nameI}" required="true" requiredMessage="Nombre de iniciativa resquerido." />
 
 					<p:outputLabel for="description" value="Descripción:" />
-					<p:inputTextarea id="description" rows="6" cols="33" value="#{loginBean.userName}" required="true" requiredMessage="Usuario resquerido."/>
+					<p:inputTextarea id="description" rows="6" cols="33" value="#{operacionIBean.description}" required="true" requiredMessage="Usuario resquerido."/>
 
 					<p:outputLabel for="keyWord" value="palabra clave:" />
-					<p:inputText id="keyWord" value="#{loginBean.userName}" required="true" requiredMessage="Usuario resquerido." />
+					<p:inputText id="keyWord" value="#{operacionIBean.userName}" required="true" requiredMessage="Usuario resquerido." />
 
 			</h:panelGrid>
-			<p:commandButton id="registerBtn" value="Registrar" actionListener="#{loginBean.registrarIniciativa()}" />
+			<p:commandButton id="registerBtn" value="Registrar" actionListener="#{operacionIBean.registrarIniciativa()}" />
 			</p:panel>
 		</h:form>
 	</section>
