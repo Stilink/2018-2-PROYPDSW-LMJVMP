@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title> Login </title>
+</h:head>
+<h:body>
+	<div id="header">
+		<h1>Banco de iniciativas</h1>
+	</div>
+	<section id="registro">
+		<h:form>
+			<p:panel header="Entrar">
+			<h:panelGrid class="grid" cellpadding="5" columns="2" style="margin-bottom:10px">
+					<f:facet name="header">
+							<p:messages id="msgs" />
+					</f:facet>
+
+					<p:outputLabel for="nombreIniciativa" value="nombre:" />
+					<p:inputText id="nombreIniciativa" value="#{loginBean.userName}" required="true" requiredMessage="Nombre de iniciativa resquerido." />
+
+					<p:outputLabel for="description" value="Descripción:" />
+					<p:inputTextarea id="description" rows="6" cols="33" value="#{loginBean.userName}" required="true" requiredMessage="Usuario resquerido."/>
+
+					<p:outputLabel for="keyWord" value="palabra clave:" />
+					<p:inputText id="keyWord" value="#{loginBean.userName}" required="true" requiredMessage="Usuario resquerido." />
+
+			</h:panelGrid>
+			<p:commandButton id="registerBtn" value="Registrar" actionListener="#{loginBean.registrarIniciativa()}" />
+			</p:panel>
+		</h:form>
+	</section>
+
+	<section id="consulta">
+		<h:form>
+			<p:panel header="consulta">
+			<h:panelGrid class="grid" cellpadding="5" columns="2" style="margin-bottom:10px">
+					<f:facet name="header">
+							<p:messages id="msgs" />
+					</f:facet>
+					<p:outputLabel for="userName" value="Usuario:" />
+					<p:inputText id="userName" value="#{loginBean.userName}" required="true" requiredMessage="Usuario resquerido." />
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<p:commandButton id="btnArea" value="Area" actionListener="#{loginBean.ingresar}" />
+				<p:commandButton id="btnKeyword" value="Palabra clave" actionListener="#{loginBean.ingresar}" />
+				<p:commandButton id="btnState" value="Estado" actionListener="#{loginBean.ingresar}" />
+			</h:panelGrid>
+			</p:panel>
+		</h:form>
+	</section>
+	<footer></footer>
+</h:body>
+</html>
