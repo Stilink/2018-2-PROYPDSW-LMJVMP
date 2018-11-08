@@ -27,16 +27,17 @@
 					<br/>
 					<p:outputLabel for="aikeyword" value="palabra clave:" />
 					<p:inputText id="aikeyword" binding="#{aikeyword}" required="true" requiredMessage="Usuario requerido."/>
-					<p:dataTable id="keywordslist" value="#{operacionIBean.keyWords}" var="kw">
-						<p:column headerText="Nombre item">
-							<h:outputText value="#{kw}" />
-						</p:column>
-					</p:dataTable>
-					<p:commandButton value="más" actionListener="#{operacionIBean.addKeyWord(aikeyword.value)}" update="keywordslist" process="@this aikeyword"/>
+					<p:dataList id="keywordslist" value="#{operacionIBean.keyWords}" var="kw">
+      			<f:facet name="header">Palbras clave</f:facet>
+			        #{kw}
+			    </p:dataList>
+					<p:commandButton actionListener="#{operacionIBean.addKeyWord(aikeyword.value)}" update="keywordslist" process="@this aikeyword" icon="ui-icon-plusthick"/>
 			</h:panelGrid>
 			<p:commandButton id="registerBtn" value="Registrar" actionListener="#{operacionIBean.registrarIniciativa()}" />
 			</p:panel>
 		</h:form>
 	</section>
+
+	<footer></footer>
 </h:body>
 </html>

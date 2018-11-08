@@ -14,7 +14,6 @@
 	</div>
 	<section id="ingreso">
 		<h:form id="l_form">
-			<h:outputText value="#{loginBean.kw}" />
 			<p:panel header="Entrar">
 			<h:panelGrid id="grid" cellpadding="5" columns="2" style="margin-bottom:10px">
 					<f:facet name="header">
@@ -25,8 +24,9 @@
 					<p:outputLabel for="password" value="Clave:" />
 					<p:password id="password" value="#{loginBean.userPassword}" required="true" requiredMessage="Clave requerida." />
 			</h:panelGrid>
-			<p:commandButton id="loginBtn" value="Ingresar" update="l_form" action="#{loginBean.ingresar}"/>
-			<h:outputText value="#{loginBean.kw}" />
+			<p:commandButton id="loginBtn" value="Ingresar" update="l_form" action="#{loginBean.ingresar}">
+				<f:actionListener binding="#{loginBean.confirmMessage()}" />
+			</p:commandButton>
 			</p:panel>
 		</h:form>
 	</section>

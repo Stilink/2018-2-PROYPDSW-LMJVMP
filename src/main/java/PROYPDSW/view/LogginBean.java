@@ -47,4 +47,15 @@ public class LogginBean extends BasePageBean{
 			e.printStackTrace();
 		}
 	}
+	
+	public void confirmMessage() {
+		if(kw) {
+	        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto",  null);
+	        FacesContext.getCurrentInstance().addMessage(null, message);
+		}
+        else {
+        	FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario o contraseña incorrectos",  null);
+	        FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+    }
 }
