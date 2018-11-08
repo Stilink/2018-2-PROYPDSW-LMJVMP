@@ -13,48 +13,31 @@
 		<h1>Banco de iniciativas</h1>
 	</div>
 	<section id="registro">
-		<h:form>
+		<h:form id="form">
 			<p:panel header="Añadir iniciativa">
 			<h:panelGrid class="grid" cellpadding="5" columns="3" style="margin-bottom:10px">
 					<f:facet name="header">
 							<p:messages id="msgs" />
 					</f:facet>
-
 					<p:outputLabel for="nombreIniciativa" value="nombre:" />
-					<p:inputText id="nombreIniciativa" value="#{operacionIBean.nameI}" required="true" requiredMessage="Nombre de iniciativa resquerido." />
+					<p:inputText id="nombreIniciativa" value="#{operacionIBean.nameI}" required="true" requiredMessage="Nombre de iniciativa requerido." />
 					<br/>
 					<p:outputLabel for="description" value="Descripción:" />
-					<p:inputTextarea id="description" rows="6" cols="33" value="#{operacionIBean.description}" required="true" requiredMessage="Usuario resquerido."/>
+					<p:inputTextarea id="description" rows="6" cols="33" value="#{operacionIBean.description}" required="true" requiredMessage="Usuario requerido."/>
 					<br/>
-					<p:outputLabel for="ai-keyWord" value="palabra clave:" />
-					<p:inputText id="ai-keyWord" binding="#{keyWord}" required="true" requiredMessage="Usuario resquerido." />
-					<p:dataTable id="keyWords-list" value="#{operacionIBean.keyWords}" var="kw">
+					<p:outputLabel for="aikeyword" value="palabra clave:" />
+					<p:inputText id="aikeyword" binding="#{aikeyword}" required="true" requiredMessage="Usuario requerido."/>
+					<p:dataTable id="keywordslist" value="#{operacionIBean.keyWords}" var="kw">
 						<p:column headerText="Nombre item">
 							<h:outputText value="#{kw}" />
 						</p:column>
 					</p:dataTable>
-					<h:outputText id="tam" value="#{operacionIBean.tam()}" />
-					<p:commandButton icon="fa fa-plus" actionListener="#{operacionIBean.addKeyWord(keyWord.value)}" update="keyWords-list"/>
+					<p:commandButton value="más" update="keywordslist" actionListener="#{operacionIBean.addKeyWord(aikeyword.value)}" process="@this" />
+					<p:commandButton value="más" update="keywordslist" actionListener="#{operacionIBean.addKeyWord(aikeyword.value)}" process="@this" />
 			</h:panelGrid>
 			<p:commandButton id="registerBtn" value="Registrar" actionListener="#{operacionIBean.registrarIniciativa()}" />
 			</p:panel>
 		</h:form>
 	</section>
-
-	<section id="consulta">
-		<h:form>
-			<p:panel header="consulta">
-			<h:panelGrid class="grid" cellpadding="5" columns="2" style="margin-bottom:10px">
-					<f:facet name="header">
-							<p:messages id="msgs" />
-					</f:facet>
-					<p:outputLabel for="userName" value="Usuario:" />
-					<p:inputText id="userName" required="true" requiredMessage="Usuario resquerido." />
-			</h:panelGrid>
-
-			</p:panel>
-		</h:form>
-	</section>
-	<footer></footer>
 </h:body>
 </html>

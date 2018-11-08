@@ -51,5 +51,6 @@ public class OperacionesIniciativaBean {
 	}
 	public void addKeyWord(String kwd) {
 		keyWords.add(kwd);
+		System.out.println(kwd);
 	}
 }

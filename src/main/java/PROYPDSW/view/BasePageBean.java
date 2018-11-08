@@ -8,7 +8,7 @@ import com.google.inject.Injector;
 
 public abstract class BasePageBean implements Serializable {
 
-    private Injector injector;
+	private Injector injector;
 
     public Injector getInjector() {
         if (injector == null) {
