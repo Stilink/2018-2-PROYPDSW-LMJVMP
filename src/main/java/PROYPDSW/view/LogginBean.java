@@ -19,7 +19,13 @@ public class LogginBean extends BasePageBean{
 	private ServicesIniciativa services;
 	private String userName;
 	private String userPassword;	
-	
+	private boolean kw;
+	public void setKw(boolean kw) {
+		this.kw=kw;
+	}
+	public boolean getKw() {
+		return kw;
+	}
 	public void setUserName(String name) {
 		userName=name;
 	}
@@ -33,15 +39,12 @@ public class LogginBean extends BasePageBean{
 		return userPassword;
 	}	
 	//Login
-	public void ingresar() throws Exception{
+	public void ingresar(){
 		try {
-			if(services.validarLogin(userName, userPassword));
-			else {
-				FacesContext.getCurrentInstance().addMessage(null,
-		                new FacesMessage("Usuario o contraseña incorrectos"));
-			}
+			kw=services.validarLogin(userName, userPassword);
 		} catch (ExcepcionServicesIniciativa e) {
-			throw e;
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
