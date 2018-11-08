@@ -110,7 +110,7 @@
 			
 		</select>
 		
-		<select id="consultarIniciativaPorArea" parameterType="map" resultMap="IniciativaResult">
+		<select id="consultarIniciativasPorArea" parameterType="map" resultMap="IniciativaResult">
 			SELECT 
 				iniciativa.id as iId, 
 				iniciativa.nombre as iNombre, 
