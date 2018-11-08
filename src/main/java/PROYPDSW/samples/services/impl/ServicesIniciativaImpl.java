@@ -64,7 +64,14 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 		}
 		
 	}
-
+	@Override
+	public List<Iniciativa> consultarIniciativasPorArea(String area) throws ExcepcionServicesIniciativa {
+		try{
+			return idao.consultarIniciativasPorArea(area);
+		}catch(PersistenceException e){
+			throw new ExcepcionServicesIniciativa("consultarPerfil",e);
+		}
+	}
 	public Perfil consultarPerfil(String email) throws ExcepcionServicesIniciativa {
 		try{
 			return pdao.consultarPerfil(email);
@@ -96,6 +103,7 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 			throw new ExcepcionServicesIniciativa("consultarPerfilPorArea",e);
 		}
 	}
+	
 	@Override
 	public boolean validarLogin(String email, String password) throws ExcepcionServicesIniciativa{
 		try {

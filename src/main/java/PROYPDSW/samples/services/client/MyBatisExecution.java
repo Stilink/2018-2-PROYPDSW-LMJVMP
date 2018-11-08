@@ -46,6 +46,14 @@ public class MyBatisExecution{
 		for(Iniciativa i: consultasPorPalabrasClave) {
 			System.out.println(i.toString());
 		}
+		String areaABuscar = "Ingenieria ambiental";
+		System.out.println("Consultar iniciativas por area "+areaABuscar+ ": ");
+		List<Iniciativa> consultasPorArea= sa.consultarIniciativasPorArea(areaABuscar);
+		for(Iniciativa i: consultasPorArea) {
+			System.out.println(i.toString());
+		}
+		
+		
 		
 
 	}

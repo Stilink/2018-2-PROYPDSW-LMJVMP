@@ -110,6 +110,25 @@
 			
 		</select>
 		
+		<select id="consultarIniciativasPorArea" parameterType="map" resultMap="IniciativaResult">
+			SELECT 
+				iniciativa.id as iId, 
+				iniciativa.nombre as iNombre, 
+				iniciativa.estado as iEstado, 
+				iniciativa.no_votos as iNo_votos, 
+				iniciativa.descripcion as iDescripcion, 
+				iniciativa.fechaDeCreacion as iFechaDeCreacion, 
+				perfil.carne as pCarne, 
+				perfil.nombre as pNombre, 
+				perfil.email as pEmail, 
+				area.nombre as pArea, 
+				rol.nombre as rNombre, 
+				rol.prioridad as rPrioridad
+			FROM 
+				iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id) JOIN palabra_clave ON (iniciativa.id=palabra_clave.iniciativa)WHERE area.nombre=#{area};
+				
+		</select>
+		
 		
 		
 		<select id="consultarInteresadosDeIniciativa" parameterType="map" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult">
