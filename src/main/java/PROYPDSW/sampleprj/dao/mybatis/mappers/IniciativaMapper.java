@@ -28,4 +28,6 @@ public interface IniciativaMapper {
 
 	List<Perfil> consultarVoluntariosDeIniciativa(@Param("id") int id);
 
+	List<Iniciativa> consultarIniciativasPorArea(@Param("area")String area);
+
 }

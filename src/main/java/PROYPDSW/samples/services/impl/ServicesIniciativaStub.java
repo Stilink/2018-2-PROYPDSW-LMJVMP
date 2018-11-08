@@ -146,4 +146,10 @@ public class ServicesIniciativaStub implements ServicesIniciativa{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public List<Iniciativa> consultarIniciativasPorArea(String area) throws ExcepcionServicesIniciativa {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -9,6 +9,7 @@ public interface ServicesIniciativa {
 	public Iniciativa consultarIniciativa(int id) throws ExcepcionServicesIniciativa;
 	public List<Iniciativa> consultarIniciativas()throws ExcepcionServicesIniciativa;
 	public List<Iniciativa> consultarIniciativasPorEstado(String estado)throws ExcepcionServicesIniciativa;
+	public List<Iniciativa> consultarIniciativasPorArea(String area)throws ExcepcionServicesIniciativa;
 	public List<Iniciativa> consultarIniciativasPorPalabrasClave(List<String> palabrasClave)throws ExcepcionServicesIniciativa;
 	public void agregarIniciativa(Iniciativa ini) throws ExcepcionServicesIniciativa;
 	public Perfil consultarPerfil(String email) throws ExcepcionServicesIniciativa;
