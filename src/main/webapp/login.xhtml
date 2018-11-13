@@ -28,7 +28,7 @@
 
     <div class="container">
       <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Banco de iniciativas</div>
+        <div class="card-header" style="font-size:30px">Banco de iniciativas</div>
         <div class="card-body">
           <h:form id="l_form">
 			<h:panelGrid id="grid" cellpadding="5" columns="2" style="margin-bottom:10px">
@@ -40,9 +40,8 @@
 					<p:outputLabel for="password" value="Clave:" />
 					<p:password id="password" binding="#{password}" value="#{loginBean.userPassword}" required="true" requiredMessage="Clave requerida." />
 			</h:panelGrid>
-			<p:commandButton id="loginBtn" value="Ingresar" update="l_form" proccess="@this" action="#{loginBean.ingresar}">
-				<f:actionListener binding="#{loginBean.confirmMessage()}" />
-			</p:commandButton>
+			<a class="btn btn-primary btn-block" href="index.xhtml">Ingresar</a>
+			
 		</h:form>
         </div>
       </div>
