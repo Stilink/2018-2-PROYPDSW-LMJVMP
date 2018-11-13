@@ -6,11 +6,13 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:head>
-		<title>Consulta de las iniciativas</title>
+		<title>Consulta de iniciativa por area</title>
 	</h:head>
 	<h:body>
-		<h:form id="consultarTodas">
-			<p:dataTable id="iniciativas" var="iniciativa" value="#{operacionIBean.consultarIniciativas()}">
+		<h:form id="consultarPorArea">
+			<p:inputText id="area" binding="#{area}" required="true" requiredMessage="Area a buscar requerida."/>
+			<p:commandButton actionListener="#{operacionIBean.consultarIniciativasPorArea(area.value)}" update="consultarPorArea" icon="ui-icon-plusthick" value="Consultar"/>
+			<p:dataTable id="iniciativas" var="iniciativa" value="#{operacionIBean.iniConsultadas}">
 				<p:column headerText="Iniciativa ID">
 					<h:outputText value="#{iniciativa.id}"/>
 				</p:column>

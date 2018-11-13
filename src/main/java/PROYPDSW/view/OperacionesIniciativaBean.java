@@ -31,6 +31,7 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	@ManagedProperty(value = "#{param.idAConsultar}")
 	private int idAConsultar;
 	private Iniciativa iniConsultada;
+	private List<Iniciativa> iniConsultadas;
 	private List<String> keyWords = new ArrayList<String>();
 	
 	public void setNameI(String name) {
@@ -80,6 +81,24 @@ public class OperacionesIniciativaBean extends BasePageBean{
 		
 	}
 	
+	public void consultarIniciativasPorArea(String area){
+		try {
+			iniConsultadas = service.consultarIniciativasPorArea(area);
+		} catch (ExcepcionServicesIniciativa e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void consultarIniciativasPorEstado(String estado){
+		try {
+			iniConsultadas = service.consultarIniciativasPorEstado(estado);
+		} catch (ExcepcionServicesIniciativa e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public int getIdAConsultar() {
 		return idAConsultar;
 	}
@@ -91,6 +110,12 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	}
 	public void setIniConsultada(Iniciativa iniConsultada) {
 		this.iniConsultada = iniConsultada;
+	}
+	public List<Iniciativa> getIniConsultadas() {
+		return iniConsultadas;
+	}
+	public void setIniConsultadas(List<Iniciativa> iniConsultadas) {
+		this.iniConsultadas = iniConsultadas;
 	}
 	
 }

@@ -20,20 +20,20 @@
 							<p:messages id="msgs" />
 					</f:facet>
 					<p:outputLabel for="nombreIniciativa" value="nombre:" />
-					<p:inputText id="nombreIniciativa" value="#{operacionIBean.nameI}" required="true" requiredMessage="Nombre de iniciativa requerido." />
+					<p:inputText id="nombreIniciativa" value="#{registerIBean.nameI}" required="true" requiredMessage="Nombre de iniciativa requerido." />
 					<br/>
 					<p:outputLabel for="description" value="Descripción:" />
-					<p:inputTextarea id="description" rows="6" cols="33" value="#{operacionIBean.description}" required="true" requiredMessage="Usuario requerido."/>
+					<p:inputTextarea id="description" rows="6" cols="33" value="#{registerIBean.description}" required="true" requiredMessage="Usuario requerido."/>
 					<br/>
 					<p:outputLabel for="aikeyword" value="palabra clave:" />
 					<p:inputText id="aikeyword" binding="#{aikeyword}" required="true" requiredMessage="Palabra clave requerida."/>
-					<p:dataList id="keywordslist" value="#{operacionIBean.keyWords}" var="kw">
+					<p:dataList id="keywordslist" value="#{registerIBean.keyWords}" var="kw">
       			<f:facet name="header">Palbras clave</f:facet>
 			        #{kw}
 			    </p:dataList>
-					<p:commandButton actionListener="#{operacionIBean.addKeyWord(aikeyword.value)}" update="keywordslist" process="@this aikeyword" icon="ui-icon-plusthick"/>
+					<p:commandButton actionListener="#{registerIBean.addKeyWord(aikeyword.value)}" update="keywordslist" process="@this aikeyword" icon="ui-icon-plusthick"/>
 			</h:panelGrid>
-			<p:commandButton id="registerBtn" value="Registrar" actionListener="#{operacionIBean.registrarIniciativa()}" />
+			<p:commandButton id="registerBtn" value="Registrar" actionListener="#{registerIBean.registrarIniciativa()}" />
 			</p:panel>
 		</h:form>
 	</section>
