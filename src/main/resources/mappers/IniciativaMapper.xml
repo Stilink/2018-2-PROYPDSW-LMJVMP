@@ -144,7 +144,10 @@
 		<insert id="agregarIniciativa" parameterType="map">
 			INSERT INTO iniciativa (id, nombre, estado, creador, no_votos, descripcion, fechaDeCreacion) VALUES (#{ini.id},#{ini.nombre},#{ini.estado},#{ini.creador.email},#{ini.no_votos},#{ini.descripcion},#{ini.fechaDeCreacion});
 		</insert>
-
+		
+		<insert id="agregarPalabraClaveAIniciativa" parameterType="map">
+			INSERT INTO palabra_clave (iniciativa, palabra) VALUES (#{iniciativa},#{palabra});
+		</insert>
 
 		
 	</mapper>
