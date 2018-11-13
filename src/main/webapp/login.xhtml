@@ -4,32 +4,56 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
+  <h:head>
 
-<h:head>
-	<title> Login </title>
-</h:head>
-<h:body>
-	<div id="header">
-		<h1>Banco de iniciativas</h1>
-	</div>
-	<section id="ingreso">
-		<h:form id="l_form">
-			<p:panel header="Entrar">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>Banco de iniciativas - Login</title>
+
+    <!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet"/>
+
+  </h:head>
+
+  <h:body class="bg-dark">
+
+    <div class="container">
+      <div class="card card-login mx-auto mt-5">
+        <div class="card-header">Banco de iniciativas</div>
+        <div class="card-body">
+          <h:form id="l_form">
 			<h:panelGrid id="grid" cellpadding="5" columns="2" style="margin-bottom:10px">
 					<f:facet name="header">
 							<p:messages id="msgs" />
 					</f:facet>
 					<p:outputLabel for="userName" value="Usuario:" />
-					<p:inputText id="userName" value="#{loginBean.userName}" required="true" requiredMessage="Usuario requerido." />
+					<p:inputText id="userName" binding="#{userName}" value="#{loginBean.userName}" required="true" requiredMessage="Usuario requerido." />
 					<p:outputLabel for="password" value="Clave:" />
-					<p:password id="password" value="#{loginBean.userPassword}" required="true" requiredMessage="Clave requerida." />
+					<p:password id="password" binding="#{password}" value="#{loginBean.userPassword}" required="true" requiredMessage="Clave requerida." />
 			</h:panelGrid>
-			<p:commandButton id="loginBtn" value="Ingresar" update="l_form" action="#{loginBean.ingresar}">
+			<p:commandButton id="loginBtn" value="Ingresar" update="l_form" proccess="@this" action="#{loginBean.ingresar}">
 				<f:actionListener binding="#{loginBean.confirmMessage()}" />
 			</p:commandButton>
-			</p:panel>
 		</h:form>
-	</section>
-	<footer></footer>
-</h:body>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  </h:body>
+
 </html>
