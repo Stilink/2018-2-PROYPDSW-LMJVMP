@@ -5,18 +5,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<<<<<<< HEAD
-	<h:head>
-		<title>Consulta de las iniciativas</title>
-	</h:head>
-	<h:body>
-=======
 <ui:composition template="/WEB-INF/include/template.xhtml">
 <ui:define name ="head">
 	<title>Banco de iniciativas</title>
 </ui:define>
 <ui:define name = "body">
->>>>>>> 6648fd15115e24511fad49009f9f4f740b390737
+
 		<h:form id="consultarTodas">
 			<p:dataTable id="iniciativas" var="iniciativa" value="#{operacionIBean.consultarIniciativas()}">
 				<p:column headerText="Iniciativa ID">
