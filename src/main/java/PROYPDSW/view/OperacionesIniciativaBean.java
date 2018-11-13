@@ -5,6 +5,9 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -15,7 +18,7 @@ import PROYPDSW.samples.entities.Perfil;
 import PROYPDSW.samples.services.ExcepcionServicesIniciativa;
 import PROYPDSW.samples.services.ServicesIniciativa;
 
-@SessionScoped
+@RequestScoped
 @SuppressWarnings("deprecation")
 @ManagedBean (name ="operacionIBean")
 public class OperacionesIniciativaBean extends BasePageBean{
@@ -25,6 +28,9 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	private Perfil usr;
 	private String nameI;
 	private String description;
+	@ManagedProperty(value = "#{param.idAConsultar}")
+	private int idAConsultar;
+	private Iniciativa iniConsultada;
 	private List<String> keyWords = new ArrayList<String>();
 	
 	public void setNameI(String name) {
@@ -62,4 +68,29 @@ public class OperacionesIniciativaBean extends BasePageBean{
 			throw e;
 		}
 	}
+	
+	public void consultarIniciativa() {
+		try {
+			iniConsultada = service.consultarIniciativa(idAConsultar);
+		} catch (ExcepcionServicesIniciativa e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+	}
+	
+	public int getIdAConsultar() {
+		return idAConsultar;
+	}
+	public void setIdAConsultar(int idAConsultar) {
+		this.idAConsultar = idAConsultar;
+	}
+	public Iniciativa getIniConsultada() {
+		return iniConsultada;
+	}
+	public void setIniConsultada(Iniciativa iniConsultada) {
+		this.iniConsultada = iniConsultada;
+	}
+	
 }

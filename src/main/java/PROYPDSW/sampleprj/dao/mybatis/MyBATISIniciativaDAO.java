@@ -33,6 +33,10 @@ public class MyBATISIniciativaDAO implements IniciativaDAO{
 
 	public void agregarIniciativa(Iniciativa ini)throws PersistenceException {
 		im.agregarIniciativa(ini);
+		int id = ini.getId();
+		for(String pc : ini.getPalabrasClave()) {
+			im.agregarPalabraClaveAIniciativa(id,pc);
+		}
 	}
 	@Override
 	public Iniciativa consultarIniciativa(int id) throws PersistenceException {

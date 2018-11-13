@@ -30,4 +30,6 @@ public interface IniciativaMapper {
 
 	List<Iniciativa> consultarIniciativasPorArea(@Param("area")String area);
 
+	void agregarPalabraClaveAIniciativa(@Param("iniciativa") int id, @Param("palabra") String pc);
+
 }
