@@ -26,7 +26,7 @@
 					<p:inputTextarea id="description" rows="6" cols="33" value="#{operacionIBean.description}" required="true" requiredMessage="Usuario requerido."/>
 					<br/>
 					<p:outputLabel for="aikeyword" value="palabra clave:" />
-					<p:inputText id="aikeyword" binding="#{aikeyword}" required="true" requiredMessage="Usuario requerido."/>
+					<p:inputText id="aikeyword" binding="#{aikeyword}" required="true" requiredMessage="Palabra clave requerida."/>
 					<p:dataList id="keywordslist" value="#{operacionIBean.keyWords}" var="kw">
       			<f:facet name="header">Palbras clave</f:facet>
 			        #{kw}
