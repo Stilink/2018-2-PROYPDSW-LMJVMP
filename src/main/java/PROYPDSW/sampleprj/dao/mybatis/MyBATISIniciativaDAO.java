@@ -63,5 +63,10 @@ public class MyBATISIniciativaDAO implements IniciativaDAO{
 	public List<Iniciativa> consultarIniciativasPorArea(String area) throws PersistenceException {
 		return im.consultarIniciativasPorArea(area);
 	}
+	@Override
+	public void modificarEstadoDeLaIniciativa(Iniciativa iniciativa, String estado) {
+		im.modificarEstadoDeLaIniciativa(iniciativa, estado);
+		
+	}
 
 }

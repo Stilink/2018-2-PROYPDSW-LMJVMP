@@ -52,6 +52,12 @@ public class MyBatisExecution{
 		for(Iniciativa i: consultasPorArea) {
 			System.out.println(i.toString());
 		}
+		System.out.println("Intentaremos modificar el estado de una iniciativa existente");
+		Iniciativa ini = sa.consultarIniciativa(1);
+		System.out.println("La iniciativa a consultar es: "+ini.toString());
+		sa.modificarEstadoDeLaIniciativa(ini, "Solucionado");
+		Iniciativa iniDME = sa.consultarIniciativa(1);
+		System.out.println("La iniciativa luego de la modificación, es: " +iniDME.toString() );
 		
 		
 		

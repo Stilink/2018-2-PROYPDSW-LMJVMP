@@ -148,6 +148,11 @@
 		<insert id="agregarPalabraClaveAIniciativa" parameterType="map">
 			INSERT INTO palabra_clave (iniciativa, palabra) VALUES (#{iniciativa},#{palabra});
 		</insert>
+		
+		<update id="modificarEstadoDeLaIniciativa" parameterType="map">
+			UPDATE iniciativa SET estado = #{estado}
+			WHERE iniciativa.id=#{iniciativa.id};
+		</update>
 
 		
 	</mapper>

@@ -139,7 +139,7 @@ public class Iniciativa implements Serializable{
 	}
 	
 	public String toString() {
-		return "Id: "+id+" Nombre: "+nombre+" Descripcion: "+descripcion+" Creador: {"+creador.toString()+"} Fecha de creación: "+fechaDeCreacion.toString();
+		return "Id: "+id+" Nombre: "+nombre+" Descripcion: "+descripcion+" Estado: "+estado+" Creador: {"+creador.toString()+"} Fecha de creación: "+fechaDeCreacion.toString();
 	}
 
 }

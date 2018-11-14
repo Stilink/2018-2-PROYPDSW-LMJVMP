@@ -32,4 +32,6 @@ public interface IniciativaMapper {
 
 	void agregarPalabraClaveAIniciativa(@Param("iniciativa") int id, @Param("palabra") String pc);
 
+	void modificarEstadoDeLaIniciativa(@Param("iniciativa") Iniciativa iniciativa,@Param("estado") String estado);
+
 }

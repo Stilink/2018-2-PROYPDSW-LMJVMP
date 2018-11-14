@@ -10,18 +10,35 @@
 <ui:define name ="head">
 </ui:define>
 <ui:define name = "body">
+		
 		#{operacionIBean.consultarIniciativa()}
-		<h:outputText value="ID: #{operacionIBean.iniConsultada.id}"/><br/>
-		<h:outputText value="Nombre: #{operacionIBean.iniConsultada.nombre}"/><br/>
-		<h:outputText value="Descripcion: #{operacionIBean.iniConsultada.descripcion}"/><br/>
-		<h:outputText value="Estado: #{operacionIBean.iniConsultada.estado}"/><br/>
-		<h:outputText value="Creador: #{operacionIBean.iniConsultada.creador.nombre}"/><br/>
-		<h:outputText value="Fecha de creación: #{operacionIBean.iniConsultada.fechaDeCreacion}"/><br/>
-		<p:dataTable id="palabras_clave" var="palabra" value="#{operacionIBean.iniConsultada.palabrasClave}">
-			<p:column headerText="Palabra">
-				<h:outputText value="#{palabra.toString()}"/>
-			</p:column>
-		</p:dataTable>		
+		<h:form id="iniciativa">
+			<p:outputLabel for="id" value="Identificador:" />
+			<h:outputText id="id" value="#{operacionIBean.iniConsultada.id}" binding="#{id}"/><br/>
+			<p:outputLabel for="nombre" value="Nombre:" />
+			<h:outputText id="nombre" value="#{operacionIBean.iniConsultada.nombre}"/><br/>
+			<p:outputLabel for="descripcion" value="Descripcion:" />
+			<h:outputText id="descripcion" value="#{operacionIBean.iniConsultada.descripcion}"/><br/>
+			<p:outputLabel for="estado" value="Estado:" />
+			<h:outputText id="estado" value="#{operacionIBean.iniConsultada.estado}"/><br/>
+			<p:outputLabel for="creador" value="Creador:" />
+			<h:outputText id="creador" value="#{operacionIBean.iniConsultada.creador.nombre}"/><br/>
+			<p:outputLabel for="fecha" value="Fecha de creacion:" />
+			<h:outputText id="fecha" value="#{operacionIBean.iniConsultada.fechaDeCreacion}"/><br/>
+			<p:dataTable id="palabras_clave" var="palabra" value="#{operacionIBean.iniConsultada.palabrasClave}">
+				<p:column headerText="Palabra">
+					<h:outputText value="#{palabra.toString()}"/>
+				</p:column>
+			</p:dataTable>
+			<p:outputLabel for="estadoC" value="Seleccione un estado para la iniciativa:" />
+			<p:selectOneRadio id="estadoC" binding="#{estado}">
+		    		<f:selectItem itemLabel="En espera de revision" itemValue="En espera de revision" />
+		    		<f:selectItem itemLabel="En revision" itemValue="En revision" />
+		    		<f:selectItem itemLabel="Proyecto" itemValue="Proyecto" />
+				<f:selectItem itemLabel="Solucionado" itemValue="Proyecto"/>
+			</p:selectOneRadio>
+			<p:commandButton actionListener="#{operacionIBean.modificarEstadoDeLaIniciativa(id.value, estadoC.value)}" value="Modificar estado" process="@this estado id" update="iniciativa"/>
+		</h:form>
 </ui:define>
 </ui:composition>
 </html>

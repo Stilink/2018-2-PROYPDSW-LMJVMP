@@ -152,4 +152,10 @@ public class ServicesIniciativaStub implements ServicesIniciativa{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void modificarEstadoDeLaIniciativa(Iniciativa iniciativa, String estado) throws ExcepcionServicesIniciativa {
+		// TODO Auto-generated method stub
+		
+	}
 }

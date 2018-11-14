@@ -112,4 +112,13 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 			throw new ExcepcionServicesIniciativa("validarLogin",e);
 		}
 	}
+	@Override
+	public void modificarEstadoDeLaIniciativa(Iniciativa iniciativa, String estado) throws ExcepcionServicesIniciativa {
+		try {
+			idao.modificarEstadoDeLaIniciativa(iniciativa, estado);
+		}catch(Exception e) {
+			throw new ExcepcionServicesIniciativa("Fallo en el modificar estado",e);
+		}
+		
+	}
 }

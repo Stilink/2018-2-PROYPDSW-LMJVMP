@@ -16,4 +16,5 @@ public interface ServicesIniciativa {
 	public List<Perfil> consultarUsuarios() throws ExcepcionServicesIniciativa;
 	public List<Perfil> consultarPerfilPorRol(String rol) throws ExcepcionServicesIniciativa;
 	public boolean validarLogin(String email,String password)throws ExcepcionServicesIniciativa;
+	public void modificarEstadoDeLaIniciativa(Iniciativa iniciativa, String estado) throws ExcepcionServicesIniciativa;
 }

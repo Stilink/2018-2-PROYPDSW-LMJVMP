@@ -99,6 +99,22 @@ public class OperacionesIniciativaBean extends BasePageBean{
 		}
 	}
 	
+	public void modificarEstadoDeLaIniciativa(String id,String estado) {
+		try {
+			iniConsultada=service.consultarIniciativa(Integer.parseInt(id));
+		} catch (ExcepcionServicesIniciativa e1) {
+			e1.printStackTrace();
+		}
+		System.out.println(estado);
+		System.out.println(id);
+		System.out.println(iniConsultada.toString());
+		try {
+			service.modificarEstadoDeLaIniciativa(iniConsultada, estado);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public int getIdAConsultar() {
 		return idAConsultar;
 	}
