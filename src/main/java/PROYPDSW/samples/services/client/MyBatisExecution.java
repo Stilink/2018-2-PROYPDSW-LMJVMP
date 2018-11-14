@@ -58,10 +58,13 @@ public class MyBatisExecution{
 		sa.modificarEstadoDeLaIniciativa(ini, "Solucionado");
 		Iniciativa iniDME = sa.consultarIniciativa(1);
 		System.out.println("La iniciativa luego de la modificación, es: " +iniDME.toString() );
-		
-		
-		
-
+		System.out.println("Consultar iniciativas por perfil!");
+		consultas = sa.consultarIniciativaPorPerfil("michael.preciado@mail.escuelaing.edu.co");
+		for(Iniciativa i: consultas) {
+			System.out.println(i.toString());
+		}
+		//sa.agregarInteresAIniciativa(1, "michael.preciado@mail.escuelaing.edu.co");
+		//sa.agregarVoluntadAIniciativa(1, "michael.preciado@mail.escuelaing.edu.co");
 	}
 
 }
