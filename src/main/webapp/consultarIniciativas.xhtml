@@ -11,20 +11,23 @@
 </ui:define>
 <ui:define name = "body">
 		<h:form id="consultarTodas">
-			<p:dataTable id="iniciativas" var="iniciativa" value="#{operacionIBean.consultarIniciativas()}">
-				<p:column headerText="Iniciativa ID">
+			<p:dataTable id="iniciativas" var="iniciativa" value="#{operacionIBean.consultarIniciativas()}"  rows="10"
+                 		paginator="true"
+                 		paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink}{RowsPerPageDropdown}"
+		 		>
+				<p:column headerText="Iniciativa ID" sortBy="#{id}">
 					<h:outputText value="#{iniciativa.id}"/>
 				</p:column>
-				<p:column headerText="Nombre">
+				<p:column headerText="Nombre" >
 					<h:outputText value="#{iniciativa.nombre}"/>
 				</p:column>
-				<p:column headerText="Estado">
+				<p:column headerText="Estado" >
 					<h:outputText value="#{iniciativa.estado}"/>
 				</p:column>
 				<p:column headerText="Fecha de creación">
 					<h:outputText value="#{iniciativa.fechaDeCreacion}"/>
 				</p:column>
-				<p:column headerText="">
+				<p:column headerText="Ver detalles">
 					<p:button outcome="consultaIniciativa?idAConsultar=#{iniciativa.id}" value="Detalles" />
 				</p:column>
 			</p:dataTable>
