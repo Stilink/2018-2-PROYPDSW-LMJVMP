@@ -1,40 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/WEB-INF/include/template.xhtml">
-<ui:define name ="head">
-	<title>Banco de iniciativas</title>
-</ui:define>
-<ui:define name = "body">
-
-		<h:form id="consultarTodas">
-			<p:dataTable id="iniciativas" var="iniciativa" value="#{operacionIBean.consultarIniciativas()}"  rows="10"
-                 		paginator="true"
-                 		paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink}{RowsPerPageDropdown}"
-		 		>
-				<p:column headerText="Iniciativa ID" sortBy="#{id}">
+	<h:head>
+		<title>Consulta de iniciativa por area</title>
+	</h:head>
+	<h:body>
+		<h:form id="consultarPorArea">
+			<p:inputText id="area" binding="#{area}" required="true" requiredMessage="Area a buscar requerida."/>
+			<p:commandButton actionListener="#{operacionIBean.consultarIniciativasPorArea(area.value)}" update="consultarPorArea" icon="ui-icon-plusthick" value="Consultar"/>
+			<p:dataTable id="iniciativas" var="iniciativa" value="#{operacionIBean.iniConsultadas}">
+				<p:column headerText="Iniciativa ID">
 					<h:outputText value="#{iniciativa.id}"/>
 				</p:column>
-				<p:column headerText="Nombre" >
+				<p:column headerText="Nombre">
 					<h:outputText value="#{iniciativa.nombre}"/>
 				</p:column>
-				<p:column headerText="Estado" >
+				<p:column headerText="Estado">
 					<h:outputText value="#{iniciativa.estado}"/>
 				</p:column>
 				<p:column headerText="Fecha de creación">
 					<h:outputText value="#{iniciativa.fechaDeCreacion}"/>
 				</p:column>
-				<p:column headerText="Ver detalles">
+				<p:column headerText="">
 					<p:button outcome="consultaIniciativa?idAConsultar=#{iniciativa.id}" value="Detalles" />
 				</p:column>
 			</p:dataTable>
 		</h:form>
-
-</ui:define>
-</ui:composition>
+		
+	
+	</h:body>
 </html>
-
