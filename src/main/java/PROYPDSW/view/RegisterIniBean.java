@@ -10,6 +10,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import com.google.inject.Inject;
 
@@ -19,7 +20,7 @@ import PROYPDSW.samples.services.ExcepcionServicesIniciativa;
 import PROYPDSW.samples.services.ServicesIniciativa;
 
 
-@SessionScoped
+@ViewScoped
 @SuppressWarnings("deprecation")
 @ManagedBean (name ="registerIBean")
 public class RegisterIniBean extends BasePageBean{
