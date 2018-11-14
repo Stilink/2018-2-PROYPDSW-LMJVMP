@@ -13,7 +13,6 @@
 			<association property="creador" javaType="Perfil" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult"></association>
 		</resultMap>
 
-
 		<select id="consultarIniciativa" parameterType="map" resultMap="IniciativaResult">
 			SELECT 
 				iniciativa.id as iId, 
@@ -73,6 +72,23 @@
 				rol.prioridad as rPrioridad
 				FROM 
 				iniciativa JOIN perfil ON (iniciativa.creador=perfil.email) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id) WHERE iniciativa.estado=#{estado};
+		</select>
+		<select id="consultarIniciativasPorPerfil" parameterType="map" resultMap="IniciativaResult">
+			SELECT 
+				iniciativa.id as iId, 
+				iniciativa.nombre as iNombre, 
+				iniciativa.estado as iEstado, 
+				iniciativa.no_votos as iNo_votos, 
+				iniciativa.descripcion as iDescripcion, 
+				iniciativa.fechaDeCreacion as iFechaDeCreacion, 
+				perfil.carne as pCarne, 
+				perfil.nombre as pNombre, 
+				perfil.email as pEmail, 
+				area.nombre as pArea, 
+				rol.nombre as rNombre, 
+				rol.prioridad as rPrioridad
+				FROM 
+				iniciativa JOIN perfil ON (iniciativa.creador=#{perfil}) JOIN rol ON (perfil.rol=rol.nombre) JOIN area ON (perfil.area=area.id);
 		</select>
 
 
@@ -147,6 +163,13 @@
 		
 		<insert id="agregarPalabraClaveAIniciativa" parameterType="map">
 			INSERT INTO palabra_clave (iniciativa, palabra) VALUES (#{iniciativa},#{palabra});
+		</insert>
+		
+		<insert id="agregarInteresAIniciativa" parameterType="map">
+			INSERT INTO interes(perfil, iniciativa) VALUES (#{perfil},#{ini});
+		</insert>
+		<insert id="agregarVoluntadAIniciativa" parameterType="map">
+			INSERT INTO voluntad(perfil, iniciativa) VALUES (#{perfil},#{ini});
 		</insert>
 
 		

@@ -152,4 +152,22 @@ public class ServicesIniciativaStub implements ServicesIniciativa{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void agregarInteresAIniciativa(int ini, String perfil) throws ExcepcionServicesIniciativa {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void agregarVoluntadAIniciativa(int ini, String perfil) throws ExcepcionServicesIniciativa {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Iniciativa> consultarIniciativaPorPerfil(String perfil) throws ExcepcionServicesIniciativa {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

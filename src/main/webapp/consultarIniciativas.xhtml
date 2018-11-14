@@ -10,13 +10,13 @@
 	<title>Banco de iniciativas</title>
 </ui:define>
 <ui:define name = "body">
-
+		
 		<h:form id="consultarTodas">
 			<p:dataTable id="iniciativas" var="iniciativa" value="#{operacionIBean.consultarIniciativas()}"  rows="10"
                  		paginator="true"
                  		paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink}{RowsPerPageDropdown}"
-		 		>
-				<p:column headerText="Iniciativa ID" sortBy="#{id}">
+						sortBy="#{id}">
+				<p:column headerText="Iniciativa ID">
 					<h:outputText value="#{iniciativa.id}"/>
 				</p:column>
 				<p:column headerText="Nombre" >

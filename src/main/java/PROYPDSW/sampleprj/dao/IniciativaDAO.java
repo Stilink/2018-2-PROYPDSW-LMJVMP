@@ -19,6 +19,12 @@ public interface IniciativaDAO {
 	Iniciativa consultarIniciativa(int id)throws PersistenceException;
 
 	List<Iniciativa> consultarIniciativasPorArea(String area)throws PersistenceException;
+
+	void agregarInteresAIniciativa(int ini, String perfil)throws PersistenceException;
+
+	void agregarVoluntadAIniciativa(int ini, String perfil)throws PersistenceException;
+
+	List<Iniciativa> consultarIniciativaPorPerfil(String perfil)throws PersistenceException;
 	
 
 }

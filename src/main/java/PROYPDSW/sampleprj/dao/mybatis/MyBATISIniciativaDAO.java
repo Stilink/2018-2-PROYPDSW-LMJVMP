@@ -63,5 +63,19 @@ public class MyBATISIniciativaDAO implements IniciativaDAO{
 	public List<Iniciativa> consultarIniciativasPorArea(String area) throws PersistenceException {
 		return im.consultarIniciativasPorArea(area);
 	}
+	@Override
+	public void agregarInteresAIniciativa(int ini, String perfil) throws PersistenceException {
+		im.agregarInteresAIniciativa(ini,perfil);
+		
+	}
+	@Override
+	public void agregarVoluntadAIniciativa(int ini, String perfil) throws PersistenceException {
+		im.agregarVoluntadAIniciativa(ini,perfil);
+		
+	}
+	@Override
+	public List<Iniciativa> consultarIniciativaPorPerfil(String perfil) throws PersistenceException {
+		return im.consultarIniciativasPorPerfil(perfil);
+	}
 
 }
