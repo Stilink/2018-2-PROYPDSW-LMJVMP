@@ -10,6 +10,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import com.google.inject.Inject;
 
@@ -18,7 +19,7 @@ import PROYPDSW.samples.entities.Perfil;
 import PROYPDSW.samples.services.ExcepcionServicesIniciativa;
 import PROYPDSW.samples.services.ServicesIniciativa;
 
-@RequestScoped
+@ViewScoped
 @SuppressWarnings("deprecation")
 @ManagedBean (name ="operacionIBean")
 public class OperacionesIniciativaBean extends BasePageBean{
@@ -28,7 +29,7 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	private Perfil usr;
 	private String nameI;
 	private String description;
-	@ManagedProperty(value = "#{param.idAConsultar}")
+	//@ManagedProperty(value = "#{param.idAConsultar}")
 	private int idAConsultar;
 	private Iniciativa iniConsultada;
 	private List<Iniciativa> iniConsultadas;
@@ -105,9 +106,6 @@ public class OperacionesIniciativaBean extends BasePageBean{
 		} catch (ExcepcionServicesIniciativa e1) {
 			e1.printStackTrace();
 		}
-		System.out.println(estado);
-		System.out.println(id);
-		System.out.println(iniConsultada.toString());
 		try {
 			service.modificarEstadoDeLaIniciativa(iniConsultada, estado);
 		} catch (Exception e) {

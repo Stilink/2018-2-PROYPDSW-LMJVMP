@@ -10,15 +10,20 @@
 <ui:define name ="head">
 </ui:define>
 <ui:define name = "body">
+		<f:metadata>
+			<f:viewParam name="idAConsultar" value="#{operacionIBean.idAConsultar}"/>
+		</f:metadata>
 		
-		#{operacionIBean.consultarIniciativa()}
 		<h:form id="iniciativa">
+			#{operacionIBean.consultarIniciativa()}
 			<p:outputLabel for="id" value="Identificador:" />
 			<h:outputText id="id" value="#{operacionIBean.iniConsultada.id}" binding="#{id}"/><br/>
 			<p:outputLabel for="nombre" value="Nombre:" />
 			<h:outputText id="nombre" value="#{operacionIBean.iniConsultada.nombre}"/><br/>
 			<p:outputLabel for="descripcion" value="Descripcion:" />
 			<h:outputText id="descripcion" value="#{operacionIBean.iniConsultada.descripcion}"/><br/>
+			<p:outputLabel for="area" value="Area:"/>
+			<h:outputText id="area" value="#{operacionIBean.iniConsultada.creador.area}"/><br/>
 			<p:outputLabel for="estado" value="Estado:" />
 			<h:outputText id="estado" value="#{operacionIBean.iniConsultada.estado}"/><br/>
 			<p:outputLabel for="creador" value="Creador:" />
@@ -31,13 +36,13 @@
 				</p:column>
 			</p:dataTable>
 			<p:outputLabel for="estadoC" value="Seleccione un estado para la iniciativa:" />
-			<p:selectOneRadio id="estadoC" binding="#{estado}">
+			<p:selectOneRadio id="estadoC" binding="#{estadoC}">
 		    		<f:selectItem itemLabel="En espera de revision" itemValue="En espera de revision" />
 		    		<f:selectItem itemLabel="En revision" itemValue="En revision" />
 		    		<f:selectItem itemLabel="Proyecto" itemValue="Proyecto" />
 				<f:selectItem itemLabel="Solucionado" itemValue="Proyecto"/>
 			</p:selectOneRadio>
-			<p:commandButton actionListener="#{operacionIBean.modificarEstadoDeLaIniciativa(id.value, estadoC.value)}" value="Modificar estado" process="@this estado id" update="iniciativa"/>
+			<p:commandButton actionListener="#{operacionIBean.modificarEstadoDeLaIniciativa(id.value, estadoC.value)}" value="Modificar estado" process="@this estadoC" update="iniciativa"/>
 		</h:form>
 </ui:define>
 </ui:composition>
