@@ -31,7 +31,10 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="#">Banco de iniciativas</a>
+      <a class="navbar-brand mr-1" href="index.xhtml">Banco de iniciativas</a>
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+      </button>
 
 
     </nav>
@@ -40,33 +43,25 @@
 
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
-        
         <li class="nav-item dropdown">
-          <a class="nav-link" href="iniciativaOperaciones.xhtml">
+          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-fw fa-folder"></i>
-            <span>Insertar iniciativa</span>
+            <span>Iniciativa</span>
           </a>
+          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <h6 class="dropdown-header">Consultas:</h6>
+            
+            <a class="dropdown-item" href="consultarIniciativas.xhtml">Consultar todas</a>
+            <a class="dropdown-item" href="consultarIniciativaPorEstado.xhtml">Consultar por estado</a>
+            <a class="dropdown-item" href="consultarIniciativaPorArea.xhtml">Consultar por area</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="iniciativaOperaciones.xhtml">Insertar iniciativa</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="index.xhtml">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Estadisticas</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="consultarIniciativas.xhtml">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Consultar iniciativas</span></a>
-        </li>
-
-	<li class="nav-item">
-          <a class="nav-link" href="consultarIniciativaPorEstado.xhtml">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Consultar iniciativas por estado</span></a>
-        </li>
-	<li class="nav-item">
-          <a class="nav-link" href="consultarIniciativaPorArea.xhtml">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Consultar iniciativas por area</span></a>
         </li>
       </ul>
 

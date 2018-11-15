@@ -14,8 +14,8 @@
 		<h:form id="consultarTodas">
 			<p:dataTable id="iniciativas" var="iniciativa" value="#{operacionIBean.consultarIniciativas()}"  rows="10"
                  		paginator="true"
-                 		paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink}{RowsPerPageDropdown}"
-						sortBy="#{id}">
+                 		paginatorTemplate="{PreviousPageLink} {PageLinks} {NextPageLink}{RowsPerPageDropdown}"
+						paginatorPosition="bottom">
 				<p:column headerText="Iniciativa ID">
 					<h:outputText value="#{iniciativa.id}"/>
 				</p:column>
