@@ -1,5 +1,6 @@
 package PROYPDSW.view;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -26,20 +27,38 @@ import PROYPDSW.samples.services.ServicesIniciativa;
 public class RegisterIniBean extends BasePageBean{
 	@Inject
 	private ServicesIniciativa service;
-	private String usuario;
-	private Perfil usr;
+	private String usuario = "luis.moreno-a@mail.escuelaing.edu.co";
 	private String nameI;
 	private String description;
 	private List<String> keyWords = new ArrayList<String>();
 	
 	public void registrarIniciativa() throws Exception {
 		try {
-			Iniciativa ini = new Iniciativa(80,nameI,"En espera de revisión",usr,description,new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+			Perfil creador = service.consultarPerfil("luis.moreno-a@mail.escuelaing.edu.co");
+			int id = establecerId();
+			Iniciativa ini = new Iniciativa(id,nameI,"En espera de revision",creador,description, new Date(System.currentTimeMillis()));
 			ini.setPalabrasClave(keyWords);
 			service.agregarIniciativa(ini);
-		} catch (ExcepcionServicesIniciativa e) {
+		} catch (Exception e) {
 			throw e;
 		}
+	}
+	
+	/** Establece el id en base a la cantidad de datos dentro de la tabla.*/
+	private int establecerId() {
+		try {
+			List<Iniciativa> iniciativas = service.consultarIniciativas();
+			int max = 1;
+			for(Iniciativa ini : iniciativas) {
+				if(ini.getId()>=max) {
+					max=ini.getId()+1;
+				}
+			}
+			return max;
+		} catch (ExcepcionServicesIniciativa e) {
+			return Integer.MAX_VALUE;
+		}
+		
 	}
 	public void addKeyWord(String kwd) {
 		keyWords.add(kwd);
@@ -51,12 +70,7 @@ public class RegisterIniBean extends BasePageBean{
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-	public Perfil getUsr() {
-		return usr;
-	}
-	public void setUsr(Perfil usr) {
-		this.usr = usr;
-	}
+
 	public String getNameI() {
 		return nameI;
 	}

@@ -28,19 +28,22 @@
 			<h:outputText id="estado" value="#{operacionIBean.iniConsultada.estado}"/><br/>
 			<p:outputLabel for="creador" value="Creador:" />
 			<h:outputText id="creador" value="#{operacionIBean.iniConsultada.creador.nombre}"/><br/>
+			<p:outputLabel for="n_v" value="Numero de votos:"/>
+			<h:outputText id="n_v" value="#{operacionIBean.iniConsultada.no_votos}" /><br/>
 			<p:outputLabel for="fecha" value="Fecha de creacion:" />
 			<h:outputText id="fecha" value="#{operacionIBean.iniConsultada.fechaDeCreacion}"/><br/>
 			<p:dataTable id="palabras_clave" var="palabra" value="#{operacionIBean.iniConsultada.palabrasClave}">
-				<p:column headerText="Palabra">
+				<p:column headerText="Palabras">
 					<h:outputText value="#{palabra.toString()}"/>
 				</p:column>
-			</p:dataTable>
+			</p:dataTable><br/>
+<br/>
 			<p:outputLabel for="estadoC" value="Seleccione un estado para la iniciativa:" />
 			<p:selectOneRadio id="estadoC" binding="#{estadoC}">
 		    		<f:selectItem itemLabel="En espera de revision" itemValue="En espera de revision" />
 		    		<f:selectItem itemLabel="En revision" itemValue="En revision" />
 		    		<f:selectItem itemLabel="Proyecto" itemValue="Proyecto" />
-				<f:selectItem itemLabel="Solucionado" itemValue="Proyecto"/>
+				<f:selectItem itemLabel="Solucionado" itemValue="Solucionado"/>
 			</p:selectOneRadio>
 			<p:commandButton actionListener="#{operacionIBean.modificarEstadoDeLaIniciativa(id.value, estadoC.value)}" value="Modificar estado" process="@this estadoC" update="iniciativa"/>
 		</h:form>

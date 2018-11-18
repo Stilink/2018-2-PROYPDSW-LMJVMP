@@ -29,7 +29,6 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	private Perfil usr;
 	private String nameI;
 	private String description;
-	//@ManagedProperty(value = "#{param.idAConsultar}")
 	private int idAConsultar;
 	private Iniciativa iniConsultada;
 	private List<Iniciativa> iniConsultadas;
