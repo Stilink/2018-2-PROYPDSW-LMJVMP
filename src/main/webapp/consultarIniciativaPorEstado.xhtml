@@ -12,8 +12,14 @@
 <ui:define name = "body">
 		<h:form id="consultarPorEstado">
 			<h1>Consulte aquí por estado</h1>
-			<p:inputText id="estado" binding="#{estado}" required="true" requiredMessage="Estado a buscar requerida."/>
-			<p:commandButton actionListener="#{operacionIBean.consultarIniciativasPorEstado(estado.value)}" update="consultarPorEstado" value="Consultar"/>
+			<p:outputLabel for="estadoC" value="Seleccione un estado que desee consultar:" />
+			<p:selectOneRadio id="estadoC" binding="#{estadoC}">
+		    		<f:selectItem itemLabel="En espera de revision" itemValue="En espera de revision" />
+		    		<f:selectItem itemLabel="En revision" itemValue="En revision" />
+		    		<f:selectItem itemLabel="Proyecto" itemValue="Proyecto" />
+				<f:selectItem itemLabel="Solucionado" itemValue="Solucionado"/>
+			</p:selectOneRadio>
+			<p:commandButton actionListener="#{operacionIBean.consultarIniciativasPorEstado(estadoC.value)}" update="consultarPorEstado" value="Consultar"/><br/><br/>
 			<p:dataTable id="iniciativas" var="iniciativa" value="#{operacionIBean.iniConsultadas}">
 				<p:column headerText="Iniciativa ID">
 					<h:outputText value="#{iniciativa.id}"/>
@@ -27,7 +33,7 @@
 				<p:column headerText="Fecha de creación">
 					<h:outputText value="#{iniciativa.fechaDeCreacion}"/>
 				</p:column>
-				<p:column headerText="">
+				<p:column headerText="Ver detalles">
 					<p:button outcome="consultaIniciativa?idAConsultar=#{iniciativa.id}" value="Detalles" />
 				</p:column>
 			</p:dataTable>
