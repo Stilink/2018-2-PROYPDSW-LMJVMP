@@ -12,10 +12,14 @@
 <ui:define name = "body">
 		
 		<h:form id="consultarTodas">
-			<p:dataTable id="iniciativas" var="iniciativa" value="#{operacionIBean.consultarIniciativas()}"  rows="10"
+				#{operacionIBean.consultarIni()}
+				<p:dataTable id="iniciativas" var="iniciativa" value="#{operacionIBean.iniConsultadas}"  rows="10"
                  		paginator="true"
                  		paginatorTemplate="{PreviousPageLink} {PageLinks} {NextPageLink}{RowsPerPageDropdown}"
 						paginatorPosition="bottom">
+				<f:facet name="header">
+            		Iniciativas
+        		</f:facet>
 				<p:column headerText="Iniciativa ID" sortBy="#{iniciativa.id}" >
 					<h:outputText value="#{iniciativa.id}"/>
 				</p:column>

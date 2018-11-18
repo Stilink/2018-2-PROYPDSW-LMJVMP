@@ -34,6 +34,15 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	private List<Iniciativa> iniConsultadas;
 	private List<String> keyWords = new ArrayList<String>();
 	
+	
+    public void consultarIni() {
+        try {
+			iniConsultadas=service.consultarIniciativas();
+		} catch (ExcepcionServicesIniciativa e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 	public void setNameI(String name) {
 		nameI=name;
 	}
@@ -45,15 +54,6 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	}
 	public String getDescription() {
 		return description;
-	}
-	public void registrarIniciativa() throws Exception {
-		try {
-			Iniciativa ini = new Iniciativa(80,nameI,"En espera de revisión",usr,description,new java.sql.Date(Calendar.getInstance().getTime().getTime()));
-			ini.setPalabrasClave(keyWords);
-			service.agregarIniciativa(ini);
-		} catch (ExcepcionServicesIniciativa e) {
-			throw e;
-		}
 	}
 	public List<String> getKeyWords() {
 		return keyWords;
