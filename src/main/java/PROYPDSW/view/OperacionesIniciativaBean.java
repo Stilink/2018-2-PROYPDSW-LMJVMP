@@ -32,9 +32,17 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	private List<Iniciativa> iniConsultadas;
 	private List<String> palabrasClaveAConsultar;
 
-	
 
 	
+    public void consultarIni() {
+        try {
+			iniConsultadas=service.consultarIniciativas();
+		} catch (ExcepcionServicesIniciativa e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+
 	
 
 	public List<Iniciativa> consultarIniciativas() throws Exception {
