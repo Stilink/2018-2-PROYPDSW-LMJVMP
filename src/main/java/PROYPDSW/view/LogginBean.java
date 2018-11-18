@@ -6,6 +6,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.PrimeFaces;
+
 import com.google.inject.Inject;
 
 import PROYPDSW.samples.services.ExcepcionServicesIniciativa;
@@ -16,46 +18,41 @@ import PROYPDSW.samples.services.ServicesIniciativa;
 @ManagedBean (name ="loginBean")
 public class LogginBean extends BasePageBean{
 	@Inject
-	private ServicesIniciativa services;
-	private String userName;
-	private String userPassword;	
-	private boolean kw;
-	public void setKw(boolean kw) {
-		this.kw=kw;
-	}
-	public boolean getKw() {
-		return kw;
-	}
-	public void setUserName(String name) {
-		userName=name;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserPassword(String passwd) {
-		userPassword=passwd;
-	}
-	public String getUserPassword() {
-		return userPassword;
-	}	
-	//Login
-	public void ingresar(){
-		try {
-			kw=services.validarLogin(userName, userPassword);
-		} catch (ExcepcionServicesIniciativa e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void confirmMessage() {
-		if(kw) {
-	        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto",  null);
-	        FacesContext.getCurrentInstance().addMessage(null, message);
-		}
-        else {
-        	FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario o contraseña incorrectos",  null);
-	        FacesContext.getCurrentInstance().addMessage(null, message);
-        }
+	private ServicesIniciativa service;
+    private String username;
+     
+    private String password;
+ 
+    public String getUsername() {
+        return username;
     }
+ 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+ 
+    public String getPassword() {
+        return password;
+    }
+ 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+   
+    public void login() throws ExcepcionServicesIniciativa {
+        FacesMessage message = null;
+        boolean loggedIn = false;
+        
+        if(username != null && password != null && service.validarLogin(username, password)) {
+            loggedIn = true;
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
+        } else {
+            loggedIn = false;
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
+        }
+         
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
+    }   
 }
+

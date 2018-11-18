@@ -30,19 +30,20 @@
       <div class="card card-login mx-auto mt-5">
         <div class="card-header" style="font-size:30px">Banco de iniciativas</div>
         <div class="card-body">
-          <h:form id="l_form">
-			<h:panelGrid id="grid" cellpadding="5" columns="2" style="margin-bottom:10px">
-					<f:facet name="header">
-							<p:messages id="msgs" />
-					</f:facet>
-					<p:outputLabel for="userName" value="Usuario:" />
-					<p:inputText id="userName" binding="#{userName}" value="#{loginBean.userName}" required="true" requiredMessage="Usuario requerido." />
-					<p:outputLabel for="password" value="Clave:" />
-					<p:password id="password" binding="#{password}" value="#{loginBean.userPassword}" required="true" requiredMessage="Clave requerida." />
-			</h:panelGrid>
-			<a class="btn btn-primary btn-block" href="index.xhtml">Ingresar</a>
-			
-		</h:form>
+			<h:form id="login_form">        
+			        <h:panelGrid columns="2" cellpadding="5">
+			            <h:outputLabel for="username" value="Username:" />
+			            <p:inputText id="username" value="#{loginBean.username}" required="true" label="username" />
+			             
+			            <h:outputLabel for="password" value="Password:" />
+			            <p:password id="password" value="#{loginBean.password}" required="true" label="password" />
+			             
+			            <f:facet name="footer">
+			                <p:commandButton value="Login" update="login_form" action="#{loginBean.login}"
+			                                 oncomplete="handleLoginRequest(xhr, status, args)" />
+			            </f:facet>  
+			        </h:panelGrid>    
+			</h:form>
         </div>
       </div>
     </div>
@@ -52,7 +53,17 @@
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
+	<script type="text/javascript">
+    	function handleLoginRequest(xhr, status, args) {
+        if(args.validationFailed || !args.loggedIn) {
+        	alert("Autentificacion incorrecta");
+        }
+        else {
+        	location.href ="/index.xhtml";
+            
+        }
+    }
+</script>
   </h:body>
 
 </html>

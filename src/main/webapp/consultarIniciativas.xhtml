@@ -16,16 +16,16 @@
                  		paginator="true"
                  		paginatorTemplate="{PreviousPageLink} {PageLinks} {NextPageLink}{RowsPerPageDropdown}"
 						paginatorPosition="bottom">
-				<p:column headerText="Iniciativa ID">
+				<p:column headerText="Iniciativa ID" sortBy="#{iniciativa.id}" >
 					<h:outputText value="#{iniciativa.id}"/>
 				</p:column>
-				<p:column headerText="Nombre" >
+				<p:column headerText="Nombre" sortBy="#{iniciativa.nombre}" >
 					<h:outputText value="#{iniciativa.nombre}"/>
 				</p:column>
-				<p:column headerText="Estado" >
+				<p:column headerText="Estado" sortBy="#{iniciativa.estado}" >
 					<h:outputText value="#{iniciativa.estado}"/>
 				</p:column>
-				<p:column headerText="Fecha de creación">
+				<p:column headerText="Fecha de creación" sortBy="#{iniciativa.fechaDeCreacion}" >
 					<h:outputText value="#{iniciativa.fechaDeCreacion}"/>
 				</p:column>
 				<p:column headerText="Ver detalles">

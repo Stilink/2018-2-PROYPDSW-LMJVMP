@@ -35,6 +35,7 @@
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
       </button>
+      <h:outputText value="#{loginBean.username} #{loginBean.password}"/>
 
 
     </nav>
@@ -66,7 +67,6 @@
       </ul>
 
       <div id="content-wrapper">
-
         <div class="container-fluid">
 			<ui:insert name="body" />
         </div>
@@ -76,7 +76,7 @@
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright © Escuela Colombiana de Ingenieria Julio Garavito - Banco de iniciativas 2018</span>
+              <span>Copyright © Escuela Colombiana de Ingenieria Julio Garavito - Banco de iniciativas 2018 </span>
             </div>
           </div>
         </footer>
