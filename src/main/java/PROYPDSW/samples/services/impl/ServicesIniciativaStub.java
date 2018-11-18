@@ -103,10 +103,10 @@ public class ServicesIniciativaStub implements ServicesIniciativa{
 		roles.add(r3);
 		roles.add(r4);
 		
-		Perfil p1 = new Perfil(1234,r1,"primero@mail","nombre 1", null,null,"area 1");
-		Perfil p2 = new Perfil(5678,r2,"segundo@mail","nombre 2", null,null,"area 2");
-		Perfil p3 = new Perfil(9123,r3,"tercero@mail","nombre 3", null,null,"area 3");
-		Perfil p4 = new Perfil(9456,r4,"cuarto@mail","nommbre 4", null,null,"area 4");
+		Perfil p1 = new Perfil(r1,"primero@mail","nombre 1", null,null,"area 1");
+		Perfil p2 = new Perfil(r2,"segundo@mail","nombre 2", null,null,"area 2");
+		Perfil p3 = new Perfil(r3,"tercero@mail","nombre 3", null,null,"area 3");
+		Perfil p4 = new Perfil(r4,"cuarto@mail","nommbre 4", null,null,"area 4");
 		
 		perfiles.put("primero@mail", p1);
 		perfiles.put("segundo@mail", p2);

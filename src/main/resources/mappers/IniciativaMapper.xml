@@ -21,7 +21,7 @@
 				iniciativa.no_votos as iNo_votos, 
 				iniciativa.descripcion as iDescripcion, 
 				iniciativa.fechaDeCreacion as iFechaDeCreacion, 
-				perfil.carne as pCarne, 
+				
 				perfil.nombre as pNombre, 
 				perfil.email as pEmail, 
 				area.nombre as pArea, 
@@ -45,7 +45,7 @@
 				iniciativa.no_votos as iNo_votos, 
 				iniciativa.descripcion as iDescripcion, 
 				iniciativa.fechaDeCreacion as iFechaDeCreacion, 
-				perfil.carne as pCarne, 
+				
 				perfil.nombre as pNombre, 
 				perfil.email as pEmail, 
 				area.nombre as pArea, 
@@ -64,7 +64,7 @@
 				iniciativa.no_votos as iNo_votos, 
 				iniciativa.descripcion as iDescripcion, 
 				iniciativa.fechaDeCreacion as iFechaDeCreacion, 
-				perfil.carne as pCarne, 
+				
 				perfil.nombre as pNombre, 
 				perfil.email as pEmail, 
 				area.nombre as pArea, 
@@ -81,7 +81,7 @@
 				iniciativa.no_votos as iNo_votos, 
 				iniciativa.descripcion as iDescripcion, 
 				iniciativa.fechaDeCreacion as iFechaDeCreacion, 
-				perfil.carne as pCarne, 
+				
 				perfil.nombre as pNombre, 
 				perfil.email as pEmail, 
 				area.nombre as pArea, 
@@ -100,7 +100,7 @@
 				iniciativa.no_votos as iNo_votos, 
 				iniciativa.descripcion as iDescripcion, 
 				iniciativa.fechaDeCreacion as iFechaDeCreacion, 
-				perfil.carne as pCarne, 
+				
 				perfil.nombre as pNombre, 
 				perfil.email as pEmail, 
 				area.nombre as pArea, 
@@ -116,7 +116,7 @@
 				comentarios.descripcion as cDescripcion,
 				comentarios.id as cId,
 				comentarios.fecha as cFecha,
-				perfil.carne as pCarne,
+				
 				perfil.nombre as pNombre,
 				perfil.email as pEmail,
 				area.nombre as aNombre,
@@ -134,7 +134,7 @@
 				iniciativa.no_votos as iNo_votos, 
 				iniciativa.descripcion as iDescripcion, 
 				iniciativa.fechaDeCreacion as iFechaDeCreacion, 
-				perfil.carne as pCarne, 
+				
 				perfil.nombre as pNombre, 
 				perfil.email as pEmail, 
 				area.nombre as pArea, 
@@ -148,12 +148,12 @@
 		
 		
 		<select id="consultarInteresadosDeIniciativa" parameterType="map" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult">
-			SELECT perfil.email as pEmail, perfil.carne as pCarne, perfil.nombre as pNombre, area.nombre as pArea FROM interes JOIN perfil ON (interes.perfil=perfil.email and interes.iniciativa=#{id}) JOIN area ON (perfil.area = area.id);
+			SELECT perfil.email as pEmail,  perfil.nombre as pNombre, area.nombre as pArea FROM interes JOIN perfil ON (interes.perfil=perfil.email and interes.iniciativa=#{id}) JOIN area ON (perfil.area = area.id);
 		</select>
 	
 		
 		<select id="consultarVoluntariosDeIniciativa" parameterType="map" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult">
-			SELECT perfil.email as pEmail, perfil.carne as pCarne, perfil.nombre as pNombre, area.nombre as pArea FROM interes JOIN perfil ON (interes.perfil=perfil.email and interes.iniciativa=#{id}) JOIN area ON (perfil.area = area.id);
+			SELECT perfil.email as pEmail,  perfil.nombre as pNombre, area.nombre as pArea FROM interes JOIN perfil ON (interes.perfil=perfil.email and interes.iniciativa=#{id}) JOIN area ON (perfil.area = area.id);
 		</select>
 
 		

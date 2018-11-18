@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Perfil implements Serializable{
 	
-	private int carne;
 	private Rol rol;
 	private String email;
 	private String nombre;
@@ -19,11 +18,10 @@ public class Perfil implements Serializable{
 		
 	}
 	
-	public Perfil(int carne, Rol rol, 
+	public Perfil(Rol rol, 
 			String email, String nombre, 
 			List<Iniciativa> interes, List<Iniciativa> voluntad,
 			String area) {
-		this.carne=carne;
 		this.rol=rol;
 		this.email=email;
 		this.nombre=nombre;
@@ -32,13 +30,7 @@ public class Perfil implements Serializable{
 		this.area=area;
 	}
 	
-	public int getCarne() {
-		return carne;
-	}
 	
-	public void setCarne(int carne) {
-		this.carne=carne;
-	}
 	
 	public Rol getRol() {
 		return rol;
@@ -90,7 +82,7 @@ public class Perfil implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Carne: "+carne+" Nombre: "+nombre+" Email: "+email+" Rol: {"+rol.toString()+"} Area: "+area;
+		return " Nombre: "+nombre+" Email: "+email+" Rol: {"+rol.toString()+"} Area: "+area;
 	}
 
 }

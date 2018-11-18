@@ -47,7 +47,6 @@ CREATE TABLE palabra_clave (
 
 -- Table: perfil
 CREATE TABLE perfil (
-    carne int  NOT NULL UNIQUE,
     rol varchar(25)  NOT NULL,
     nombre varchar(75)  NOT NULL,
     email varchar(75)  NOT NULL,
