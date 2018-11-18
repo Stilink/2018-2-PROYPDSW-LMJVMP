@@ -27,14 +27,14 @@ import PROYPDSW.samples.services.ServicesIniciativa;
 public class RegisterIniBean extends BasePageBean{
 	@Inject
 	private ServicesIniciativa service;
-	private String usuario = "luis.moreno-a@mail.escuelaing.edu.co";
+	private String usuario;
 	private String nameI;
 	private String description;
 	private List<String> keyWords = new ArrayList<String>();
 	
-	public void registrarIniciativa() throws Exception {
+	public void registrarIniciativa(String username) throws Exception {
 		try {
-			Perfil creador = service.consultarPerfil("luis.moreno-a@mail.escuelaing.edu.co");
+			Perfil creador = service.consultarPerfil(username);
 			int id = establecerId();
 			Iniciativa ini = new Iniciativa(id,nameI,"En espera de revision",creador,description, new Date(System.currentTimeMillis()));
 			ini.setPalabrasClave(keyWords);

@@ -26,7 +26,21 @@ public class MyBATISIniciativaDAO implements IniciativaDAO{
 	public List<Iniciativa> consultarIniciativasPorPalabrasClave(List<String> palabrasClave)throws PersistenceException {
 		List<Iniciativa> todas=new ArrayList<Iniciativa>();
 		for(String palabraClave:palabrasClave) {
-			todas.addAll(im.consultarIniciativaPorPalabraClave(palabraClave));
+			List<Iniciativa> iniciativas = im.consultarIniciativaPorPalabraClave(palabraClave);
+			boolean in = false;
+			for(Iniciativa ini : iniciativas) {
+				for(Iniciativa iniT : todas) {
+					if(ini.getId()==iniT.getId()) {
+						in=true;
+						break;
+					}
+				}
+				if(in) {
+					continue;
+				}else {
+					todas.add(ini);
+				}
+			}
 		}
 		return todas;
 	}
