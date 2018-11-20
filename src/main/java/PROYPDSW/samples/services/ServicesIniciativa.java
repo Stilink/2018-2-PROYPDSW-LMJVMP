@@ -20,5 +20,6 @@ public interface ServicesIniciativa {
 	public void modificarEstadoDeLaIniciativa(Iniciativa iniciativa, String estado) throws ExcepcionServicesIniciativa;
 	public void agregarInteresAIniciativa(int ini,String perfil) throws ExcepcionServicesIniciativa;
 	public void agregarVoluntadAIniciativa(int ini,String perfil) throws ExcepcionServicesIniciativa;
+	public List<String> getPalabrasClave(int id)throws ExcepcionServicesIniciativa;
 }
 

@@ -96,6 +96,10 @@ public class MyBATISIniciativaDAO implements IniciativaDAO{
 	public List<Iniciativa> consultarIniciativaPorPerfil(String perfil) throws PersistenceException {
 		return im.consultarIniciativasPorPerfil(perfil);
 	}
+	@Override
+	public List<String> getPalabrasClave(int id) throws PersistenceException {
+		return im.palabrasClaveDeIniciativa(id);
+	}
 
 
 }

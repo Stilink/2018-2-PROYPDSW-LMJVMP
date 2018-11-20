@@ -144,4 +144,12 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 			throw new ExcepcionServicesIniciativa("validarLogin",e);
 		}
 	}
+	@Override
+	public List<String> getPalabrasClave(int id) throws ExcepcionServicesIniciativa {
+		try {
+			return idao.getPalabrasClave(id);
+		} catch (Exception e) {
+			throw new ExcepcionServicesIniciativa("validarLogin",e);
+		}
+	}
 }

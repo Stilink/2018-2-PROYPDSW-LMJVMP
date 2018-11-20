@@ -175,4 +175,10 @@ public class ServicesIniciativaStub implements ServicesIniciativa{
 		return null;
 	}
 
+	@Override
+	public List<String> getPalabrasClave(int id) throws ExcepcionServicesIniciativa {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
