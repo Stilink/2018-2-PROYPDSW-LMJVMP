@@ -49,6 +49,7 @@ public class OperacionesIniciativaBean extends BasePageBean{
 			e.printStackTrace();
 		}
     }
+
     public void consultarIniciativasRelacionadas() {
     	try {
     		iniConsultada=service.consultarIniciativa(idAConsultar);
@@ -60,12 +61,20 @@ public class OperacionesIniciativaBean extends BasePageBean{
 					}
 				}
 			}
-			
+    	}catch (ExcepcionServicesIniciativa e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    }
+    
+    
+    public void consultarIniPerfil(String username) {
+        try {
+			iniConsultadas=service.consultarIniciativaPorPerfil(username);
 		} catch (ExcepcionServicesIniciativa e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
     }
 	
 
