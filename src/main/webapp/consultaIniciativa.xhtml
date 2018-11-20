@@ -32,12 +32,10 @@
 			<h:outputText id="n_v" value="#{operacionIBean.iniConsultada.no_votos}" /><br/>
 			<p:outputLabel for="fecha" value="Fecha de creacion:" />
 			<h:outputText id="fecha" value="#{operacionIBean.iniConsultada.fechaDeCreacion}"/><br/>
-			<p:dataTable id="palabras_clave" var="palabra" value="#{operacionIBean.iniConsultada.palabrasClave}">
-				<p:column headerText="Palabras">
-					<h:outputText value="#{palabra.toString()}"/>
-				</p:column>
-			</p:dataTable><br/>
-<br/>
+			<p:outputLabel for="Palabras_clave" value="Palabras clave:" />
+			<h:outputText id="Palabras_clave" value="#{operacionIBean.palabrasClaveToString().toString()}"/><br/>
+			<br/>
+			<p:button outcome="consultarIniciativasRelacionadas?idAConsultar=#{operacionIBean.iniConsultada.id}" value="Detalles" />
 			<p:outputLabel for="estadoC" value="Seleccione un estado para la iniciativa:" />
 			<p:selectOneRadio id="estadoC" binding="#{estadoC}">
 		    		<f:selectItem itemLabel="En espera de revision" itemValue="En espera de revision" />

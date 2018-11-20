@@ -21,5 +21,6 @@ public interface ServicesIniciativa {
 	public void agregarInteresAIniciativa(int ini,String perfil) throws ExcepcionServicesIniciativa;
 	public void agregarVoluntadAIniciativa(int ini,String perfil) throws ExcepcionServicesIniciativa;
 	public void asignarRolAPerfil(Perfil perfil, String rol) throws ExcepcionServicesIniciativa;
+	public List<String> getPalabrasClave(int id)throws ExcepcionServicesIniciativa;
 }
 

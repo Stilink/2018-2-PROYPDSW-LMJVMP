@@ -32,7 +32,14 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	private List<Iniciativa> iniConsultadas;
 	private List<String> palabrasClaveAConsultar;
 
-
+	public String palabrasClaveToString() {
+		String union=" ";
+		for(String palabra :iniConsultada.getPalabrasClave()) {
+			union+=palabra+" , ";
+		}
+		
+		return union;
+	}
 	
     public void consultarIni() {
         try {
@@ -42,6 +49,23 @@ public class OperacionesIniciativaBean extends BasePageBean{
 			e.printStackTrace();
 		}
     }
+
+    public void consultarIniciativasRelacionadas() {
+    	try {
+    		iniConsultada=service.consultarIniciativa(idAConsultar);
+    		iniConsultadas=new ArrayList();
+			for(Iniciativa ini : service.consultarIniciativasPorArea(iniConsultada.getCreador().getArea())) {
+				for(String palabraClave:iniConsultada.getPalabrasClave()) {
+					if (service.getPalabrasClave(ini.getId()).contains(palabraClave) && !iniConsultadas.contains(ini)){
+						iniConsultadas.add(ini);
+					}
+				}
+			}
+    	}catch (ExcepcionServicesIniciativa e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    }
     
     
     public void consultarIniPerfil(String username) {

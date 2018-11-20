@@ -152,6 +152,13 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 			System.out.println("Fallo dentro de la asignacion de un rol a un perfil");
 			throw new ExcepcionServicesIniciativa("Asignar_Rol_A_Perfil",e);
 		}
-		
+	}
+
+	public List<String> getPalabrasClave(int id) throws ExcepcionServicesIniciativa {
+		try {
+			return idao.getPalabrasClave(id);
+		} catch (Exception e) {
+			throw new ExcepcionServicesIniciativa("validarLogin",e);
+		}
 	}
 }

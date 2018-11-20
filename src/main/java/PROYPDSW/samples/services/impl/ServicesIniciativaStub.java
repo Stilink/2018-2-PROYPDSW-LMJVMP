@@ -176,9 +176,14 @@ public class ServicesIniciativaStub implements ServicesIniciativa{
 	}
 
 	@Override
+
 	public void asignarRolAPerfil(Perfil perfil, String rol) {
 		// TODO Auto-generated method stub
-		
+	}
+	
+	public List<String> getPalabrasClave(int id) throws ExcepcionServicesIniciativa {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
