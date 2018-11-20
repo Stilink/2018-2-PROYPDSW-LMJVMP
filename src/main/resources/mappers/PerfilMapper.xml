@@ -91,5 +91,10 @@
 			JOIN voluntad ON (iniciativa.id=voluntad.iniciativa) where perfil.email=#{perfil};
 	</select>
 	
+	<update id="asignarRolAPerfil" parameterType="map">
+		UPDATE perfil SET rol = #{rol}
+		WHERE email = #{perfil.email}; 
+	</update>
+	
 </mapper>
 

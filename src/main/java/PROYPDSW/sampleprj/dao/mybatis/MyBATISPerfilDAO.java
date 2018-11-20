@@ -37,4 +37,10 @@ public class MyBATISPerfilDAO implements PerfilDAO{
 		return pm.validarLogin(email,password);
 	}
 
+	@Override
+	public void asignarRolAPerfil(Perfil perfil, String rol) {
+		pm.asignarRolAPerfil(perfil, rol);
+		
+	}
+
 }

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/include/template.xhtml">
+<ui:define name ="head">
+</ui:define>
+<ui:define name = "body">
+		<f:metadata>
+			<f:viewParam name="perfilAConsultar" value="#{operacionPBean.perfilAConsultar}"/>
+		</f:metadata>
+		
+		<h:form id="perfil">
+			#{operacionPBean.consultarPerfil()}
+			<p:outputLabel for="nombre" value="Nombre:" />
+			<h:outputText id="nombre" value="#{operacionPBean.perfilConsultado.nombre}"/><br/>
+			<p:outputLabel for="email" value="Email:" />
+			<h:outputText id="email" value="#{operacionPBean.perfilConsultado.email}"/><br/>
+			<p:outputLabel for="rol" value="Rol:" />
+			<h:outputText id="rol" value="#{operacionPBean.perfilConsultado.rol.nombre}"/><br/>
+			<p:outputLabel for="area" value="Area:"/>
+			<h:outputText id="area" value="#{operacionPBean.perfilConsultado.area}"/><br/>
+			<br/>
+<br/>
+			<p:outputLabel for="rolC" value="Seleccione un perfil que desee asignarle:" />
+			<p:selectOneRadio id="rolC" binding="#{rolC}">
+		    		<f:selectItem itemLabel="Publico" itemValue="Publico" />
+		    		<f:selectItem itemLabel="Proponente" itemValue="Proponente" />
+		    		<f:selectItem itemLabel="Personal PMO" itemValue="Personal PMO" />
+		    		<f:selectItem itemLabel="Administrador" itemValue="Administrador" />
+
+			</p:selectOneRadio>
+			<p:commandButton actionListener="#{operacionPBean.asignarRolAPerfil(rolC.value)}" value="Asignar Rol" process="@this rol" update="perfil"/>
+		</h:form>
+</ui:define>
+</ui:composition>
+</html>

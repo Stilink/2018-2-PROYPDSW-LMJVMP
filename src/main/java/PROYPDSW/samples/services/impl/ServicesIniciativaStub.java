@@ -175,4 +175,10 @@ public class ServicesIniciativaStub implements ServicesIniciativa{
 		return null;
 	}
 
+	@Override
+	public void asignarRolAPerfil(Perfil perfil, String rol) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

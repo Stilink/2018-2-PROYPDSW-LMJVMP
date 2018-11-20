@@ -144,4 +144,14 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 			throw new ExcepcionServicesIniciativa("validarLogin",e);
 		}
 	}
+	@Override
+	public void asignarRolAPerfil(Perfil perfil, String rol) throws ExcepcionServicesIniciativa {
+		try{
+			pdao.asignarRolAPerfil(perfil, rol);
+		}catch(Exception e) {
+			System.out.println("Fallo dentro de la asignacion de un rol a un perfil");
+			throw new ExcepcionServicesIniciativa("Asignar_Rol_A_Perfil",e);
+		}
+		
+	}
 }

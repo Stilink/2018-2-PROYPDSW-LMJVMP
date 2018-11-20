@@ -23,4 +23,6 @@ public interface PerfilMapper {
 
 	boolean validarLogin(@Param("email") String email, @Param("password") String password);
 
+	void asignarRolAPerfil(@Param("perfil") Perfil perfil, @Param("rol") String rol);
+
 }

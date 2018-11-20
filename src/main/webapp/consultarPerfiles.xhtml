@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/include/template.xhtml">
+<ui:define name ="head">
+	<title>Consulta completa</title>
+</ui:define>
+<ui:define name = "body">
+		
+		<h:form id="consultarTodos">
+				#{operacionPBean.perfilesConsultados()}
+				<p:dataTable id="perfiles" var="perfil" value="#{operacionPBean.perfilesConsultados}" >
+				<f:facet name="header">
+            		Perfiles
+        		</f:facet>
+				<p:column headerText="Nombre" sortBy="#{perfil.nombre}" >
+					<h:outputText value="#{perfil.nombre}"/>
+				</p:column>
+				<p:column headerText="Email" sortBy="#{perfil.email}" >
+					<h:outputText value="#{perfil.email}"/>
+				</p:column>
+				<p:column headerText="Rol" sortBy="#{perfil.rol.nombre}" >
+					<h:outputText value="#{perfil.rol.nombre}"/>
+				</p:column>
+				<p:column headerText="Ver detalles">
+					<p:button outcome="consultaPerfil?perfilAConsultar=#{perfil.email}" value="Detalles" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+</ui:define>
+</ui:composition>
+</html>
+
