@@ -34,7 +34,7 @@
 		    		<f:selectItem itemLabel="Administrador" itemValue="Administrador" />
 
 			</p:selectOneRadio>
-			<p:commandButton actionListener="#{operacionPBean.asignarRolAPerfil(rolC.value)}" value="Asignar Rol" process="@this rol" update="perfil"/>
+			<p:commandButton actionListener="#{operacionPBean.asignarRolAPerfil(rolC.value)}" value="Asignar Rol" process="@this rolC" update="perfil"/>
 		</h:form>
 </ui:define>
 </ui:composition>

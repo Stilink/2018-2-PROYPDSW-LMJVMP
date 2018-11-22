@@ -29,12 +29,15 @@ public class OperacionesPerfilBean extends BasePageBean{
 	@Inject
 	private ServicesIniciativa service;
 	private List<Perfil> perfilesConsultados;
-	private String perfilAConsultar;
-	private Perfil perfilConsultado;
+	private List<Perfil> perfilesSeleccionados=new ArrayList<Perfil>();
+	
+	
 	
 	
 
-	public void perfilesConsultados(){
+	
+
+	public void perfilesOriginal(){
 		try {
 			perfilesConsultados = service.consultarUsuarios();
 		} catch (ExcepcionServicesIniciativa e) {
@@ -45,45 +48,35 @@ public class OperacionesPerfilBean extends BasePageBean{
 	
 	public void asignarRolAPerfil(String rol) {
 		try {
-			service.asignarRolAPerfil(perfilConsultado, rol);
+			for(Perfil p: perfilesSeleccionados) {
+				service.asignarRolAPerfil(p, rol);
+			}
+			perfilesSeleccionados = new ArrayList<Perfil>();
+			
 		} catch (ExcepcionServicesIniciativa e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void consultarPerfil() {
-		try {
-			perfilConsultado= service.consultarPerfil(perfilAConsultar);
-		} catch (ExcepcionServicesIniciativa e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public void seleccionarPerfil(Perfil perfil) {
+		boolean esta = false;
+		for(Perfil p : perfilesSeleccionados) {
+			if(p.getEmail().equals(perfil.getEmail())) {
+				esta=true;
+				break;
+			}
 		}
+		if(!esta) {
+		perfilesSeleccionados.add(perfil);}
+		perfilesConsultados.remove(perfil);
 	}
 	
-	
-	
-	
-	
-	
-	public Perfil getPerfilConsultado() {
-		return perfilConsultado;
-	}
-
-	public void setPerfilConsultado(Perfil perfilConsultado) {
-		this.perfilConsultado = perfilConsultado;
+	public void quitarPerfil(Perfil perfil) {
+		perfilesConsultados.add(perfil);
+		perfilesSeleccionados.remove(perfil);
 	}
 	
-	
-	
-	
-	public String getPerfilAConsultar() {
-		return perfilAConsultar;
-	}
-
-	public void setPerfilAConsultar(String perfilAConsultar) {
-		this.perfilAConsultar = perfilAConsultar;
-	}
-	
+		
 	
 	public List<Perfil> getPerfilesConsultados() {
 		return perfilesConsultados;
@@ -92,7 +85,13 @@ public class OperacionesPerfilBean extends BasePageBean{
 		this.perfilesConsultados = perfilesConsultados;
 	}
 	
-	
+	public List<Perfil> getPerfilesSeleccionados() {
+		return perfilesSeleccionados;
+	}
+
+	public void setPerfilesSeleccionados(List<Perfil> perfilesSeleccionados) {
+		this.perfilesSeleccionados = perfilesSeleccionados;
+	}
 	
 
 }

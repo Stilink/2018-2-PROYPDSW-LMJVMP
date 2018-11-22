@@ -7,16 +7,16 @@
 
 <ui:composition template="/WEB-INF/include/template.xhtml">
 <ui:define name ="head">
-	<title>Consulta completa</title>
+	<title>Perfiles</title>
 </ui:define>
 <ui:define name = "body">
-		
+		#{operacionPBean.perfilesOriginal()}
 		<h:form id="consultarTodos">
-				#{operacionPBean.perfilesConsultados()}
-				<p:dataTable id="perfiles" var="perfil" value="#{operacionPBean.perfilesConsultados}" >
+				
+				<p:dataTable id="perfilesC" var="perfil" value="#{operacionPBean.perfilesConsultados}" >
 				<f:facet name="header">
-            		Perfiles
-        		</f:facet>
+            				Perfiles
+        			</f:facet>
 				<p:column headerText="Nombre" sortBy="#{perfil.nombre}" >
 					<h:outputText value="#{perfil.nombre}"/>
 				</p:column>
@@ -26,11 +26,42 @@
 				<p:column headerText="Rol" sortBy="#{perfil.rol.nombre}" >
 					<h:outputText value="#{perfil.rol.nombre}"/>
 				</p:column>
-				<p:column headerText="Ver detalles">
-					<p:button outcome="consultaPerfil?perfilAConsultar=#{perfil.email}" value="Detalles" />
+				<p:column headerText="">
+					<h:commandButton actionListener="#{operacionPBean.seleccionarPerfil(perfil)}"  value="Seleccionar Perfil" process="@this perfilesC" update="consultarTodos perfilesSeleccionados"></h:commandButton>
 				</p:column>
 			</p:dataTable>
 		</h:form>
+		<br/>
+		<h:form id="perfilesSeleccionados">
+			<p:dataTable id="perfilesS" var="perfil" value="#{operacionPBean.perfilesSeleccionados}" >
+				<f:facet name="header">
+            				Perfiles seleccionados
+        			</f:facet>
+				<p:column headerText="Nombre" sortBy="#{perfil.nombre}" >
+					<h:outputText value="#{perfil.nombre}"/>
+				</p:column>
+				<p:column headerText="Email" sortBy="#{perfil.email}" >
+					<h:outputText value="#{perfil.email}"/>
+				</p:column>
+				<p:column headerText="Rol" sortBy="#{perfil.rol.nombre}" >
+					<h:outputText value="#{perfil.rol.nombre}"/>
+				</p:column>
+				<p:column headerText="">
+					<h:commandButton actionListener="#{operacionPBean.quitarPerfil(perfil)}"  value="X" process="@this" update="consultarTodos perfilesSeleccionados"/>
+				</p:column>
+			</p:dataTable><br/>
+			<p:outputLabel for="rolC" value="Seleccione el rol que desee asignarle a los perfiles:" />
+			<p:selectOneRadio id="rolC" binding="#{rolC}">
+		    		<f:selectItem itemLabel="Publico" itemValue="Publico" />
+		    		<f:selectItem itemLabel="Proponente" itemValue="Proponente" />
+		    		<f:selectItem itemLabel="Personal PMO" itemValue="Personal PMO" />
+		    		<f:selectItem itemLabel="Administrador" itemValue="Administrador" />
+
+			</p:selectOneRadio>
+			<p:commandButton actionListener="#{operacionPBean.asignarRolAPerfil(rolC.value)}" value="Asignar Rol" process="@this rolC" update="perfilesSeleccionados consultarTodos"/>
+		</h:form>
+		
+		
 
 </ui:define>
 </ui:composition>
