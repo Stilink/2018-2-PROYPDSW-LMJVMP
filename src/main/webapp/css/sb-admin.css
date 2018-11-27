@@ -26,6 +26,12 @@ body {
   padding-bottom: 80px;
 }
 
+#usuario{
+	width: calc(100% - 15%);
+	text-align: right;
+	color:white;
+}
+
 body.fixed-nav #content-wrapper {
   margin-top: 56px;
   padding-left: 90px;
@@ -374,11 +380,4 @@ body.sidebar-toggled footer.sticky-footer {
   }
 }
 
-#usuario{
-	width: calc(100% - 15%);
-	text-align: right;
-	color:white;
-	.a{
-		text-decoration: none;
-	}
-}
+
