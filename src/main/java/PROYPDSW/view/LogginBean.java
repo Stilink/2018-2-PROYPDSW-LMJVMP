@@ -10,6 +10,7 @@ import org.primefaces.PrimeFaces;
 
 import com.google.inject.Inject;
 
+import PROYPDSW.samples.entities.Perfil;
 import PROYPDSW.samples.services.ExcepcionServicesIniciativa;
 import PROYPDSW.samples.services.ServicesIniciativa;
 
@@ -20,9 +21,20 @@ public class LogginBean extends BasePageBean{
 	@Inject
 	private ServicesIniciativa service;
     private String username;
-     
-    private String password;
+    private Perfil perfil;
+   	private String password;
+    
+   	
+   	
+   	
+   	
+   	public Perfil getPerfil() {
+		return perfil;
+	}
 
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
+	}
  
     public String getUsername() {
         return username;
@@ -47,6 +59,7 @@ public class LogginBean extends BasePageBean{
         if(username != null && password != null && service.validarLogin(username, password)) {
             loggedIn = true;
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
+            consultarPerfil(username);
         } else {
             loggedIn = false;
             message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
@@ -54,6 +67,15 @@ public class LogginBean extends BasePageBean{
          
         FacesContext.getCurrentInstance().addMessage(null, message);
         PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
-    }   
+    }
+    
+    
+    private void consultarPerfil(String email) {
+    	try {
+			perfil = service.consultarPerfil(email);
+		} catch (ExcepcionServicesIniciativa e) {
+			e.printStackTrace();
+		}
+    }
 }
 

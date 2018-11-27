@@ -186,4 +186,23 @@ public class ServicesIniciativaStub implements ServicesIniciativa{
 		return null;
 	}
 
+	@Override
+	public void agregarComentarioAIniciativa(Iniciativa iniciativa, Comentario comentario)
+			throws ExcepcionServicesIniciativa {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Comentario> consultarComentariosDeIniciativa(Iniciativa iniciativa) throws ExcepcionServicesIniciativa {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int maximaIdComentarios() throws ExcepcionServicesIniciativa {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -35,7 +35,7 @@
 			<p:outputLabel for="Palabras_clave" value="Palabras clave:" />
 			<h:outputText id="Palabras_clave" value="#{operacionIBean.palabrasClaveToString().toString()}"/><br/>
 			<br/>
-			<p:button outcome="consultarIniciativasRelacionadas?idAConsultar=#{operacionIBean.iniConsultada.id}" value="Detalles" />
+			<p:button outcome="consultarIniciativasRelacionadas?idAConsultar=#{operacionIBean.iniConsultada.id}" value="Iniciativas relacionadas" /><br/><br/>
 			<p:outputLabel for="estadoC" value="Seleccione un estado para la iniciativa:" />
 			<p:selectOneRadio id="estadoC" binding="#{estadoC}">
 		    		<f:selectItem itemLabel="En espera de revision" itemValue="En espera de revision" />
@@ -45,6 +45,30 @@
 			</p:selectOneRadio>
 			<p:commandButton actionListener="#{operacionIBean.modificarEstadoDeLaIniciativa(id.value, estadoC.value)}" value="Modificar estado" process="@this estadoC" update="iniciativa"/>
 		</h:form>
+		<br/><br/>
+		<h:form id="comentarios">
+			<h:inputTextarea id="comentar" binding="#{comentar}"/><br/>
+			<p:commandButton actionListener="#{operacionIBean.agregarComentarioAIniciativa(loginBean.perfil, comentar.value)}" value="Comentar" process="@this comentar" update="comentariosIniciativa"/>
+			<br/><br/>
+			<p:dataTable id="comentariosIniciativa" var="comentario" value="#{operacionIBean.comentarios}"  rows="10"
+                 		paginator="true"
+                 		paginatorTemplate="{PreviousPageLink} {PageLinks} {NextPageLink}{RowsPerPageDropdown}"
+						paginatorPosition="bottom">
+				<f:facet name="header">
+            		Comentarios
+        		</f:facet>
+				<p:column headerText="Perfil" sortBy="#{comentario.perfil.nombre}" >
+					<h:outputText value="#{comentario.perfil.nombre}"/>
+				</p:column>
+				<p:column headerText="Fecha" sortBy="#{comentario.fecha}" >
+					<h:outputText value="#{comentario.fecha}"/>
+				</p:column>
+				<p:column headerText="Comentario" sortBy="#{comentario.descripcion}" >
+					<h:outputText value="#{comentario.descripcion}"/>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+			
 </ui:define>
 </ui:composition>
 </html>

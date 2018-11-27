@@ -10,5 +10,36 @@
 			<association property="perfil" javaType="Perfil" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult"></association>
 			<association property="iniciativa" javaType="Iniciativa" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.IniciativaMapper.IniciativaResult"></association>
 		</resultMap>
+		
+		
+		<insert id="agregarComentarioAIniciativa">
+			INSERT INTO comentarios(iniciativa, perfil, descripcion, id, fecha)
+				VALUES(#{iniciativa.id},#{comentario.perfil.email},#{comentario.descripcion},#{comentario.id},#{comentario.fecha});
+		</insert>
+		
+		<select id="consultarComentariosDeIniciativa" parameterType="map" resultMap="ComentarioResult">
+			SELECT 
+				comentarios.id as cId,
+				comentarios.descripcion as cDescripcion,
+				comentarios.fecha as cFecha,
+				
+				iniciativa.id as iId, 
+				iniciativa.nombre as iNombre, 
+				iniciativa.estado as iEstado, 
+				iniciativa.no_votos as iNo_votos, 
+				iniciativa.descripcion as iDescripcion, 
+				iniciativa.fechaDeCreacion as iFechaDeCreacion,
+				
+				perfil.nombre as pNombre, 
+				perfil.email as pEmail, 
+				area.nombre as pArea, 
+				rol.nombre as rNombre, 
+				rol.prioridad as rPrioridad
+				FROM comentarios join iniciativa on (comentarios.iniciativa=#{iniciativa.id}) join perfil on (comentarios.perfil = perfil.email) join area on (perfil.area = area.id) join rol on (perfil.rol = rol.nombre);
+		</select>
+		
+		<select id="maximoIdComentarios" parameterType="map" resultType="java.lang.Integer">
+			select max(id) from comentarios;
+		</select>
 	</mapper>
 			

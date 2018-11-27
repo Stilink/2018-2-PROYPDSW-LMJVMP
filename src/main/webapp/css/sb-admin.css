@@ -373,3 +373,12 @@ body.sidebar-toggled footer.sticky-footer {
     width: calc(100% - 90px);
   }
 }
+
+#usuario{
+	width: calc(100% - 15%);
+	text-align: right;
+	color:white;
+	.a{
+		text-decoration: none;
+	}
+}

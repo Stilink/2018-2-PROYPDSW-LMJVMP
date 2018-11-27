@@ -18,6 +18,6 @@ public interface PerfilDAO {
 
 	boolean validarLogin(String email, String password)throws PersistenceException;
 
-	void asignarRolAPerfil(Perfil perfil, String rol);
+	void asignarRolAPerfil(Perfil perfil, String rol)throws PersistenceException;
 
 }

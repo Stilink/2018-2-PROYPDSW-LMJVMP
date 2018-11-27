@@ -2,6 +2,7 @@ package PROYPDSW.samples.services;
 
 import java.util.List;
 
+import PROYPDSW.samples.entities.Comentario;
 import PROYPDSW.samples.entities.Iniciativa;
 import PROYPDSW.samples.entities.Perfil;
 
@@ -22,5 +23,8 @@ public interface ServicesIniciativa {
 	public void agregarVoluntadAIniciativa(int ini,String perfil) throws ExcepcionServicesIniciativa;
 	public void asignarRolAPerfil(Perfil perfil, String rol) throws ExcepcionServicesIniciativa;
 	public List<String> getPalabrasClave(int id)throws ExcepcionServicesIniciativa;
+	public void agregarComentarioAIniciativa(Iniciativa iniciativa, Comentario comentario) throws ExcepcionServicesIniciativa;
+	public List<Comentario> consultarComentariosDeIniciativa(Iniciativa iniciativa) throws ExcepcionServicesIniciativa;
+	public int maximaIdComentarios() throws ExcepcionServicesIniciativa;
 }
 

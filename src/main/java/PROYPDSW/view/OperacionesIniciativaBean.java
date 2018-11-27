@@ -1,5 +1,6 @@
 package PROYPDSW.view;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.faces.bean.ViewScoped;
 
 import com.google.inject.Inject;
 
+import PROYPDSW.samples.entities.Comentario;
 import PROYPDSW.samples.entities.Iniciativa;
 import PROYPDSW.samples.entities.Perfil;
 import PROYPDSW.samples.services.ExcepcionServicesIniciativa;
@@ -31,11 +33,20 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	private Iniciativa iniConsultada;
 	private List<Iniciativa> iniConsultadas;
 	private List<String> palabrasClaveAConsultar;
+	private List<Comentario> comentarios;
+
+	
 
 	public String palabrasClaveToString() {
 		String union=" ";
-		for(String palabra :iniConsultada.getPalabrasClave()) {
-			union+=palabra+" , ";
+		List<String> palabrasClave = iniConsultada.getPalabrasClave();
+		for(int i=0; i< palabrasClave.size();i++){
+			if(i!=palabrasClave.size()-1) {
+				union+=palabrasClave.get(i)+" , ";
+			}else {
+				union+=palabrasClave.get(i);
+			}
+			
 		}
 		
 		return union;
@@ -89,6 +100,7 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	public void consultarIniciativa() {
 		try {
 			iniConsultada = service.consultarIniciativa(idAConsultar);
+			consultarComentariosIniConsultada();
 		} catch (ExcepcionServicesIniciativa e) {
 			
 			e.printStackTrace();
@@ -111,6 +123,45 @@ public class OperacionesIniciativaBean extends BasePageBean{
 			iniConsultadas = service.consultarIniciativasPorEstado(estado);
 		} catch (ExcepcionServicesIniciativa e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void agregarComentarioAIniciativa(Perfil perfil, String descripcion) {
+		int id = calcularIdComentario();
+		Comentario comentario = new Comentario(perfil, descripcion, new Date(System.currentTimeMillis()), id, iniConsultada);
+		try {
+			service.agregarComentarioAIniciativa(iniConsultada, comentario);
+		} catch (ExcepcionServicesIniciativa e) {
+			System.out.println("Falló en la inserción del comentario");
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	
+	private int calcularIdComentario() {
+		Integer id=null;
+		try {
+			id = service.maximaIdComentarios();
+			if(id.equals(null)){
+				id=1;
+			}else {
+				id++;
+			}
+		} catch (ExcepcionServicesIniciativa e) {
+			
+			e.printStackTrace();
+		}
+		return id;
+	}
+	
+	private void consultarComentariosIniConsultada() {
+		try {
+			comentarios=service.consultarComentariosDeIniciativa(iniConsultada);
+		} catch (ExcepcionServicesIniciativa e) {
+			System.out.println("Falló en la consulta de los comentarios de la iniciativa");
 			e.printStackTrace();
 		}
 	}
@@ -161,6 +212,13 @@ public class OperacionesIniciativaBean extends BasePageBean{
 
 	public void setPalabrasClaveAConsultar(List<String> palabrasClaveAConsultar) {
 		this.palabrasClaveAConsultar = palabrasClaveAConsultar;
+	}
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
 	}
 	
 }

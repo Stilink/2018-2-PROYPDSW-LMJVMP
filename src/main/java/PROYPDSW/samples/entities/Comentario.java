@@ -7,18 +7,23 @@ import java.util.LinkedList;
 
 public class Comentario implements Serializable{
 	
+	private int id;
 	private Perfil perfil;
 	private String descripcion;
 	private Date fecha;
+	private Iniciativa iniciativa;
 	
+	
+
 	public Comentario() {
 		
 	}
 	
-	public Comentario(Perfil perfil, String descripcion, Date fecha) {
+	public Comentario(Perfil perfil, String descripcion, Date fecha, int id, Iniciativa iniciativa) {
 		this.perfil=perfil;
 		this.descripcion=descripcion;
 		this.fecha=fecha;
+		this.id=id;
 	}
 	
 	public Perfil getPerfil() {
@@ -44,6 +49,22 @@ public class Comentario implements Serializable{
 	public void setFecha(Date fecha) {
 		this.fecha=fecha;
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Iniciativa getIniciativa() {
+		return iniciativa;
+	}
+
+	public void setIniciativa(Iniciativa iniciativa) {
+		this.iniciativa = iniciativa;
+	}
+
 	
 	@Override
 	public String toString() {

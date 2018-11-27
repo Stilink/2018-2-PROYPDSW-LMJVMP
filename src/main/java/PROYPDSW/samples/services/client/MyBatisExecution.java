@@ -16,7 +16,7 @@ public class MyBatisExecution{
 	public static void main(String[] args) throws Exception{
 		System.out.println("Solicitud de servicios:");
 		ServicesIniciativa sa = ServicesIniciativaFactory.getInstance().getServicesIniciativa();
-		System.out.println("validar login");
+		/*System.out.println("validar login");
 		System.out.println(sa.validarLogin("michael.preciado@mail.escuelaing.edu.co", "123"));
 		System.out.println("Agregamos perfiles: ");
 		Perfil michael = sa.consultarPerfil("michael.preciado@mail.escuelaing.edu.co");
@@ -65,6 +65,8 @@ public class MyBatisExecution{
 		}
 		//sa.agregarInteresAIniciativa(1, "michael.preciado@mail.escuelaing.edu.co");
 		//sa.agregarVoluntadAIniciativa(1, "michael.preciado@mail.escuelaing.edu.co");
+		Comentario comentario = new Comentario(sa.consultarPerfil("jeymar.vega@mail.escuelaing.edu.co"), "Esto es un comentario de prueba, para rellenar la base de datos", new Date(System.currentTimeMillis()), 1, sa.consultarIniciativa(18));
+		sa.agregarComentarioAIniciativa(comentario.getIniciativa(), comentario);*/
 	}
 
 }

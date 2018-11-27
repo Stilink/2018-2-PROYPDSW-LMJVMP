@@ -10,6 +10,7 @@ import com.google.inject.Singleton;
 import PROYPDSW.sampleprj.dao.ComentarioDAO;
 import PROYPDSW.sampleprj.dao.IniciativaDAO;
 import PROYPDSW.sampleprj.dao.PerfilDAO;
+import PROYPDSW.samples.entities.Comentario;
 import PROYPDSW.samples.entities.Iniciativa;
 import PROYPDSW.samples.entities.Perfil;
 import PROYPDSW.samples.services.ExcepcionServicesIniciativa;
@@ -160,5 +161,18 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 		} catch (Exception e) {
 			throw new ExcepcionServicesIniciativa("validarLogin",e);
 		}
+	}
+	@Override
+	public void agregarComentarioAIniciativa(Iniciativa iniciativa, Comentario comentario) throws ExcepcionServicesIniciativa {
+		cdao.agregarComentarioAIniciativa(iniciativa, comentario);
+		
+	}
+	@Override
+	public List<Comentario> consultarComentariosDeIniciativa(Iniciativa iniciativa) throws ExcepcionServicesIniciativa {
+		return cdao.consultarComentariosDeIniciativa(iniciativa);
+	}
+	@Override
+	public int maximaIdComentarios() throws ExcepcionServicesIniciativa {
+		return cdao.maximoIdComentarios();
 	}
 }
