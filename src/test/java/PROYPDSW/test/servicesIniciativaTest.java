@@ -8,10 +8,19 @@ import static org.quicktheories.QuickTheory.qt;
 
 import com.google.inject.Inject;
 
+import PROYPDSW.samples.services.ServicesIniciativa;
 
-public class servicesIniciativaTest {
+
+public class servicesIniciativaTest extends TestBase{
+	@Inject
+	ServicesIniciativa services;
 	@Test
 	public void deberiaResgistrarIniciativa() throws SQLException{
+		qt().forAll(IniciativasGenerador.iniciativaGen()).check((in)
+				->{
+					return true;
+				}
+				);
 
     }
 	@Test

@@ -30,7 +30,15 @@ public class Perfil implements Serializable{
 		this.area=area;
 	}
 	
-	
+	public Perfil(Rol rol, 
+			String email, 
+			String nombre,
+			String area) {
+		this.rol=rol;
+		this.email=email;
+		this.nombre=nombre;
+		this.area=area;
+	}
 	
 	public Rol getRol() {
 		return rol;
