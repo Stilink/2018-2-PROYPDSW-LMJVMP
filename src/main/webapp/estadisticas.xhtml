@@ -11,10 +11,11 @@
 	
 </ui:define>
 <ui:define name = "body">
-	
-	<div id="piechart" style="width: 900px; height: 500px;"></div>
+	<h1>Estadisticas</h1>
+	<div id="piechart" style="float:left;"></div>
+	<div id="barchart" style="float:left;"></div>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
+	<script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
@@ -26,7 +27,9 @@
         ]);
 
         var options = {
-          title: 'Iniciativas por area'
+          title: 'Iniciativas por area',
+          'width':500,
+          'height':300
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -34,6 +37,29 @@
         chart.draw(data, options);
       }
     </script>
+	<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Estado', 'Cant'],
+          #{estadisticasBean.dataBarChart}
+        ]);
+
+        var options = {
+          title: 'Iniciativas por area',
+          'width':500,
+          'height':300
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('barchart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    
 </ui:define>
 </ui:composition>
 </html>
