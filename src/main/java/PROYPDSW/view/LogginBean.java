@@ -77,5 +77,10 @@ public class LogginBean extends BasePageBean{
 			e.printStackTrace();
 		}
     }
+    public void reiniciar() {
+    	username = null;
+    	perfil = null;
+    	password = null;
+    }
 }
 
