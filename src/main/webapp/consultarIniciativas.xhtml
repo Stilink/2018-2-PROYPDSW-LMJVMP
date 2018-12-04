@@ -8,6 +8,7 @@
 <ui:composition template="/WEB-INF/include/template.xhtml">
 <ui:define name ="head">
 	<title>Consulta completa</title>
+	<h:outputScript name="js/like.js"/>
 </ui:define>
 <ui:define name = "body">
 		<h:form id="consultarTodas">
@@ -32,28 +33,16 @@
 					<h:outputText value="#{iniciativa.fechaDeCreacion}"/>
 				</p:column>
 				<p:column headerText="Ver detalles">
-					<p:button outcome="consultaIniciativa?idAConsultar=#{iniciativa.id}" value="Detalles" />
+					<p:button outcome="consultaIniciativa?idAConsultar=#{iniciativa.id}" value="Detalles"/>
 				</p:column>
 				<p:column>
-				<h:commandLink onstart="like(#{loginBean.perfil},#{iniciativa.id});">
-    			<h:graphicImage class="fa fa-fw fa-heartbeat heart" />
+				<h:commandLink class="heart" outcome="#" onclick="like('#{loginBean.username}','#{iniciativa.id}')">
+    				<h:graphicImage class="fa fa-fw fa-heartbeat voto" style="color: gray"/>
 				</h:commandLink>
 				</p:column>
 			</p:dataTable>
 		</h:form>
-
-		<script>
-			function like(perfil, iniciativa){
-				var vote = document.getElementByClass("heart");
-				if(#{!operacionIBean.votado(perfil,iniciativa)}){
-					vote.style.color='gray';
-				}
-				else{
-					vote.style.color='red';
-				}
-				#(operacionIBean.votar(perfil,iniciativa))
-			}
-		</script>
+		
 </ui:define>
 </ui:composition>
 </html>
