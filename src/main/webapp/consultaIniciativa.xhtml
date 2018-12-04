@@ -37,15 +37,7 @@
 			<br/>
 			<button id="participar" onclick="Accept();">part</button>
 			<p:button outcome="consultarIniciativasRelacionadas?idAConsultar=#{operacionIBean.iniConsultada.id}" value="Iniciativas relacionadas" /><br/><br/>
-			<p:outputLabel for="estadoC" value="Seleccione un estado para la iniciativa:" />
 			
-			<p:selectOneRadio id="estadoC" binding="#{estadoC}">
-		    		<f:selectItem itemLabel="En espera de revision" itemValue="En espera de revision" />
-		    		<f:selectItem itemLabel="En revision" itemValue="En revision" />
-		    		<f:selectItem itemLabel="Proyecto" itemValue="Proyecto" />
-				<f:selectItem itemLabel="Solucionado" itemValue="Solucionado"/>
-			</p:selectOneRadio>
-			<p:commandButton actionListener="#{operacionIBean.modificarEstadoDeLaIniciativa(id.value, estadoC.value)}" value="Modificar estado" process="@this estadoC" update="iniciativa"/>
 		</h:form>
 		<br/><br/>
 		<h:form id="comentarios">
