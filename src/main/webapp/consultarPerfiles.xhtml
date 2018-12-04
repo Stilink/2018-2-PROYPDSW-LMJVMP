@@ -60,6 +60,11 @@
 			</p:selectOneRadio>
 			<p:commandButton actionListener="#{operacionPBean.asignarRolAPerfil(rolC.value)}" value="Asignar Rol" process="@this rolC" update="perfilesSeleccionados consultarTodos"/>
 		</h:form>
+		<script type="text/javascript">
+			if(!(#{loginBean.perfil.rol.prioridad} > 3)){
+				location.href = '/index.xhtml';
+			}
+		</script>
 		
 		
 
