@@ -37,15 +37,26 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	private String description;
 	private List<String> keyWords = new ArrayList<String>();
 	private Boolean modificada;
+	
+	public void pulseBotonParticipar(String usr) {
+		try {
+			if(service.isParticipando(usr,idAConsultar)) {
+				participa=false;
+				noParticipar(usr);
+			}else {
+				participa=true;
+				participar(usr);
+				
+			}
+		} catch (ExcepcionServicesIniciativa e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public void participar(String perfil) {
 		try {
-			System.out.println("------");
-			System.out.println("Participo");
-			System.out.println(isParticipando(perfil));
 			service.agregarVoluntadAIniciativa(idAConsultar, perfil);
-			System.out.println(isParticipando(perfil));
-			System.out.println("------");
 		} catch (ExcepcionServicesIniciativa e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,23 +64,17 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	}
 	public void noParticipar(String perfil) {
 		try {
-			System.out.println("------");
-			System.out.println("No articipo");
-			System.out.println(isParticipando(perfil));
 			service.eliminarVoluntad(perfil,idAConsultar);
-			System.out.println(isParticipando(perfil));
-			System.out.println("------");
 		} catch (ExcepcionServicesIniciativa e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	public boolean isParticipando(String usr) {
+	public void isParticipando(String usr) {
 		try {
-			return service.isParticipando(usr,idAConsultar);
+			participa =service.isParticipando(usr,idAConsultar);
 		} catch (ExcepcionServicesIniciativa e) {
 			e.printStackTrace();
-			return false;
 		}
 	}
 
