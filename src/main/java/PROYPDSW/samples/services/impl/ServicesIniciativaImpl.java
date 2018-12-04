@@ -191,4 +191,27 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 	public int maximaIdComentarios() throws ExcepcionServicesIniciativa {
 		return cdao.maximoIdComentarios();
 	}
+	@Override
+
+	public boolean isParticipando(String usr, int idAConsultar) throws ExcepcionServicesIniciativa {
+		try {
+			return idao.isParticipando(usr,idAConsultar);
+		} catch (Exception e) {
+			throw new ExcepcionServicesIniciativa("isParticipando",e);
+		}
+	}
+	@Override
+	public void eliminarVoluntad(String perfil,int ini) throws ExcepcionServicesIniciativa {
+		try {
+			idao.eliminarVoluntad(perfil,ini);
+		} catch (Exception e) {
+			throw new ExcepcionServicesIniciativa("isParticipando",e);
+		}
+	}
+	
+
+	public void modificarIniciativa(Iniciativa iniciativa) throws ExcepcionServicesIniciativa {
+		idao.modificarIniciativa(iniciativa);
+		
+	}
 }

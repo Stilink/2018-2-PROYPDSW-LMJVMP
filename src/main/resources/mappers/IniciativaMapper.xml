@@ -145,7 +145,9 @@
 				
 		</select>
 		
-		
+		<select id="isParticipando" parameterType="map" resultType="java.lang.Boolean">
+			SELECT EXISTS(SELECT iniciativa FROM voluntad WHERE perfil=#{usr} AND iniciativa=#{ini});
+		</select>
 		
 		<select id="consultarInteresadosDeIniciativa" parameterType="map" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult">
 			SELECT perfil.email as pEmail,  perfil.nombre as pNombre, area.nombre as pArea FROM interes JOIN perfil ON (interes.perfil=perfil.email and interes.iniciativa=#{id}) JOIN area ON (perfil.area = area.id);
@@ -178,11 +180,28 @@
 		<insert id="agregarVoluntadAIniciativa" parameterType="map">
 			INSERT INTO voluntad(perfil, iniciativa) VALUES (#{perfil},#{ini});
 		</insert>
+<<<<<<< HEAD
 		
 		<delete id="cancelarInteresAiniciativa" parameterType="map">
 			DELETE FROM interes
 			WHERE perfil=#{perfil} AND iniciativa=#{ini}; 
 		</delete>
+=======
+		<delete id="eliminarVoluntad" parameterType="map">
+			DELETE FROM voluntad WHERE perfil=#{usr} and iniciativa=#{ini};
+		</delete>
+		<update id="modificarIniciativa" parameterType="map">
+			UPDATE iniciativa SET (nombre, descripcion) = ( #{iniciativa.nombre}, #{iniciativa.descripcion})
+			WHERE id = #{iniciativa.id}; 
+		</update>
+		
+		<delete id="eliminarPalabrasClave" parameterType="map">
+			DELETE FROM palabra_clave
+			WHERE #{iniciativa.id}=iniciativa;
+		</delete>
+	
+
+>>>>>>> 76d1e5d9a504bb78edc86e45b0f0deaef76e1a15
 
 		
 	</mapper>

@@ -217,4 +217,17 @@ public class ServicesIniciativaStub implements ServicesIniciativa{
 		return false;
 	}
 
+	public boolean isParticipando(String usr, int idAConsultar) throws ExcepcionServicesIniciativa {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void eliminarVoluntad(String perfil, int ini) throws ExcepcionServicesIniciativa {
+	}
+	public void modificarIniciativa(Iniciativa iniConsultada) throws ExcepcionServicesIniciativa {
+
+		// TODO Auto-generated method stub
+		
+	}
 }
