@@ -42,6 +42,7 @@ public class RegisterIniBean extends BasePageBean{
 		} catch (Exception e) {
 			throw e;
 		}
+		clean();
 	}
 	
 	/** Establece el id en base a la cantidad de datos dentro de la tabla.*/
@@ -59,6 +60,13 @@ public class RegisterIniBean extends BasePageBean{
 			return Integer.MAX_VALUE;
 		}
 		
+	}
+	
+	private void clean() {
+		usuario = null;
+		nameI = null;
+		description = null;
+		keyWords = null;
 	}
 	public void addKeyWord(String kwd) {
 		keyWords.add(kwd);

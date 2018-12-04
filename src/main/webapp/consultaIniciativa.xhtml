@@ -14,7 +14,7 @@
 		<f:metadata>
 			<f:viewParam name="idAConsultar" value="#{operacionIBean.idAConsultar}"/>
 		</f:metadata>
-		
+		#{operacionIBean.isParticipando(loginBean.username)}
 		<h:form id="iniciativa">
 			#{operacionIBean.consultarIniciativa()}
 			<p:outputLabel for="nombre" value="Nombre:" />
@@ -35,8 +35,8 @@
 			<h:outputText id="Palabras_clave" value="#{operacionIBean.palabrasClaveToString().toString()}"/><br/>
 
 			<br/>
-			<button id="participar" onclick="Accept();">part</button>
-			<p:button outcome="consultarIniciativasRelacionadas?idAConsultar=#{operacionIBean.iniConsultada.id}" value="Iniciativas relacionadas" /><br/><br/>
+			<p:commandButton id="noParticipar" style="border-color:#df584c" actionListener="#{operacionIBean.pulseBotonParticipar(loginBean.username)}" value="Ya no quiero participar" rendered="#{! operacionIBean.participa}" update="iniciativa"/>
+			<p:commandButton id="participar" style="border-color:#34b88b" actionListener="#{operacionIBean.pulseBotonParticipar(loginBean.username)}" value="Quiero participar" rendered="#{operacionIBean.participa}"  update="iniciativa"/>
 			
 		</h:form>
 		<br/><br/>
@@ -77,21 +77,6 @@
 			</p:selectOneRadio>
 			<p:commandButton actionListener="#{operacionIBean.modificarEstadoDeLaIniciativa(id.value, estadoC.value)}" value="Modificar estado" process="@this estadoC" update="iniciativa operaciones" rendered="#{loginBean.perfil.rol.prioridad > 2}"/>
 		</h:form>
-		<script>
-			function Accept(){
-				if(#{operacionIBean.isParticipando(loginBean.username)}){
-					alert("participo");
-					document.getElementById('participar').style.background='#ffffff';
-					#{operacionIBean.noParticipar(loginBean.username)};
-				}else{
-					alert("No participo");
-					document.getElementById('participar').style.background='#000000';
-					#{operacionIBean.participar(loginBean.username)};
-				}
-			}
-		</script>
-		
-			
 </ui:define>
 </ui:composition>
 </html>

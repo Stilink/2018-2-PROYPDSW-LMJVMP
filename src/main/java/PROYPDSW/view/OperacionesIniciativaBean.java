@@ -32,15 +32,30 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	private List<Iniciativa> iniConsultadas;
 	private List<String> palabrasClaveAConsultar;
 	private List<Comentario> comentarios;
-	
+	private boolean participa;
 	private String nameI;
 	private String description;
 	private List<String> keyWords = new ArrayList<String>();
 	private Boolean modificada;
+	
+	public void pulseBotonParticipar(String usr) {
+		try {
+			if(service.isParticipando(usr,idAConsultar)) {
+				participa=false;
+				noParticipar(usr);
+			}else {
+				participa=true;
+				participar(usr);
+				
+			}
+		} catch (ExcepcionServicesIniciativa e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public void participar(String perfil) {
 		try {
-			System.out.println("Participo");
 			service.agregarVoluntadAIniciativa(idAConsultar, perfil);
 		} catch (ExcepcionServicesIniciativa e) {
 			// TODO Auto-generated catch block
@@ -49,21 +64,18 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	}
 	public void noParticipar(String perfil) {
 		try {
-			System.out.println("No articipo");
 			service.eliminarVoluntad(perfil,idAConsultar);
 		} catch (ExcepcionServicesIniciativa e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	public boolean isParticipando(String usr) {
+	public void isParticipando(String usr) {
 		try {
-			System.out.println(service.isParticipando(usr,idAConsultar));
-			return service.isParticipando(usr,idAConsultar);
+			participa =service.isParticipando(usr,idAConsultar);
 		} catch (ExcepcionServicesIniciativa e) {
 			e.printStackTrace();
 		}
-		return false;
 	}
 
 	public String palabrasClaveToString() {
@@ -117,7 +129,12 @@ public class OperacionesIniciativaBean extends BasePageBean{
 		}
     }
 	
-
+    public boolean isParticipa() {
+		return participa;
+	}
+	public void setParticipa(boolean participa) {
+		this.participa = participa;
+	}
 	public List<Iniciativa> consultarIniciativas() throws Exception {
 		try {
 			return service.consultarIniciativas();
