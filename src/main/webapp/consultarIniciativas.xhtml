@@ -44,7 +44,6 @@
 
 		<script>
 			function like(perfil, iniciativa){
-				alert("entré");
 				var vote = document.getElementByClass("heart");
 				if(#{!operacionIBean.votado(perfil,iniciativa)}){
 					vote.style.color='gray';
