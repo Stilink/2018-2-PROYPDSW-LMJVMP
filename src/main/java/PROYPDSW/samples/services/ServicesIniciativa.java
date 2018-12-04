@@ -20,6 +20,8 @@ public interface ServicesIniciativa {
 	public boolean validarLogin(String email,String password)throws ExcepcionServicesIniciativa;
 	public void modificarEstadoDeLaIniciativa(Iniciativa iniciativa, String estado) throws ExcepcionServicesIniciativa;
 	public void agregarInteresAIniciativa(int ini,String perfil) throws ExcepcionServicesIniciativa;
+	public boolean estaInteresadoEnIniciativa(int ini,String perfil) throws ExcepcionServicesIniciativa;
+	public void cancelarInteresAIniciativa(int ini,String perfil) throws ExcepcionServicesIniciativa;
 	public void agregarVoluntadAIniciativa(int ini,String perfil) throws ExcepcionServicesIniciativa;
 	public void asignarRolAPerfil(Perfil perfil, String rol) throws ExcepcionServicesIniciativa;
 	public List<String> getPalabrasClave(int id)throws ExcepcionServicesIniciativa;

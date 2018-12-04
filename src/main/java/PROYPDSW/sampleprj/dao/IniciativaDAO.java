@@ -28,6 +28,10 @@ public interface IniciativaDAO {
 	List<Iniciativa> consultarIniciativaPorPerfil(String perfil)throws PersistenceException;
 
 	List<String> getPalabrasClave(int id)throws PersistenceException;
+
+	void cancelarInteresAIniciativa(int ini, String perfil)throws PersistenceException;
+
+	boolean estaInteresadoEnIniciativa(int ini, String perfil);
 	
 
 }

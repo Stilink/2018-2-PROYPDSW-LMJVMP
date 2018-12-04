@@ -27,16 +27,12 @@ import PROYPDSW.samples.services.ServicesIniciativa;
 public class OperacionesIniciativaBean extends BasePageBean{
 	@Inject
 	private ServicesIniciativa service;
-	private String usuario;
-	private Perfil usr;
 	private int idAConsultar;
 	private Iniciativa iniConsultada;
 	private List<Iniciativa> iniConsultadas;
 	private List<String> palabrasClaveAConsultar;
 	private List<Comentario> comentarios;
-
 	
-
 	public String palabrasClaveToString() {
 		String union=" ";
 		List<String> palabrasClave = iniConsultada.getPalabrasClave();
@@ -187,7 +183,41 @@ public class OperacionesIniciativaBean extends BasePageBean{
 			e.printStackTrace();
 		}
 	}
-	
+	public void votar(String perfil, int iniciativa) {
+		try {
+			boolean yaVotado=votado(perfil, iniciativa);
+			if (yaVotado) {
+				cancelarVoto(perfil,iniciativa);
+			}
+			else {
+				añadirVoto(perfil,iniciativa);
+			}
+		} catch (ExcepcionServicesIniciativa e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	private void añadirVoto(String perfil, int iniciativa) {
+		try {
+			service.agregarInteresAIniciativa(iniciativa, perfil);
+		} catch (ExcepcionServicesIniciativa e1) {
+			e1.printStackTrace();
+		}		
+	}
+	public boolean votado(String perfil, int iniciativa) throws ExcepcionServicesIniciativa {
+		try {
+			return service.estaInteresadoEnIniciativa(iniciativa, perfil);
+		} catch (ExcepcionServicesIniciativa e) {
+			throw e;
+		}
+	}
+	private void cancelarVoto(String perfil, int iniciativa) {
+		try {
+			service.cancelarInteresAIniciativa(iniciativa, perfil);
+		} catch (ExcepcionServicesIniciativa e1) {
+			e1.printStackTrace();
+		}		
+	}
 	public int getIdAConsultar() {
 		return idAConsultar;
 	}

@@ -12,8 +12,9 @@
     <meta name="author" content=""/>
 
     <title>Banco de iniciativas</title>
-	<link rel="icon" type="image/png" href="http://campusvirtual.escuelaing.edu.co/moodle/theme/image.php/essential/theme/1543287601/favicon"/>
-    <!-- Bootstrap core CSS-->
+		<link rel="icon" type="image/png" href="http://campusvirtual.escuelaing.edu.co/moodle/theme/image.php/essential/theme/1543287601/favicon"/>
+		<link href="css/custom.css"/>
+		<!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 
     <!-- Custom fonts for this template-->
@@ -25,18 +26,18 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet"/>
     <script type="text/javascript">
-	
+
 		var perfil = '#{loginBean.username}';
 		if(!perfil){
 			location.href = '/';
 		}
-		
+
     </script>
-    
+
 </h:head>
 
   <body id="page-top">
-	
+
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 	  <div id="titulo">
       <a class="navbar-brand mr-1" href="index.xhtml">Banco de iniciativas</a>
@@ -68,7 +69,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <h6 class="dropdown-header">Consultas:</h6>
-            
+
             <a class="dropdown-item" href="consultarIniciativas.xhtml">Consultar todas</a>
             <a class="dropdown-item" href="consultarIniciativaPorEstado.xhtml">Consultar por estado</a>
             <a class="dropdown-item" href="consultarIniciativaPorArea.xhtml">Consultar por area</a>
@@ -119,8 +120,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
-
-
 
   </body>
 

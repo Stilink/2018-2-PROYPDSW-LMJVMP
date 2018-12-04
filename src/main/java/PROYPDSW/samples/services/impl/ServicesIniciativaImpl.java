@@ -130,6 +130,22 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 		}
 	}
 	@Override
+	public boolean estaInteresadoEnIniciativa(int ini, String perfil) throws ExcepcionServicesIniciativa {
+		try {
+			return idao.estaInteresadoEnIniciativa(ini,perfil);
+		} catch (Exception e) {
+			throw new ExcepcionServicesIniciativa("validarLogin",e);
+		}
+	}
+	@Override
+	public void cancelarInteresAIniciativa(int ini, String perfil) throws ExcepcionServicesIniciativa {
+		try {
+			idao.cancelarInteresAIniciativa(ini,perfil);
+		} catch (Exception e) {
+			throw new ExcepcionServicesIniciativa("validarLogin",e);
+		}
+	}
+	@Override
 	public void agregarVoluntadAIniciativa(int ini, String perfil) throws ExcepcionServicesIniciativa {
 		try {
 			idao.agregarVoluntadAIniciativa(ini,perfil);

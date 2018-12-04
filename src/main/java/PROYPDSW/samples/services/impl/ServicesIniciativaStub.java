@@ -205,4 +205,16 @@ public class ServicesIniciativaStub implements ServicesIniciativa{
 		return 0;
 	}
 
+	@Override
+	public void cancelarInteresAIniciativa(int ini, String perfil) throws ExcepcionServicesIniciativa {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean estaInteresadoEnIniciativa(int ini, String perfil) throws ExcepcionServicesIniciativa {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
