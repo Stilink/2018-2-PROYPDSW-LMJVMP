@@ -32,7 +32,7 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	private List<Iniciativa> iniConsultadas;
 	private List<String> palabrasClaveAConsultar;
 	private List<Comentario> comentarios;
-	
+	private boolean participa;
 	private String nameI;
 	private String description;
 	private List<String> keyWords = new ArrayList<String>();
@@ -40,8 +40,12 @@ public class OperacionesIniciativaBean extends BasePageBean{
 
 	public void participar(String perfil) {
 		try {
+			System.out.println("------");
 			System.out.println("Participo");
+			System.out.println(isParticipando(perfil));
 			service.agregarVoluntadAIniciativa(idAConsultar, perfil);
+			System.out.println(isParticipando(perfil));
+			System.out.println("------");
 		} catch (ExcepcionServicesIniciativa e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,8 +53,12 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	}
 	public void noParticipar(String perfil) {
 		try {
+			System.out.println("------");
 			System.out.println("No articipo");
+			System.out.println(isParticipando(perfil));
 			service.eliminarVoluntad(perfil,idAConsultar);
+			System.out.println(isParticipando(perfil));
+			System.out.println("------");
 		} catch (ExcepcionServicesIniciativa e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -58,12 +66,11 @@ public class OperacionesIniciativaBean extends BasePageBean{
 	}
 	public boolean isParticipando(String usr) {
 		try {
-			System.out.println(service.isParticipando(usr,idAConsultar));
 			return service.isParticipando(usr,idAConsultar);
 		} catch (ExcepcionServicesIniciativa e) {
 			e.printStackTrace();
+			return false;
 		}
-		return false;
 	}
 
 	public String palabrasClaveToString() {
@@ -117,7 +124,12 @@ public class OperacionesIniciativaBean extends BasePageBean{
 		}
     }
 	
-
+    public boolean isParticipa() {
+		return participa;
+	}
+	public void setParticipa(boolean participa) {
+		this.participa = participa;
+	}
 	public List<Iniciativa> consultarIniciativas() throws Exception {
 		try {
 			return service.consultarIniciativas();
