@@ -33,6 +33,7 @@
 			<h:outputText id="fecha" value="#{operacionIBean.iniConsultada.fechaDeCreacion}"/><br/>
 			<p:outputLabel for="Palabras_clave" value="Palabras clave:" />
 			<h:outputText id="Palabras_clave" value="#{operacionIBean.palabrasClaveToString().toString()}"/><br/>
+
 			<br/>
 			<button id="participar" onclick="Accept();">part</button>
 			<p:button outcome="consultarIniciativasRelacionadas?idAConsultar=#{operacionIBean.iniConsultada.id}" value="Iniciativas relacionadas" /><br/><br/>
@@ -48,6 +49,9 @@
 		</h:form>
 		<br/><br/>
 		<h:form id="comentarios">
+
+			<br/></h:form>
+			<h:form id="comentarIniciativa">
 			<h:inputTextarea id="comentar" binding="#{comentar}"/><br/>
 			<p:commandButton actionListener="#{operacionIBean.agregarComentarioAIniciativa(loginBean.perfil, comentar.value)}" value="Comentar" process="@this comentar" update="comentariosIniciativa"/>
 			<br/><br/>
@@ -68,6 +72,18 @@
 					<h:outputText value="#{comentario.descripcion}"/>
 				</p:column>
 			</p:dataTable>
+			</h:form><br/><br/>
+			<h:form id="operaciones">
+			<p:button outcome="consultarIniciativasRelacionadas?idAConsultar=#{operacionIBean.iniConsultada.id}" value="Iniciativas relacionadas" rendered="#{loginBean.perfil.rol.prioridad > 3}"/><br/><br/>
+			<p:button outcome="modificarIniciativa?idAConsultar=#{operacionIBean.iniConsultada.id}" value="Modificar" rendered="#{operacionIBean.esModificable(loginBean.perfil.email)}"/><br/><br/>
+			<p:outputLabel for="estadoC" value="Seleccione un estado para la iniciativa:" rendered="#{loginBean.perfil.rol.prioridad > 2}"/>
+			<p:selectOneRadio id="estadoC" binding="#{estadoC}" rendered="#{loginBean.perfil.rol.prioridad > 2}">
+		    		<f:selectItem itemLabel="En espera de revision" itemValue="En espera de revision" />
+		    		<f:selectItem itemLabel="En revision" itemValue="En revision" />
+		    		<f:selectItem itemLabel="Proyecto" itemValue="Proyecto" />
+				<f:selectItem itemLabel="Solucionado" itemValue="Solucionado"/>
+			</p:selectOneRadio>
+			<p:commandButton actionListener="#{operacionIBean.modificarEstadoDeLaIniciativa(id.value, estadoC.value)}" value="Modificar estado" process="@this estadoC" update="iniciativa operaciones" rendered="#{loginBean.perfil.rol.prioridad > 2}"/>
 		</h:form>
 		<script>
 			function Accept(){

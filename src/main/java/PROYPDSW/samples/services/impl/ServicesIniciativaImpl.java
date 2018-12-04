@@ -176,6 +176,7 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 		return cdao.maximoIdComentarios();
 	}
 	@Override
+
 	public boolean isParticipando(String usr, int idAConsultar) throws ExcepcionServicesIniciativa {
 		try {
 			return idao.isParticipando(usr,idAConsultar);
@@ -192,4 +193,9 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 		}
 	}
 	
+
+	public void modificarIniciativa(Iniciativa iniciativa) throws ExcepcionServicesIniciativa {
+		idao.modificarIniciativa(iniciativa);
+		
+	}
 }

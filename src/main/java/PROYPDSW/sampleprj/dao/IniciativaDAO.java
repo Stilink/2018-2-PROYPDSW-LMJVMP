@@ -29,9 +29,13 @@ public interface IniciativaDAO {
 
 	List<String> getPalabrasClave(int id)throws PersistenceException;
 
+
 	boolean isParticipando(String usr, int idAConsultar)throws PersistenceException;
 
 	void eliminarVoluntad(String perfil,int ini)throws PersistenceException;
+
+	void modificarIniciativa(Iniciativa iniciativa);
+
 	
 
 }

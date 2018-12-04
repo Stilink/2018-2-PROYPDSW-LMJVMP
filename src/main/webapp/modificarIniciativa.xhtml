@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/include/template.xhtml">
+<ui:define name ="head">
+	<title>Banco de iniciativas</title>
+</ui:define>
+<ui:define name = "body">
+	<f:metadata>
+			<f:viewParam name="idAConsultar" value="#{operacionIBean.idAConsultar}"/>
+		</f:metadata>
+	<div id="header">
+		<h1>Modificar</h1>
+	</div>
+	#{operacionIBean.iniciarModificacion()}
+	<section id="iniciativa">
+		<h:form id="form">
+			<p:panel header="Información">
+			<h:panelGrid class="grid" cellpadding="5" columns="3" style="margin-bottom:10px">
+					<f:facet name="header">
+							<p:messages id="msgs" />
+					</f:facet>
+					<p:outputLabel for="nombreIniciativa" value="Nombre:" />
+					<p:inputText id="nombreIniciativa" value="#{operacionIBean.nameI}" required="true" requiredMessage="Nombre de iniciativa requerido." />
+					<br/>
+					<p:outputLabel for="description" value="Descripción:" />
+					<p:inputTextarea id="description" rows="6" cols="33" value="#{operacionIBean.description}" required="true" requiredMessage="Usuario requerido."/>
+					<br/>
+					<p:outputLabel for="palabrasClave" value="Palabras clave: " required="true" requiredMessage="Como minimo, se debe tener una palabra clave para poder registrar."/>
+    					<p:chips id="palabrasClave" value="#{operacionIBean.keyWords}"/>
+			</h:panelGrid>
+			<p:commandButton id="modificar" value="Modificar" actionListener="#{operacionIBean.modificarIniciativa()}" update="form" rendered="#{!operacionIBean.modificada}"/>
+			<p:button outcome="consultaIniciativa?idAConsultar=#{operacionIBean.iniConsultada.id}" value="Volver a la iniciativa" rendered="#{operacionIBean.modificada}"/>
+			</p:panel>
+		</h:form>
+	</section>
+
+</ui:define>
+</ui:composition>
+</html>
+

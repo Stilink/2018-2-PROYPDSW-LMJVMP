@@ -28,5 +28,7 @@ public interface ServicesIniciativa {
 	public int maximaIdComentarios() throws ExcepcionServicesIniciativa;
 	public boolean isParticipando(String usr, int idAConsultar)throws ExcepcionServicesIniciativa;
 	public void eliminarVoluntad(String perfil,int ini)throws ExcepcionServicesIniciativa;
+	public void modificarIniciativa(Iniciativa iniConsultada) throws ExcepcionServicesIniciativa;
+
 }
 
