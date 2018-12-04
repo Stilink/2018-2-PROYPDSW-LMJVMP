@@ -159,7 +159,7 @@
 		</select>
 
 		<select id="consultarInteres" parameterType="map" resultType="java.lang.Boolean">
-			SELECT EXISTS(SELECT iniciativa FROM	interes WHERE perfil=#{perfil} AND iniciativa=#{ini});
+			SELECT EXISTS(SELECT iniciativa FROM interes WHERE perfil=#{perfil} AND iniciativa=#{ini});
 		</select>
 		
 		<insert id="agregarIniciativa" parameterType="map">
@@ -177,16 +177,15 @@
 		<insert id="agregarInteresAIniciativa" parameterType="map">
 			INSERT INTO interes(perfil, iniciativa) VALUES (#{perfil},#{ini});
 		</insert>
+				
 		<insert id="agregarVoluntadAIniciativa" parameterType="map">
 			INSERT INTO voluntad(perfil, iniciativa) VALUES (#{perfil},#{ini});
 		</insert>
-<<<<<<< HEAD
 		
 		<delete id="cancelarInteresAiniciativa" parameterType="map">
 			DELETE FROM interes
 			WHERE perfil=#{perfil} AND iniciativa=#{ini}; 
 		</delete>
-=======
 		<delete id="eliminarVoluntad" parameterType="map">
 			DELETE FROM voluntad WHERE perfil=#{usr} and iniciativa=#{ini};
 		</delete>
@@ -200,9 +199,4 @@
 			WHERE #{iniciativa.id}=iniciativa;
 		</delete>
 	
-
->>>>>>> 76d1e5d9a504bb78edc86e45b0f0deaef76e1a15
-
-		
 	</mapper>
-			
