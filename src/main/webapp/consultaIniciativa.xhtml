@@ -8,6 +8,7 @@
 
 <ui:composition template="/WEB-INF/include/template.xhtml">
 <ui:define name ="head">
+	
 </ui:define>
 <ui:define name = "body">
 		<f:metadata>
@@ -16,8 +17,6 @@
 		
 		<h:form id="iniciativa">
 			#{operacionIBean.consultarIniciativa()}
-			<p:outputLabel for="id" value="Identificador:" />
-			<h:outputText id="id" value="#{operacionIBean.iniConsultada.id}" binding="#{id}"/><br/>
 			<p:outputLabel for="nombre" value="Nombre:" />
 			<h:outputText id="nombre" value="#{operacionIBean.iniConsultada.nombre}"/><br/>
 			<p:outputLabel for="descripcion" value="Descripcion:" />
@@ -35,8 +34,10 @@
 			<p:outputLabel for="Palabras_clave" value="Palabras clave:" />
 			<h:outputText id="Palabras_clave" value="#{operacionIBean.palabrasClaveToString().toString()}"/><br/>
 			<br/>
+			<button id="participar" onclick="Accept();">part</button>
 			<p:button outcome="consultarIniciativasRelacionadas?idAConsultar=#{operacionIBean.iniConsultada.id}" value="Iniciativas relacionadas" /><br/><br/>
 			<p:outputLabel for="estadoC" value="Seleccione un estado para la iniciativa:" />
+			
 			<p:selectOneRadio id="estadoC" binding="#{estadoC}">
 		    		<f:selectItem itemLabel="En espera de revision" itemValue="En espera de revision" />
 		    		<f:selectItem itemLabel="En revision" itemValue="En revision" />
@@ -68,6 +69,20 @@
 				</p:column>
 			</p:dataTable>
 		</h:form>
+		<script>
+			function Accept(){
+				if(#{operacionIBean.isParticipando(loginBean.username)}){
+					alert("participo");
+					document.getElementById('participar').style.background='#ffffff';
+					#{operacionIBean.noParticipar(loginBean.username)};
+				}else{
+					alert("No participo");
+					document.getElementById('participar').style.background='#000000';
+					#{operacionIBean.participar(loginBean.username)};
+				}
+			}
+		</script>
+		
 			
 </ui:define>
 </ui:composition>

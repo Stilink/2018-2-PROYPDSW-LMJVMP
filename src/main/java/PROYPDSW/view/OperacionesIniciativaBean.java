@@ -27,15 +27,38 @@ import PROYPDSW.samples.services.ServicesIniciativa;
 public class OperacionesIniciativaBean extends BasePageBean{
 	@Inject
 	private ServicesIniciativa service;
-	private String usuario;
-	private Perfil usr;
 	private int idAConsultar;
 	private Iniciativa iniConsultada;
 	private List<Iniciativa> iniConsultadas;
 	private List<String> palabrasClaveAConsultar;
 	private List<Comentario> comentarios;
-
-	
+	public void participar(String perfil) {
+		try {
+			System.out.println("Participo");
+			service.agregarVoluntadAIniciativa(idAConsultar, perfil);
+		} catch (ExcepcionServicesIniciativa e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void noParticipar(String perfil) {
+		try {
+			System.out.println("No articipo");
+			service.eliminarVoluntad(perfil,idAConsultar);
+		} catch (ExcepcionServicesIniciativa e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public boolean isParticipando(String usr) {
+		try {
+			System.out.println(service.isParticipando(usr,idAConsultar));
+			return service.isParticipando(usr,idAConsultar);
+		} catch (ExcepcionServicesIniciativa e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 	public String palabrasClaveToString() {
 		String union=" ";

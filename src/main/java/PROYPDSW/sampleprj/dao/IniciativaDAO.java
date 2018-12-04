@@ -20,7 +20,7 @@ public interface IniciativaDAO {
 
 	List<Iniciativa> consultarIniciativasPorArea(String area)throws PersistenceException;
 
-	void modificarEstadoDeLaIniciativa(Iniciativa iniciativa, String estado);
+	void modificarEstadoDeLaIniciativa(Iniciativa iniciativa, String estado)throws PersistenceException;
 	void agregarInteresAIniciativa(int ini, String perfil)throws PersistenceException;
 
 	void agregarVoluntadAIniciativa(int ini, String perfil)throws PersistenceException;
@@ -28,6 +28,10 @@ public interface IniciativaDAO {
 	List<Iniciativa> consultarIniciativaPorPerfil(String perfil)throws PersistenceException;
 
 	List<String> getPalabrasClave(int id)throws PersistenceException;
+
+	boolean isParticipando(String usr, int idAConsultar)throws PersistenceException;
+
+	void eliminarVoluntad(String perfil,int ini)throws PersistenceException;
 	
 
 }

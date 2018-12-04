@@ -100,6 +100,15 @@ public class MyBATISIniciativaDAO implements IniciativaDAO{
 	public List<String> getPalabrasClave(int id) throws PersistenceException {
 		return im.palabrasClaveDeIniciativa(id);
 	}
+	@Override
+	public boolean isParticipando(String usr, int idAConsultar) throws PersistenceException {
+		return im.isParticipando(usr,idAConsultar);
+	}
+	@Override
+	public void eliminarVoluntad(String perfil,int ini) throws PersistenceException {
+		im.eliminarVoluntad(perfil,ini);
+		
+	}
 
 
 }

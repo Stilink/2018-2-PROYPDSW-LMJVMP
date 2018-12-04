@@ -26,5 +26,7 @@ public interface ServicesIniciativa {
 	public void agregarComentarioAIniciativa(Iniciativa iniciativa, Comentario comentario) throws ExcepcionServicesIniciativa;
 	public List<Comentario> consultarComentariosDeIniciativa(Iniciativa iniciativa) throws ExcepcionServicesIniciativa;
 	public int maximaIdComentarios() throws ExcepcionServicesIniciativa;
+	public boolean isParticipando(String usr, int idAConsultar)throws ExcepcionServicesIniciativa;
+	public void eliminarVoluntad(String perfil,int ini)throws ExcepcionServicesIniciativa;
 }
 
