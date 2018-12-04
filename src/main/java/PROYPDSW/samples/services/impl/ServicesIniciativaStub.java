@@ -205,4 +205,11 @@ public class ServicesIniciativaStub implements ServicesIniciativa{
 		return 0;
 	}
 
+	@Override
+	public void modificarIniciativa(Iniciativa iniConsultada) throws ExcepcionServicesIniciativa {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }

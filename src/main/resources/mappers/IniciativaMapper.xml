@@ -175,7 +175,17 @@
 		<insert id="agregarVoluntadAIniciativa" parameterType="map">
 			INSERT INTO voluntad(perfil, iniciativa) VALUES (#{perfil},#{ini});
 		</insert>
-
+		
+		<update id="modificarIniciativa" parameterType="map">
+			UPDATE iniciativa SET (nombre, descripcion) = ( #{iniciativa.nombre}, #{iniciativa.descripcion})
+			WHERE id = #{iniciativa.id}; 
+		</update>
+		
+		<delete id="eliminarPalabrasClave" parameterType="map">
+			DELETE FROM palabra_clave
+			WHERE #{iniciativa.id}=iniciativa;
+		</delete>
+	
 
 		
 	</mapper>

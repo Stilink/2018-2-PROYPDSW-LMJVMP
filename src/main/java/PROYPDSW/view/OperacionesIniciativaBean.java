@@ -27,15 +27,16 @@ import PROYPDSW.samples.services.ServicesIniciativa;
 public class OperacionesIniciativaBean extends BasePageBean{
 	@Inject
 	private ServicesIniciativa service;
-	private String usuario;
-	private Perfil usr;
 	private int idAConsultar;
 	private Iniciativa iniConsultada;
 	private List<Iniciativa> iniConsultadas;
 	private List<String> palabrasClaveAConsultar;
 	private List<Comentario> comentarios;
+	private String nameI;
+	private String description;
+	private List<String> keyWords = new ArrayList<String>();
+	private Boolean modificada;
 
-	
 
 	public String palabrasClaveToString() {
 		String union=" ";
@@ -188,6 +189,46 @@ public class OperacionesIniciativaBean extends BasePageBean{
 		}
 	}
 	
+	
+	
+	public void modificarIniciativa() {
+		modificada = true;
+		try {
+			iniConsultada.setNombre(nameI);
+			iniConsultada.setDescripcion(description);
+			iniConsultada.setPalabrasClave(keyWords);
+			service.modificarIniciativa(iniConsultada);
+		} catch (ExcepcionServicesIniciativa e) {
+			System.out.println("Fallo en el modificar iniciativa");
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void iniciarModificacion() {
+		modificada = false;
+		try {
+			iniConsultada = service.consultarIniciativa(idAConsultar);
+			consultarComentariosIniConsultada();
+		} catch (ExcepcionServicesIniciativa e) {
+			
+			e.printStackTrace();
+			
+		}
+		nameI = iniConsultada.getNombre();
+		description = iniConsultada.getDescripcion();
+		keyWords = iniConsultada.getPalabrasClave();
+	}
+	
+	
+	public boolean esModificable(String usuario) {
+		Boolean soyCreador = usuario.equals(iniConsultada.getCreador().getEmail());
+		Boolean estadoModificable = iniConsultada.getEstado().equals("En espera de revision");
+		if(soyCreador && estadoModificable) {
+			return true;
+		}else return false;
+	}
+	
 	public int getIdAConsultar() {
 		return idAConsultar;
 	}
@@ -219,6 +260,36 @@ public class OperacionesIniciativaBean extends BasePageBean{
 
 	public void setComentarios(List<Comentario> comentarios) {
 		this.comentarios = comentarios;
+	}
+	public String getNameI() {
+		return nameI;
+	}
+
+	public void setNameI(String nameI) {
+		this.nameI = nameI;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public List<String> getKeyWords() {
+		return keyWords;
+	}
+
+	public void setKeyWords(List<String> keyWords) {
+		this.keyWords = keyWords;
+	}
+	public Boolean getModificada() {
+		return modificada;
+	}
+
+	public void setModificada(Boolean modificada) {
+		this.modificada = modificada;
 	}
 	
 }

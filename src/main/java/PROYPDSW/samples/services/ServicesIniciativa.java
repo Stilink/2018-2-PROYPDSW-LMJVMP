@@ -26,5 +26,6 @@ public interface ServicesIniciativa {
 	public void agregarComentarioAIniciativa(Iniciativa iniciativa, Comentario comentario) throws ExcepcionServicesIniciativa;
 	public List<Comentario> consultarComentariosDeIniciativa(Iniciativa iniciativa) throws ExcepcionServicesIniciativa;
 	public int maximaIdComentarios() throws ExcepcionServicesIniciativa;
+	public void modificarIniciativa(Iniciativa iniConsultada) throws ExcepcionServicesIniciativa;
 }
 

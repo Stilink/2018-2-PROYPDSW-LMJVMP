@@ -38,4 +38,8 @@ public interface IniciativaMapper {
 
 	List<Iniciativa> consultarIniciativasPorPerfil(@Param("perfil")String perfil);
 
+	void eliminarPalabrasClave(@Param("iniciativa")Iniciativa iniciativa);
+
+	void modificarIniciativa(@Param("iniciativa")Iniciativa iniciativa);
+
 }

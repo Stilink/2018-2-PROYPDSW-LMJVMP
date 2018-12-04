@@ -100,6 +100,15 @@ public class MyBATISIniciativaDAO implements IniciativaDAO{
 	public List<String> getPalabrasClave(int id) throws PersistenceException {
 		return im.palabrasClaveDeIniciativa(id);
 	}
+	@Override
+	public void modificarIniciativa(Iniciativa iniciativa) {
+		im.eliminarPalabrasClave(iniciativa);
+		for(String palabra : iniciativa.getPalabrasClave()) {
+			im.agregarPalabraClaveAIniciativa(iniciativa.getId(), palabra);
+		}
+		im.modificarIniciativa(iniciativa);
+		
+	}
 
 
 }

@@ -36,6 +36,7 @@
 			<h:outputText id="Palabras_clave" value="#{operacionIBean.palabrasClaveToString().toString()}"/><br/>
 			<br/>
 			<p:button outcome="consultarIniciativasRelacionadas?idAConsultar=#{operacionIBean.iniConsultada.id}" value="Iniciativas relacionadas" /><br/><br/>
+			<p:button outcome="modificarIniciativa?idAConsultar=#{operacionIBean.iniConsultada.id}" value="Modificar" rendered="#{operacionIBean.esModificable(loginBean.perfil.email)}"/><br/><br/>
 			<p:outputLabel for="estadoC" value="Seleccione un estado para la iniciativa:" />
 			<p:selectOneRadio id="estadoC" binding="#{estadoC}">
 		    		<f:selectItem itemLabel="En espera de revision" itemValue="En espera de revision" />

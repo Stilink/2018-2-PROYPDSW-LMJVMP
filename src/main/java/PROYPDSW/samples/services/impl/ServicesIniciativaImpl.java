@@ -175,4 +175,9 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 	public int maximaIdComentarios() throws ExcepcionServicesIniciativa {
 		return cdao.maximoIdComentarios();
 	}
+	@Override
+	public void modificarIniciativa(Iniciativa iniciativa) throws ExcepcionServicesIniciativa {
+		idao.modificarIniciativa(iniciativa);
+		
+	}
 }
