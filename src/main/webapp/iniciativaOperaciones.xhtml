@@ -29,10 +29,15 @@
 					<p:outputLabel for="palabrasClave" value="Palabras clave: " required="true" requiredMessage="Como minimo, se debe tener una palabra clave para poder registrar."/>
     					<p:chips id="palabrasClave" value="#{registerIBean.keyWords}"/>
 			</h:panelGrid>
-			<p:commandButton id="registerBtn" value="Registrar" actionListener="#{registerIBean.registrarIniciativa(loginBean.username)}" update="form"/>
+			<p:commandButton id="registerBtn" value="Registrar" actionListener="#{registerIBean.registrarIniciativa(loginBean.username)}" update="form" outcome="consultarIniciativas"/>
 			</p:panel>
 		</h:form>
 	</section>
+	<script type="text/javascript">
+		if(!(#{loginBean.perfil.rol.prioridad} > 1)){
+			location.href='index.xhtml';
+		}
+	</script>
 
 </ui:define>
 </ui:composition>

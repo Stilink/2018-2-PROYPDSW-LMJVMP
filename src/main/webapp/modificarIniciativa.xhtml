@@ -37,7 +37,13 @@
 			<p:button outcome="consultaIniciativa?idAConsultar=#{operacionIBean.iniConsultada.id}" value="Volver a la iniciativa" rendered="#{operacionIBean.modificada}"/>
 			</p:panel>
 		</h:form>
+		
 	</section>
+	<script type="text/javascript">
+		if(!(#{operacionIBean.esModificable(loginBean.perfil.email)})){
+			location.href = '/index.xhtml';
+		}
+	</script>
 
 </ui:define>
 </ui:composition>
