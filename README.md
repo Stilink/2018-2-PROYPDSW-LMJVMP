@@ -3,7 +3,7 @@
 
 ## Escuela Colombiana de Ingeniería
 ## Procesos de desarrollo de Software – PDSW
-## BANCO DE INICIATIVAS DE PROYECTOS
+## BANCO DE INICIATIVAS DE PROYECTOS - 2018-2
 
 La Plataforma banco de iniciativas de proyectos, es una herramienta donde la comunidad universitaria de la Escuela Colombiana de Ingeniería Julio Garavito pueden registrar sus iniciativas e ideas de proyectos para ser desarrollados o gestionados por la PMO de la Escuela. El sistema, más allá de facilitar el registro de las iniciativas e ideas de proyectos, es una valiosa base de conocimiento donde los diferentes actores pueden revisar si hay iniciativas, ideas o intereses similares y aunar esfuerzos para la materialización. Adicional a lo anterior, el personal académico puede integrar a los estudiantes de diferentes asignaturas o proyectos de grado para su realización, materializando las iniciativas para el beneficio de toda la comunidad universitaria. La PMO puede priorizar las iniciativas viables, asignar responsables, gestionar la asignación de recursos, llevar métricas e identificar grupos de interés -a través del tiempo- que se van presentando para cada iniciativa. Con esto se espera lograr no solo la realización de los proyectos sino una aplicación práctica de los conocimientos adquiridos por los estudiantes dentro de las asignaturas de la Escuela generando un ambiente de aprendizaje colaborativo.
 
@@ -17,20 +17,21 @@ Tipos de usuario:
  
 Administrador
  
-Personal PMO - ODI
+Personal PMO
  
-Proponente de iniciativa o idea de proyecto
+Proponente
  
-Usuarios de consulta
+Publico
  
  
 Administrador:
 Modificar el Estado de las ideas o iniciativas.
-Agrupamiento de las ideas o iniciativas equivalentes o relacionadas
+Agrupamiento de las ideas o iniciativas equivalentes o relacionadas.
+Asignación de perfiles.
 
-Personal PMO - ODI:
+Personal PMO:
 Consultar las iniciativas o ideas de proyectos que los proponentes han publicado.
-Cambiar el estado de las iniciativas
+Cambiar el estado de las iniciativas.
 	
 	
 Estado de la Iniciativa
@@ -57,7 +58,6 @@ Consulta de toda la información relacionada con las ideas o iniciativas. Permit
 Incorporar al informe diferentes estadísticas.
 * Porcentaje de ideas de las diferentes áreas o dependencias.
 * Cantidad de proyectos relacionados por cada uno de los estados.
-Ideal que todas estas consultas puedan ser descargadas en excel o pdf. Posiblemente se tengan gráficos estadísticos que permitan visualizar la información anterior.
 
 Todas las consultas deben tener al menos la siguiente información: Id, nombre de la iniciativa, el estado, el número de votos, el nombre, el usuario y el email del proponente, el área o dependencia, la fecha de creación de la iniciativa.
 
