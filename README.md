@@ -12,9 +12,8 @@ La Plataforma banco de iniciativas de proyectos, es una herramienta donde la com
 * Luis Eduardo Moreno Acevedo - Equipo de desarrollo
 * Michael Sebastian Preciado Garzon - Scrum master, Equipo de desarollo
 ### Profesor
-* Francisco Chavez
+* Francisco Chavez (Product owner)
 * Santiago Alzate (Product owner)
-* Www.google.com
 
 # Detalles provistos por el Stakeholder.
 
