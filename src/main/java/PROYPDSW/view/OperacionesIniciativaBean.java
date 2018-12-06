@@ -270,7 +270,13 @@ public class OperacionesIniciativaBean extends BasePageBean{
 		}		
 	}
 	
-	
+	public int cantidadVotos(int iniciativa) throws ExcepcionServicesIniciativa {
+		try {
+			return service.consultarVotosIniciativa(iniciativa);
+		} catch (ExcepcionServicesIniciativa e) {
+			throw e;
+		}
+	}
 	
 	public void modificarIniciativa() {
 		modificada = true;

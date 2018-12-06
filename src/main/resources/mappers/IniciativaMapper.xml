@@ -153,7 +153,6 @@
 			SELECT perfil.email as pEmail,  perfil.nombre as pNombre, area.nombre as pArea FROM interes JOIN perfil ON (interes.perfil=perfil.email and interes.iniciativa=#{id}) JOIN area ON (perfil.area = area.id);
 		</select>
 	
-		
 		<select id="consultarVoluntariosDeIniciativa" parameterType="map" resultMap="PROYPDSW.sampleprj.dao.mybatis.mappers.PerfilMapper.PerfilResult">
 			SELECT perfil.email as pEmail,  perfil.nombre as pNombre, area.nombre as pArea FROM interes JOIN perfil ON (interes.perfil=perfil.email and interes.iniciativa=#{id}) JOIN area ON (perfil.area = area.id);
 		</select>
@@ -161,7 +160,11 @@
 		<select id="consultarInteres" parameterType="map" resultType="java.lang.Boolean">
 			SELECT EXISTS(SELECT iniciativa FROM interes WHERE perfil=#{perfil} AND iniciativa=#{ini});
 		</select>
-		
+
+		<select id="consultarCantidadVotosIniciativa" parameterType="map" resultType="java.lang.Integer">
+			SELECT COUNT(perfil) FROM interes WHERE iniciativa=#{iniciativa};
+		</select>
+				
 		<insert id="agregarIniciativa" parameterType="map">
 			INSERT INTO iniciativa (id, nombre, estado, creador, no_votos, descripcion, fechaDeCreacion) VALUES (#{ini.id},#{ini.nombre},#{ini.estado},#{ini.creador.email},0,#{ini.descripcion},#{ini.fechaDeCreacion});
 		</insert>
@@ -189,6 +192,12 @@
 		<delete id="eliminarVoluntad" parameterType="map">
 			DELETE FROM voluntad WHERE perfil=#{usr} and iniciativa=#{ini};
 		</delete>
+		
+		<update id="actualizarVotosIniciativa" parameterType="map">
+			UPDATE iniciativa SET no_votos = #{votos}
+			WHERE id = #{iniciativa}; 
+		</update>
+		
 		<update id="modificarIniciativa" parameterType="map">
 			UPDATE iniciativa SET (nombre, descripcion) = ( #{iniciativa.nombre}, #{iniciativa.descripcion})
 			WHERE id = #{iniciativa.id}; 

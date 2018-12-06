@@ -85,8 +85,27 @@ public class MyBATISIniciativaDAO implements IniciativaDAO{
 
 	public void agregarInteresAIniciativa(int ini, String perfil) throws PersistenceException {
 		im.agregarInteresAIniciativa(ini,perfil);
+		int votos = im.consultarCantidadVotosIniciativa(ini);
+		im.actualizarVotosIniciativa(ini, votos);
+	}
+	
+	@Override
+	public void cancelarInteresAIniciativa(int ini, String perfil) throws PersistenceException {
+		im.cancelarInteresAIniciativa(ini, perfil);
+		int votos = im.consultarCantidadVotosIniciativa(ini);
+		im.actualizarVotosIniciativa(ini, votos);
 		
 	}
+	@Override
+	public boolean estaInteresadoEnIniciativa(int ini, String perfil) {
+		return im.consultarInteres(ini,perfil);
+	}
+	
+	@Override
+	public int consultarCantidadVotosIniciativa(int ini) throws PersistenceException {
+		return im.consultarCantidadVotosIniciativa(ini);
+	}
+	
 	@Override
 	public void agregarVoluntadAIniciativa(int ini, String perfil) throws PersistenceException {
 		im.agregarVoluntadAIniciativa(ini,perfil);
@@ -99,16 +118,6 @@ public class MyBATISIniciativaDAO implements IniciativaDAO{
 	@Override
 	public List<String> getPalabrasClave(int id) throws PersistenceException {
 		return im.palabrasClaveDeIniciativa(id);
-	}
-	@Override
-	public void cancelarInteresAIniciativa(int ini, String perfil) throws PersistenceException {
-		im.cancelarInteresAIniciativa(ini, perfil);
-		
-	}
-	@Override
-	public boolean estaInteresadoEnIniciativa(int ini, String perfil) {
-		return im.consultarInteres(ini,perfil);
-		
 	}
 
 	public boolean isParticipando(String usr, int idAConsultar) throws PersistenceException {
@@ -124,5 +133,5 @@ public class MyBATISIniciativaDAO implements IniciativaDAO{
 			im.agregarPalabraClaveAIniciativa(iniciativa.getId(), palabra);
 		}
 		im.modificarIniciativa(iniciativa);
-	}	
+	}
 }

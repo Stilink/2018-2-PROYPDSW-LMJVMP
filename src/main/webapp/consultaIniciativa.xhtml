@@ -18,31 +18,32 @@
 		<h:form id="iniciativa">
 			#{operacionIBean.consultarIniciativa()}
 			<p:outputLabel for="nombre" value="Nombre:" />
-			<h:outputText id="nombre" value="#{operacionIBean.iniConsultada.nombre}"/><br/>
+				<h:outputText id="nombre" value="#{operacionIBean.iniConsultada.nombre}"/><br/>
 			<p:outputLabel for="descripcion" value="Descripcion:" />
-			<h:outputText id="descripcion" value="#{operacionIBean.iniConsultada.descripcion}"/><br/>
+				<h:outputText id="descripcion" value="#{operacionIBean.iniConsultada.descripcion}"/><br/>
 			<p:outputLabel for="area" value="Area:"/>
-			<h:outputText id="area" value="#{operacionIBean.iniConsultada.creador.area}"/><br/>
+				<h:outputText id="area" value="#{operacionIBean.iniConsultada.creador.area}"/><br/>
 			<p:outputLabel for="estado" value="Estado:" />
-			<h:outputText id="estado" value="#{operacionIBean.iniConsultada.estado}"/><br/>
+				<h:outputText id="estado" value="#{operacionIBean.iniConsultada.estado}"/><br/>
 			<p:outputLabel for="creador" value="Creador:" />
-			<h:outputText id="creador" value="#{operacionIBean.iniConsultada.creador.nombre}"/><br/>
+				<h:outputText id="creador" value="#{operacionIBean.iniConsultada.creador.nombre}"/><br/>
 			<p:outputLabel for="n_v" value="Numero de votos:"/>
-			<h:outputText id="n_v" value="#{operacionIBean.iniConsultada.no_votos}" /><br/>
+				<h:outputText id="n_v" value="#{operacionIBean.iniConsultada.no_votos}" /><br/>
 			<p:outputLabel for="fecha" value="Fecha de creacion:" />
-			<h:outputText id="fecha" value="#{operacionIBean.iniConsultada.fechaDeCreacion}"/><br/>
+				<h:outputText id="fecha" value="#{operacionIBean.iniConsultada.fechaDeCreacion}"/><br/>
 			<p:outputLabel for="Palabras_clave" value="Palabras clave:" />
-			<h:outputText id="Palabras_clave" value="#{operacionIBean.palabrasClaveToString().toString()}"/><br/>
-
+				<h:outputText id="Palabras_clave" value="#{operacionIBean.palabrasClaveToString().toString()}"/><br/>
 			<br/>
-			<div class="">
+			<div class="interes voluntad">
 				<p:commandButton id="noParticipar" style="border-color:#df584c" actionListener="#{operacionIBean.pulseBotonParticipar(loginBean.username)}" value="Ya no quiero participar" rendered="#{! operacionIBean.participa}" update="iniciativa"/>
 				<p:commandButton id="participar" style="border-color:#34b88b" actionListener="#{operacionIBean.pulseBotonParticipar(loginBean.username)}" value="Quiero participar" rendered="#{operacionIBean.participa}"  update="iniciativa"/>
-				<h:commandLink id="like" outcome="#" actionListener="#{operacionIBean.votar(loginBean.username,iniciativa.id)}"
-					rendered="#{operacionIBean.votado(loginBean.username,iniciativa.id)}">
+				<h:commandLink id="like"
+					actionListener="#{operacionIBean.votar(loginBean.username,operacionIBean.idAConsultar)}"
+					rendered="#{operacionIBean.votado(loginBean.username,operacionIBean.idAConsultar)}">
 						<h:graphicImage class="fa fa-fw fa-heartbeat"  style="color: red; padding-left: 20%;"/>
 				</h:commandLink>
-				<h:commandLink id="noLike" outcome="#" actionListener="#{operacionIBean.votar(loginBean.username,operacionIBean.idAConsultar)}"
+				<h:commandLink id="noLike" type="media"
+					actionListener="#{operacionIBean.votar(loginBean.username,operacionIBean.idAConsultar)}"
 					rendered="#{!operacionIBean.votado(loginBean.username,operacionIBean.idAConsultar)}">
 						<h:graphicImage class="fa fa-fw fa-heartbeat" style="color: grey; padding-left: 20%;"/>
 				</h:commandLink>

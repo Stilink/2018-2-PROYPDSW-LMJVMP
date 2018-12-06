@@ -230,4 +230,10 @@ public class ServicesIniciativaStub implements ServicesIniciativa{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public int consultarVotosIniciativa(int ini) throws ExcepcionServicesIniciativa {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

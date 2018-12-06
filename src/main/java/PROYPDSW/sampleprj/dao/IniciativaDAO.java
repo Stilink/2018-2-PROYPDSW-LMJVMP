@@ -31,13 +31,13 @@ public interface IniciativaDAO {
 	
 	void cancelarInteresAIniciativa(int ini, String perfil)throws PersistenceException;
 
-	boolean estaInteresadoEnIniciativa(int ini, String perfil);
+	boolean estaInteresadoEnIniciativa(int ini, String perfil) throws PersistenceException;
+	
+	int consultarCantidadVotosIniciativa(int ini) throws PersistenceException;
 
 	boolean isParticipando(String usr, int idAConsultar)throws PersistenceException;
 
 	void eliminarVoluntad(String perfil,int ini)throws PersistenceException;
 
 	void modificarIniciativa(Iniciativa iniciativa)throws PersistenceException;
-	
-
 }

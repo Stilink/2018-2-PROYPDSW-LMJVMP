@@ -146,6 +146,14 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 		}
 	}
 	@Override
+	public int consultarVotosIniciativa(int ini) throws ExcepcionServicesIniciativa {
+		try {
+			return idao.consultarCantidadVotosIniciativa(ini);
+		} catch (Exception e) {
+			throw new ExcepcionServicesIniciativa("No se pudo consultar la cantidad de votos de iniciativa: "+Integer.toString(ini),e);
+		}
+	}
+	@Override
 	public void agregarVoluntadAIniciativa(int ini, String perfil) throws ExcepcionServicesIniciativa {
 		try {
 			idao.agregarVoluntadAIniciativa(ini,perfil);

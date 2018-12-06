@@ -38,6 +38,8 @@ public interface IniciativaMapper {
 
 	List<Iniciativa> consultarIniciativasPorPerfil(@Param("perfil")String perfil);
 
+	void actualizarVotosIniciativa(@Param("iniciativa") int iniciativa, @Param ("votos") int votos );
+	
 	void cancelarInteresAIniciativa(@Param("ini") int ini,@Param("perfil") String perfil);
 
 	boolean consultarInteres(@Param ("ini")int ini,@Param ("perfil") String perfil);
@@ -49,5 +51,7 @@ public interface IniciativaMapper {
 	void eliminarPalabrasClave(@Param("iniciativa")Iniciativa iniciativa);
 
 	void modificarIniciativa(@Param("iniciativa")Iniciativa iniciativa);
+
+	int consultarCantidadVotosIniciativa(@Param("iniciativa") int ini);
 
 }
