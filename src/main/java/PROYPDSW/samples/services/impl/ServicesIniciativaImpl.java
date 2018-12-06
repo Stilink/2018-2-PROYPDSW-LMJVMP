@@ -126,7 +126,7 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 		try {
 			idao.agregarInteresAIniciativa(ini,perfil);
 		} catch (Exception e) {
-			throw new ExcepcionServicesIniciativa("validarLogin",e);
+			throw new ExcepcionServicesIniciativa("Agregar voto",e);
 		}
 	}
 	@Override
@@ -134,7 +134,7 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 		try {
 			return idao.estaInteresadoEnIniciativa(ini,perfil);
 		} catch (Exception e) {
-			throw new ExcepcionServicesIniciativa("validarLogin",e);
+			throw new ExcepcionServicesIniciativa("Error al consultar el interes de "+perfil+"en la iniciativa"+Integer.toString(ini),e);
 		}
 	}
 	@Override
@@ -142,7 +142,7 @@ public class ServicesIniciativaImpl implements ServicesIniciativa{
 		try {
 			idao.cancelarInteresAIniciativa(ini,perfil);
 		} catch (Exception e) {
-			throw new ExcepcionServicesIniciativa("validarLogin",e);
+			throw new ExcepcionServicesIniciativa("cancelar voto",e);
 		}
 	}
 	@Override

@@ -34,15 +34,18 @@
 				</p:column>
 				<p:column headerText="Ver detalles">
 					<p:button outcome="consultaIniciativa?idAConsultar=#{iniciativa.id}" value="Detalles"/>
-				</p:column>
-				<p:column>
-				<h:commandLink class="heart" outcome="#" onclick="like('#{loginBean.username}','#{iniciativa.id}')">
-    				<h:graphicImage class="fa fa-fw fa-heartbeat voto" style="color: gray"/>
-				</h:commandLink>
+					<h:commandLink id="like" outcome="#" actionListener="#{operacionIBean.votar(loginBean.username,iniciativa.id)}"
+						rendered="#{operacionIBean.votado(loginBean.username,iniciativa.id)}">
+	    				<h:graphicImage class="fa fa-fw fa-heartbeat"  style="color: red; padding-left: 20%;"/>
+					</h:commandLink>
+					<h:commandLink id="noLike" outcome="#" actionListener="#{operacionIBean.votar(loginBean.username,iniciativa.id)}"
+						rendered="#{!operacionIBean.votado(loginBean.username,iniciativa.id)}">
+	    				<h:graphicImage class="fa fa-fw fa-heartbeat" style="color: grey; padding-left: 20%;"/>
+					</h:commandLink>
 				</p:column>
 			</p:dataTable>
 		</h:form>
-		
+
 </ui:define>
 </ui:composition>
 </html>

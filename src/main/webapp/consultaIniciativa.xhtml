@@ -8,7 +8,7 @@
 
 <ui:composition template="/WEB-INF/include/template.xhtml">
 <ui:define name ="head">
-	
+
 </ui:define>
 <ui:define name = "body">
 		<f:metadata>
@@ -35,9 +35,20 @@
 			<h:outputText id="Palabras_clave" value="#{operacionIBean.palabrasClaveToString().toString()}"/><br/>
 
 			<br/>
-			<p:commandButton id="noParticipar" style="border-color:#df584c" actionListener="#{operacionIBean.pulseBotonParticipar(loginBean.username)}" value="Ya no quiero participar" rendered="#{! operacionIBean.participa}" update="iniciativa"/>
-			<p:commandButton id="participar" style="border-color:#34b88b" actionListener="#{operacionIBean.pulseBotonParticipar(loginBean.username)}" value="Quiero participar" rendered="#{operacionIBean.participa}"  update="iniciativa"/>
-			
+			<div class="">
+				<p:commandButton id="noParticipar" style="border-color:#df584c" actionListener="#{operacionIBean.pulseBotonParticipar(loginBean.username)}" value="Ya no quiero participar" rendered="#{! operacionIBean.participa}" update="iniciativa"/>
+				<p:commandButton id="participar" style="border-color:#34b88b" actionListener="#{operacionIBean.pulseBotonParticipar(loginBean.username)}" value="Quiero participar" rendered="#{operacionIBean.participa}"  update="iniciativa"/>
+				<h:commandLink id="like" outcome="#" actionListener="#{operacionIBean.votar(loginBean.username,iniciativa.id)}"
+					rendered="#{operacionIBean.votado(loginBean.username,iniciativa.id)}">
+						<h:graphicImage class="fa fa-fw fa-heartbeat"  style="color: red; padding-left: 20%;"/>
+				</h:commandLink>
+				<h:commandLink id="noLike" outcome="#" actionListener="#{operacionIBean.votar(loginBean.username,operacionIBean.idAConsultar)}"
+					rendered="#{!operacionIBean.votado(loginBean.username,operacionIBean.idAConsultar)}">
+						<h:graphicImage class="fa fa-fw fa-heartbeat" style="color: grey; padding-left: 20%;"/>
+				</h:commandLink>
+			</div>
+
+
 		</h:form>
 		<br/><br/>
 		<h:form id="comentarios">

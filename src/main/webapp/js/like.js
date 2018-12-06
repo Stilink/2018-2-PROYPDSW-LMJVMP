@@ -1,12 +1,10 @@
-function like(perfil, iniciativa){
-				var vote = document.getElementsByClassName("voto");
-				alert("HOLA MUNDO");
+function like(perfil, iniciativa,e){
 				//alert(#{!operacionIBean.votado(perfil,iniciativa)});
-				if("#{!operacionIBean.votado(perfil,iniciativa)}"){
-					vote.style.color='gray';
+				//let heart=e.children[0];
+				if('#{operacionIBean.votado(perfil,iniciativa)}'){
+					e.style.color='red';
 				}
 				else{
-					vote.style.color='red';
+					e.children[0].style.backGrcolor='blue';
 				}
-				"#(operacionIBean.votar(perfil,iniciativa))"
 }
