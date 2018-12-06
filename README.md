@@ -13,7 +13,7 @@ La Plataforma banco de iniciativas de proyectos, es una herramienta donde la com
 * Michael Sebastian Preciado Garzon - Scrum master, Equipo de desarollo
 ### Profesor
 * Francisco Chavez (Product owner)
-* Santiago Alzate (Product owner)
+* Santiago Alzate 
 
 # Detalles provistos por el Stakeholder.
 
@@ -67,5 +67,8 @@ Incorporar al informe diferentes estadísticas.
 * Cantidad de proyectos relacionados por cada uno de los estados.
 
 Todas las consultas deben tener al menos la siguiente información: Id, nombre de la iniciativa, el estado, el número de votos, el nombre, el usuario y el email del proponente, el área o dependencia, la fecha de creación de la iniciativa.
+
+## Modelo E-R
+![](Recursos/pdsw-project-2018-12-05_20_05.png)
 
 
