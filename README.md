@@ -70,6 +70,8 @@ Todas las consultas deben tener al menos la siguiente información: Id, nombre d
 # Arquitectura y diseño
 ## Modelo E-R
 ![](Recursos/pdsw-project-2018-12-05_20_05.png)
+## Modelo de clases
+![](Recursos/clases.PNG)
 
 
 ## Tecnologías utilizadas
