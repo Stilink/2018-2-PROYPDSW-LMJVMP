@@ -8,10 +8,13 @@
 La Plataforma banco de iniciativas de proyectos, es una herramienta donde la comunidad universitaria de la Escuela Colombiana de Ingeniería Julio Garavito pueden registrar sus iniciativas e ideas de proyectos para ser desarrollados o gestionados por la PMO de la Escuela. El sistema, más allá de facilitar el registro de las iniciativas e ideas de proyectos, es una valiosa base de conocimiento donde los diferentes actores pueden revisar si hay iniciativas, ideas o intereses similares y aunar esfuerzos para la materialización. Adicional a lo anterior, el personal académico puede integrar a los estudiantes de diferentes asignaturas o proyectos de grado para su realización, materializando las iniciativas para el beneficio de toda la comunidad universitaria. La PMO puede priorizar las iniciativas viables, asignar responsables, gestionar la asignación de recursos, llevar métricas e identificar grupos de interés -a través del tiempo- que se van presentando para cada iniciativa. Con esto se espera lograr no solo la realización de los proyectos sino una aplicación práctica de los conocimientos adquiridos por los estudiantes dentro de las asignaturas de la Escuela generando un ambiente de aprendizaje colaborativo.
 
 ## Integrantes
-* Jeymar Vega Bustos
-* Luis Eduardo Moreno Acevedo
-* Michael Sebastian Preciado Garzon
-
+* Jeymar Vega Bustos - Equipo de desarrollo
+* Luis Eduardo Moreno Acevedo - Equipo de desarrollo
+* Michael Sebastian Preciado Garzon - Scrum master, Equipo de desarollo
+### Profesor
+* Francisco Chavez
+* Santiago Alzate (Product owner)
+* Www.google.com
 
 # Detalles provistos por el Stakeholder.
 
