@@ -14,10 +14,15 @@ La Plataforma banco de iniciativas de proyectos, es una herramienta donde la com
 El objetivo del sistema es permitir el registro y seguimiento de las iniciativas e ideas de proyectos que han sido propuestas por la comunidad universitaria de la Escuela. El banco de iniciativas debe contar con una interfaz de usuario bonita y amigable con los usuarios.
  
 Tipos de usuario:
+ 
 Administrador
+ 
 Personal PMO - ODI
+ 
 Proponente de iniciativa o idea de proyecto
+ 
 Usuarios de consulta
+ 
  
 Administrador:
 Modificar el Estado de las ideas o iniciativas.
