@@ -67,8 +67,24 @@ Incorporar al informe diferentes estadísticas.
 * Cantidad de proyectos relacionados por cada uno de los estados.
 
 Todas las consultas deben tener al menos la siguiente información: Id, nombre de la iniciativa, el estado, el número de votos, el nombre, el usuario y el email del proponente, el área o dependencia, la fecha de creación de la iniciativa.
-
+# Arquitectura y diseño
 ## Modelo E-R
 ![](Recursos/pdsw-project-2018-12-05_20_05.png)
 
 
+## Tecnologías utilizadas
+* PrimeFaces
+* MyBATIS
+* Postgresql
+* Guice
+* Bootstrap
+* Google chart
+
+## Aplicación
+https://iniciativaseci.herokuapp.com/
+
+# Descripción del proceso
+## Metologia
+Se utilizó la metodología SCRUM.
+## Trello
+https://trello.com/b/FtoJPwHo/2018-2-proypdsw
