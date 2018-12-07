@@ -2,7 +2,6 @@
 
 [![CircleCI](https://circleci.com/gh/Stilink/2018-2-PROYPDSW-LMJVMP.svg?style=svg)](https://circleci.com/gh/Stilink/2018-2-PROYPDSW-LMJVMP)
 
-[Manual del usuario](https://github.com/Stilink/2018-2-PROYPDSW-LMJVMP/blob/master/Manual%20de%20usuario.pdf)
 
 
 ## Escuela Colombiana de Ingeniería
@@ -94,3 +93,5 @@ https://iniciativaseci.herokuapp.com/
 Se utilizó la metodología SCRUM.
 ## Trello
 https://trello.com/b/FtoJPwHo/2018-2-proypdsw
+
+# [Manual del usuario](https://github.com/Stilink/2018-2-PROYPDSW-LMJVMP/blob/master/Manual%20de%20usuario.pdf)
